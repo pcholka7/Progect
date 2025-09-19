@@ -1,0 +1,26 @@
+// buttons.scss
+.button {
+  border-radius: 10px;
+  padding: 15px 30px;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'TT Norms', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.button--primary {
+  background-color: #C08769;
+}
+
+.button--primary:hover {
+  background-color: #C08769;
+}

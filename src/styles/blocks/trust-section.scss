@@ -1,0 +1,149 @@
+/* Новые стили для контейнера заголовка и стрелок */
+.reviews-header-container {
+    position: relative; /* Делаем контейнер позиционированным родителем для стрелок */
+    display: flex; /* Включаем Flexbox */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Выравниваем по вертикали */
+    width: 100%;
+    max-width: 1800px; /* Устанавливаем максимальную ширину */
+    margin: 0 auto 30px auto; /* Центрируем и добавляем отступ снизу */
+}
+
+/* Стили для заголовка */
+.reviews-header-container .trust-title {
+    text-align: center;
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* Стили для навигации */
+.reviews-navigation {
+    position: absolute; /* Позиционируем стрелки абсолютно */
+    right: 0; /* Размещаем их справа от родительского контейнера */
+    top: 50%; /* Смещаем на 50% вниз от верха контейнера */
+    transform: translateY(-50%); /* Поднимаем на половину своей высоты, чтобы идеально выровнять по центру */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviews-navigation .nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    outline: none;
+}
+
+.reviews-navigation .nav-arrow svg path {
+    fill: #B0B0B0;
+}
+
+.reviews-navigation .next-arrow svg path {
+    fill: #333333;
+}
+
+/* Секция "Отзывы" */
+.reviews-section {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.review-card {
+    width: 573px;
+    height: 309px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border: 1px solid #E1E1E1;
+}
+
+.review-card .review-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+.review-card .review-header .review-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.review-card .review-header .review-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card .review-header .review-name {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.review-card .review-header .review-position {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+    color: #555;
+    margin-top: 25px;
+}
+
+.review-card .review-header .review-date {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+    color: #999;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.review-card .review-header .review-stars {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.review-card .review-header .review-stars img {
+    height: 20px;
+    width: auto;
+}
+
+.review-card .review-text {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1;
+    color: #707070;
+    margin-top: 20px;
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+

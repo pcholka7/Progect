@@ -1,0 +1,152 @@
+/* Общие стили для всей секции */
+.request-section {
+    position: relative;
+    background-color: #fff;
+    min-height: 518px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 900px 1fr;
+    grid-template-areas: "left-image main-content right-image";
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+/* Стили для фоновых изображений */
+.background-image {
+    height: 518px;
+    width: auto;
+    object-fit: contain;
+    z-index: 15;
+}
+
+.background-image.right-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /* Если нужно, чтобы изображение было по центру, можно использовать transform: translateY(-50%); */
+}
+
+.background-image.left-image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* Стили для контейнера формы */
+.request-container {
+    grid-area: main-content;
+    max-width: 900px;
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Стили для заголовка */
+.request-header h1 {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.2;
+    color: #272727;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+/* Сетка для полей ввода */
+.request-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+/* Стили для всех полей ввода */
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'TT Norms', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+.form-textarea {
+    grid-column: 1 / -1;
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Стили для кнопки */
+.submit-btn {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px;
+    padding: 20px 40px;
+    background-color: #A97E69;
+    color: #fff;
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Текст о конфиденциальности */
+.privacy-note {
+    font-family: 'TT Norms', sans-serif;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+.request-section {
+    position: relative; /* Это важно, чтобы изображения позиционировались относительно этой секции */
+    width: 100%;
+    max-width: 1920px; /* Ограничиваем ширину секции, чтобы изображения не разъезжались */
+    margin: 0 auto; /* Центрируем секцию на больших экранах */
+}
+.request-text-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 70px; /* Отступ сверху. Ты можешь изменить это значение */
+
+    /* Если изображение является фоном, эти стили помогут разместить текст над ним */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Чтобы текст был поверх изображения */
+}
+
+.request-text-container h1 {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+/* Медиа-запрос для адаптивности */
+@media (max-width: 1200px) {
+    .request-section {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main-content"
+            "left-image"
+            "right-image";
+    }
+    .background-image {
+        display: none;
+    }
+}

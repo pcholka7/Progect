@@ -1,0 +1,209 @@
+//page-header.scss
+body {
+  margin: 0;
+  padding-top: 80px; // чтобы контент не заезжал под фиксированную шапку
+}
+
+.page-header {
+  height: 80px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1920px; // ограничиваем контент, но сама шапка тянется на всю ширину
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    z-index: 101;
+
+    &-img {
+      width: 180px;
+      height: 59px;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+
+    &-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+    }
+
+    &-item {
+      position: relative;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: #000000;
+      font-family: 'TT Norms', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      transition: color 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+
+      &:hover {
+        color: #007bff;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #007bff;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    z-index: 101;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-decoration: none;
+
+      &:hover {
+        transform: scale(1.1);
+        background-color: #f8f9fa;
+      }
+    }
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+  }
+
+  &__button {
+    white-space: nowrap;
+    font-family: 'TT Norms', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+
+    border-radius: 5px;
+    padding: 10px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    background-color: #C08769;
+    color: #ffffff;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 1024px) {
+  .page-header {
+    &__nav {
+      margin: 0 20px;
+
+      &-list {
+        gap: 20px;
+      }
+
+      &-link {
+        font-size: 14px;
+      }
+    }
+
+    &__button {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    &__content {
+      padding: 0 15px;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__right-section {
+      gap: 15px;
+    }
+
+    &__social {
+      gap: 10px;
+
+      &-link {
+        width: 32px;
+        height: 32px;
+      }
+
+      &-icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__button {
+      width: 150px;
+      height: 40px;
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+  }
+}

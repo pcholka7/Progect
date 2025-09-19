@@ -1,0 +1,24 @@
+
+@import url('./blocks/layout/page-container.scss');
+@import url('./blocks/layout/page-header.scss');
+@import url('./blocks/ui/buttons.scss');
+@import url('./blocks/hero.scss');
+@import url('./blocks/features-section.scss');
+@import url('./blocks/stats-column.scss');
+// @import url('./blocks/layout/page-footer.scss');
+@import url('./blocks/futures-blocks.scss');
+@import url('./blocks/backround-section.scss');
+@import url('./blocks/trust-section.scss');
+@import url('./blocks/faq-card.scss');
+
+@import url('./blocks/photo-section.scss');
+@import url('./blocks/how-it-works-section.scss');
+
+@import url('./blocks/request-section.scss');
+
+@import url('./blocks/layout/page-footer.scss');
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-color;
+}

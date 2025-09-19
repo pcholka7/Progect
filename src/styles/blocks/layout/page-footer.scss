@@ -1,0 +1,112 @@
+.footer {
+    background-color: #F3EAE2;
+    height: 378px;
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 90px; /* Добавлен отступ сверху */
+}
+
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    width: 100%;
+    max-width: 1200px; /* Ограничим ширину контента для читаемости */
+    margin: 0 auto;
+}
+
+.footer__logo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__logo {
+    width: 150px; /* Настройте размер вашего логотипа */
+}
+
+.footer__tagline {
+    font-family: 'TT Norms', sans-serif;
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.footer__nav-col,
+.footer__contact-col,
+.footer__actions-col {
+    font-family: 'TT Norms', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__heading {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__list li {
+    margin-bottom: 5px;
+}
+
+.footer__list a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.footer__contact-col p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer__socials img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer__button {
+    background-color: #C09E83;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer__privacy,
+.footer__copyright {
+    font-size: 12px;
+    color: #888;
+}

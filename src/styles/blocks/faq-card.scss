@@ -1,0 +1,102 @@
+/* Полный CSS для секции FAQ */
+
+/* Стили для заголовка секции FAQ */
+.faq-heading {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #272727;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Контейнер для всех карточек FAQ */
+.faq-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 13px; /* Расстояние между карточками */
+    align-items: center;
+    width: 100%;
+    max-width: 1760px; /* Устанавливаем максимальную ширину контейнера */
+    margin: 0 auto;
+}
+
+/* Общие стили для каждой карточки FAQ */
+.faq-card {
+    width: 100%; /* Карточка будет занимать всю ширину родительского контейнера */
+    background: #F3EAE2;
+    border-radius: 20px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    text-align: left;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 103px; /* Высота закрытой карточки */
+}
+
+/* Стили для открытой карточки FAQ */
+.faq-card.faq-card-open {
+    max-height: 249px; /* Высота открытой карточки */
+}
+
+/* Заголовок вопроса внутри карточки */
+.faq-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Текст вопроса */
+.faq-question-text {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    color: #333333;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Кнопки-иконки для открытия/закрытия */
+.faq-toggle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Стили для SVG-иконок */
+.faq-toggle-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* Цвет иконок */
+.faq-toggle-btn svg path {
+    fill: #0E0E0E;
+}
+
+/* Текст ответа внутри карточки */
+.faq-answer-text {
+    padding-top: 20px;
+}
+
+.faq-answer-text p {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #0E0E0E;
+    margin: 0;
+}
+
+/* Скрываем текст ответа, если карточка не открыта */
+.faq-card:not(.faq-card-open) .faq-answer-text {
+    display: none;
+}
