@@ -1,14 +1,12 @@
-/* Контейнер для трех колонок со статистикой */
 .stats-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-top: 150px;
-    gap: 323px; /* Расстояние между колонками */
+    gap: 323px;
 }
 
-/* Стили для каждой колонки */
 .stats-column {
     display: flex;
     flex-direction: column;
@@ -16,14 +14,13 @@
     align-items: center;
     text-align: center;
     position: relative;
-    padding: 0; /* Убираем лишние отступы */
+    padding: 0;
 }
 
-/* Разделительные линии между колонками */
 .stats-column:not(:last-child)::after {
     content: '';
     position: absolute;
-    right: -161.5px; /* Половина отступа для центрирования линии */
+    right: -161.5px;
     top: 50%;
     transform: translateY(-50%);
     width: 1px;
@@ -31,7 +28,6 @@
     background-color: #C08769;
 }
 
-/* Стили для верхних надписей (большие цифры) */
 .stats-number {
     font-family: 'TT Norms', sans-serif;
     font-weight: 500;
@@ -41,7 +37,6 @@
     margin: 0;
 }
 
-/* Стили для нижних надписей (описание) */
 .stats-text {
     font-family: 'TT Norms', sans-serif;
     font-weight: 400;

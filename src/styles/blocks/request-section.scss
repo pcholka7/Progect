@@ -1,152 +1,143 @@
-/* Общие стили для всей секции */
-.request-section {
-    position: relative;
-    background-color: #fff;
-    min-height: 518px;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: 1fr 900px 1fr;
-    grid-template-areas: "left-image main-content right-image";
-    align-items: center;
-    justify-content: center;
-    padding: 0 40px;
+.request-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для фоновых изображений */
-.background-image {
+.request-section {
+    position: relative;
     height: 518px;
-    width: auto;
-    object-fit: contain;
-    z-index: 15;
-}
-
-.background-image.right-image {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    /* Если нужно, чтобы изображение было по центру, можно использовать transform: translateY(-50%); */
-}
-
-.background-image.left-image {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-/* Стили для контейнера формы */
-.request-container {
-    grid-area: main-content;
-    max-width: 900px;
     width: 100%;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    text-align: center;
-    z-index: 10;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-/* Стили для заголовка */
-.request-header h1 {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 700;
-    font-size: 42px;
-    line-height: 1.2;
-    color: #272727;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-}
-
-/* Сетка для полей ввода */
-.request-form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-
-/* Стили для всех полей ввода */
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-family: 'TT Norms', sans-serif;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #fff;
-    color: #333;
-}
-
-.form-textarea {
-    grid-column: 1 / -1;
-    min-height: 150px;
-    resize: vertical;
-}
-
-/* Стили для кнопки */
-.submit-btn {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 15px;
-    padding: 20px 40px;
-    background-color: #A97E69;
-    color: #fff;
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Текст о конфиденциальности */
-.privacy-note {
-    font-family: 'TT Norms', sans-serif;
-    font-size: 12px;
-    color: #888;
-    text-align: center;
-}
-
-.request-section {
-    position: relative; /* Это важно, чтобы изображения позиционировались относительно этой секции */
-    width: 100%;
-    max-width: 1920px; /* Ограничиваем ширину секции, чтобы изображения не разъезжались */
-    margin: 0 auto; /* Центрируем секцию на больших экранах */
-}
-.request-text-container {
-    width: 100%;
-    text-align: center;
-    padding-top: 70px; /* Отступ сверху. Ты можешь изменить это значение */
-
-    /* Если изображение является фоном, эти стили помогут разместить текст над ним */
+.request-background-images {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10; /* Чтобы текст был поверх изображения */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-.request-text-container h1 {
+.background-image {
+    position: absolute;
+    height: 100%;
+    width: auto;
+}
+
+.left-image {
+    left: 0;
+    bottom: -150px; /* Опущено левое изображение */
+}
+
+.right-image {
+    right: 0;
+    bottom: -50px; /* Опущено правое изображение */
+}
+
+.request-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.request-form-container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.request-form-container h1 {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
     font-size: 42px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    line-height: 1;
+    letter-spacing: 0;
     text-transform: uppercase;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 30px;
 }
-/* Медиа-запрос для адаптивности */
-@media (max-width: 1200px) {
-    .request-section {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "main-content"
-            "left-image"
-            "right-image";
-    }
-    .background-image {
-        display: none;
-    }
+
+.request-form {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+}
+
+.form-column input,
+.form-column textarea {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: left;
+    height: 70px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-column textarea {
+    height: 170px;
+    resize: none;
+}
+
+.button-and-privacy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.button-and-privacy button {
+    height: 70px;
+    width: 600px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #C08769;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.privacy-text {
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+    margin: 0;
+}
+.error-message {
+    color: red;
+    font-family: 'TT Norms', sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+    display: none;
+}
+
+.invalid-input {
+    border: 2px solid red !important;
+}
+
+.invalid-input + .error-message {
+    display: block;
 }

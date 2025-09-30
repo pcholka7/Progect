@@ -2,6 +2,7 @@
   position: relative;
   height: 841px;
   width: 100%;
+  background-image: url("/images/fon.png");
 }
 
 .hero-section__background {
@@ -17,8 +18,6 @@
 
 .hero-section__container {
   position: relative;
-  height: 100%;
-  width: 100%;
   z-index: 2;
   display: flex;
   margin: 0 auto;
@@ -28,8 +27,6 @@
 }
 
 .hero-section__right {
-  flex-basis: 50%;
-  max-width: 50%;
   display: flex;
   justify-content: flex-end;
 }
@@ -38,42 +35,6 @@
   max-width: 100%;
   height: auto;
   display: block;
-}
-/* hero-section.scss */
-
-.hero-section {
-  position: relative;
-  height: 841px;
-  width: 100%;
-}
-
-.hero-section__background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.hero-section__container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  display: flex;
-  justify-content: flex-start; /* Прижимаем контент к левому краю */
-  align-items: center;  /* Прижимаем контент к верхнему краю */
-  padding-top: 100px; /* Отступ сверху */
-  padding-left: 100px; /* Отступ слева */
-}
-
-.hero-section__left {
-  flex-basis: 50%;
-  max-width: 50%;
-  margin-left: 0;
-  padding-right: 50px;
 }
 
 .hero-section__left h1 {
@@ -81,42 +42,146 @@
   font-weight: 500;
   font-size: 44px;
   line-height: 1.2;
-  color: #000;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .hero-section__title-highlight {
   font-family: 'TT Norms', sans-serif;
   font-weight: 500;
   font-size: 68px;
-  color: #000;
 }
 
 .hero-section__subtitle {
   font-family: 'TT Norms', sans-serif;
-  font-weight: 400;
   font-size: 28px;
   line-height: 1.5;
-  color: #000;
-  margin-bottom: 40px;
+  margin: 0 0 167px;
 }
 
 .hero-section__left .hero-section__button {
-  margin-top: 40px;
+  width: 315px;
+  height: 70px;
+  border-radius: 5px;
+  font-size: 20px;   /* Рекомендуемый размер шрифта для большой кнопки */
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
-.hero-section__right {
-  flex-basis: 50%;
-  max-width: 50%;
+@media (max-width: 767px) {
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 86px; /* 56px шапка + 30px */
+  }
+
+  .hero-section__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* блоки вертикально */
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Блок текста */
+  .hero-section__left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+.hero-section__left h1 {
+  position: absolute;
+  width: 335px;
+  height: auto;
+  left: 20px;
+  top: 86px;
+  font-family: 'TT Norms', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  text-transform: uppercase;
+  color: #272727;
+  margin: 0;
+}
+
+.hero-section__title-highlight {
+  font-weight: 500;
+  color:#000;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+.hero-section__subtitle {
+  position: absolute;
+  width: 352px;
+  font-family: 'TT Norms', sans-serif;
+  font-style: normal;
+  font-weight: 400;       /* Regular */
+  font-size: 20px;
+  line-height: 24px;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+
+  color: #272727;
+  margin: 0;
+}
+
+  /* Кнопка */
+  .hero-section__left .hero-section__button {
+    width: 270px;
+    height: 54px;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+.hero-section__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 616pxpx;
+  object-fit: cover;
+  z-index: 1; /* ниже текста и изображения */
+}
+
+/* Изображение */
+.hero-section__right {
+  display: flex;
+  justify-content: flex-start;
+  z-index: 1;       /* ниже текста и кнопки */
 }
 
 .hero-section__image {
-  max-width: 100%;
-  height: auto;
-  display: block;
+min-width: 439px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+/* Кнопка */
 .hero-section__left .hero-section__button {
-    margin-top: 40px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;      /* отступ от низа фона */
+  width: 270px;
+  height: 54px;
+  z-index: 2;        /* выше изображения */
+}
 }

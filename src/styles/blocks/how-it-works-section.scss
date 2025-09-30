@@ -1,4 +1,3 @@
-/* Секция "Как работает система" */
 .how-it-works-section {
     display: flex;
     flex-direction: column;
@@ -7,7 +6,6 @@
     padding: 50px 0;
 }
 
-/* Стили для заголовка */
 .how-it-works-title {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
@@ -18,7 +16,6 @@
     margin: 0 0 20px 0;
 }
 
-/* Стили для подзаголовка */
 .how-it-works-subtitle {
     font-family: 'TT Norms', sans-serif;
     font-weight: 400;
@@ -30,21 +27,18 @@
     text-align: center;
 }
 
-/* Контейнер для изображения и кнопки */
 .how-it-works-image-container {
     position: relative;
     max-width: 100%;
     margin: 20px 0 0 0;
 }
 
-/* Изображение, которое будет фоном */
 .how-it-works-image {
     display: block;
     width: 100%;
     height: auto;
 }
 
-/* Стили для кнопки, расположенной по центру */
 .how-it-works-button {
     position: absolute;
     top: 50%;
@@ -56,7 +50,6 @@
     padding: 0;
 }
 
-/* Стиль для изображения внутри кнопки */
 .how-it-works-button img {
     width: 100%;
     height: auto;

@@ -1,6 +1,3 @@
-/* Полный CSS для секции FAQ */
-
-/* Стили для заголовка секции FAQ */
 .faq-heading {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
@@ -12,20 +9,18 @@
     margin-bottom: 50px;
 }
 
-/* Контейнер для всех карточек FAQ */
 .faq-cards-container {
     display: flex;
     flex-direction: column;
-    gap: 13px; /* Расстояние между карточками */
+    gap: 13px;
     align-items: center;
     width: 100%;
-    max-width: 1760px; /* Устанавливаем максимальную ширину контейнера */
+    max-width: 1760px;
     margin: 0 auto;
 }
 
-/* Общие стили для каждой карточки FAQ */
 .faq-card {
-    width: 100%; /* Карточка будет занимать всю ширину родительского контейнера */
+    width: 100%;
     background: #F3EAE2;
     border-radius: 20px;
     padding: 20px 30px;
@@ -33,15 +28,13 @@
     text-align: left;
     transition: max-height 0.3s ease-in-out;
     overflow: hidden;
-    max-height: 103px; /* Высота закрытой карточки */
+    max-height: 103px; /* Оригинальный размер для закрытого состояния */
 }
 
-/* Стили для открытой карточки FAQ */
 .faq-card.faq-card-open {
-    max-height: 249px; /* Высота открытой карточки */
+    max-height: 249px; /* Оригинальный размер для открытого состояния */
 }
 
-/* Заголовок вопроса внутри карточки */
 .faq-question-header {
     display: flex;
     justify-content: space-between;
@@ -49,7 +42,6 @@
     width: 100%;
 }
 
-/* Текст вопроса */
 .faq-question-text {
     font-family: 'TT Norms', sans-serif;
     font-weight: 500;
@@ -60,7 +52,6 @@
     text-transform: uppercase;
 }
 
-/* Кнопки-иконки для открытия/закрытия */
 .faq-toggle-btn {
     display: flex;
     justify-content: center;
@@ -71,20 +62,39 @@
     padding: 0;
 }
 
-/* Стили для SVG-иконок */
 .faq-toggle-btn svg {
     width: 32px;
     height: 32px;
 }
 
-/* Цвет иконок */
 .faq-toggle-btn svg path {
     fill: #0E0E0E;
 }
 
-/* Текст ответа внутри карточки */
+/* Правила для иконок */
+.faq-icon-close {
+    display: none;
+}
+
+.faq-card.faq-card-open .faq-icon-open {
+    display: none;
+}
+
+.faq-card.faq-card-open .faq-icon-close {
+    display: block;
+}
+
+/* Важные изменения для плавности */
 .faq-answer-text {
-    padding-top: 20px;
+    /* Добавляем transition для плавного появления текста */
+    transition: opacity 0.3s ease-in-out, padding-top 0.3s ease-in-out;
+    padding-top: 0; /* Скрываем верхний отступ в закрытом состоянии */
+    opacity: 0;
+}
+
+.faq-card.faq-card-open .faq-answer-text {
+    padding-top: 20px; /* Возвращаем оригинальный отступ при открытии */
+    opacity: 1;
 }
 
 .faq-answer-text p {
@@ -94,9 +104,4 @@
     line-height: 1.5;
     color: #0E0E0E;
     margin: 0;
-}
-
-/* Скрываем текст ответа, если карточка не открыта */
-.faq-card:not(.faq-card-open) .faq-answer-text {
-    display: none;
 }

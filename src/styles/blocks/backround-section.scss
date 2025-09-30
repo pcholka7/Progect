@@ -1,4 +1,3 @@
-/* Блок с фоновым изображением и всем содержимым */
 .background-section {
     position: relative;
     width: 100%;
@@ -11,18 +10,16 @@
     background: #F3EAE2;
 }
 
-/* Фоновое изображение */
 .background-image {
     position: absolute;
     top: 0;
-    left: 0;
+    // left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
 }
 
-/* Заголовок секции */
 .tariff-title {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
@@ -34,7 +31,6 @@
     margin-bottom: 50px;
 }
 
-/* Контейнер для трех прямоугольников */
 .tariff-blocks-wrapper {
     display: flex;
     justify-content: center;
@@ -42,7 +38,6 @@
     z-index: 1;
 }
 
-/* Стили для каждого прямоугольника */
 .tariff-block {
     width: 418px;
     height: 681px;
@@ -52,10 +47,8 @@
     align-items: center;
     text-align: center;
     padding: 20px;
-    /* font-family: 'TT Norms', sans-serif; - эта строка была удалена */
 }
 
-/* Стили для цвета прямоугольников */
 .tariff-block.white {
     background: #FFFFFF;
 }
@@ -66,7 +59,7 @@
 
 .tariff-block__title {
     font-family: 'TT Norms', sans-serif;
-    font-weight: 700; /* Изменено с 500 на 700 для жирного начертания */
+    font-weight: 700;
     font-size: 28px;
     line-height: 1;
     text-transform: uppercase;
@@ -74,7 +67,6 @@
     margin-top: 40px;
 }
 
-/* Описание внутри прямоугольников */
 .tariff-block__description {
     font-family: 'TT Norms', sans-serif;
     font-weight: 400;
@@ -84,7 +76,6 @@
     margin-top: 20px;
 }
 
-/* Список в прямоугольниках */
 .tariff-block__features {
     list-style: none;
     padding: 0;
@@ -99,7 +90,6 @@
     margin-bottom: 20px;
 }
 
-/* Стили для кнопок */
 .tariff-button {
     width: 358px;
     height: 70px;

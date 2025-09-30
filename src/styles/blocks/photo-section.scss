@@ -1,41 +1,37 @@
-/* Секция "До и После CRM" */
 .comparison-section {
-    text-align: center; /* Центрируем всё содержимое секции */
+    text-align: center;
     padding: 100px 0;
 }
 
-/* Стили для всего заголовка */
 .comparison-title {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
-    font-size: 42px; /* Размер шрифта для слов "ДО" и "ПОСЛЕ CRM" */
+    font-size: 42px;
     line-height: 100%;
     text-transform: uppercase;
     color: #272727;
     margin: 0 0 60px 0;
-    display: flex; /* Используем Flexbox для выравнивания */
-    justify-content: center; /* Центрируем содержимое */
-    align-items: baseline; /* Выравниваем по нижней линии шрифта */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
 
-/* Стили для буквы "И" */
 .comparison-title .separator-text {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
-    font-size: 30px; /* Уменьшаем размер шрифта для буквы "И" */
+    font-size: 30px;
     line-height: 100%;
-    padding: 0 5px; /* Добавляем небольшие отступы, чтобы "И" не прилипала к другим словам */
+    padding: 0 5px;
 }
-/* Контейнер для изображений */
+
 .photo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0px; /* Расстояние между фото */
-    flex-direction: row-reverse; /* Меняем порядок, чтобы Frame275 был справа */
+    gap: 0px;
+    flex-direction: row-reverse;
 }
 
-/* Общие стили для изображений */
 .photo-item {
     width: 870px;
     height: 488px;
