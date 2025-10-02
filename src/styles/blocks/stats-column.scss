@@ -45,3 +45,25 @@
     text-transform: uppercase;
     margin: 40px 0 0;
 }
+@media (max-width: 767px) {
+  .stats-container {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .stats-column {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+  .stats-column:last-child {
+    flex: 1 1 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .stats-column:not(:last-child)::after {
+    display: none;
+  }
+}

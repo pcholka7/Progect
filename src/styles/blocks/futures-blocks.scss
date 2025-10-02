@@ -17,6 +17,7 @@
   padding: 0 20px;
 }
 
+/* Стили для БОЛЬШИХ блоков (ВОССТАНОВЛЕНЫ) */
 .features-blocks {
   display: flex;
   justify-content: center;
@@ -25,6 +26,7 @@
 }
 
 .feature-block {
+  /* Вернул исходную фиксированную ширину */
   width: 865px;
   height: 347px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
@@ -84,16 +86,20 @@
   text-align: left;
 }
 
+/* Стили для МАЛЕНЬКИХ блоков (настроены на 4 в ряд) */
 .features-blocks-small {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  /* Задаем 4 колонки, чтобы блоки выстроились в ряд */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  /* Устанавливаем ширину, достаточную для 4-х блоков и центрируем */
+  max-width: 1700px;
+  margin: 20px auto 0;
 }
 
 .feature-block-small {
-  width: 418px;
+  /* Устанавливаем ширину 100%, чтобы блок занял всю свою 1fr колонку */
+  width: 100%;
   height: 356px;
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
@@ -125,15 +131,6 @@
   width: 50px;
   height: auto;
   margin-bottom: 20px;
-}
-
-.feature-block__title {
-  font-family: var(--font-family-tt-norms);
-  font-weight: var(--font-weight-medium);
-  font-size: 30px;
-  line-height: 1;
-  color: var(--color-black);
-  margin: 0 0 20px;
 }
 
 .feature-block-small__title {
@@ -187,7 +184,7 @@
     line-height: 1.4;
   }
 
-  /* === СЛАЙДЕР С МАЛЕНЬКИМИ КАРТОЧКАМИ === */
+  /* === СЛАЙДЕР С МАЛЕНЬКИМИ КАРТОЧКАМИ (КОНТЕЙНЕР) === */
   .features-blocks-small {
     display: flex;
     overflow: hidden;
@@ -196,16 +193,22 @@
     margin-top: 12px;
   }
 
+  /* === СЛАЙД (ОБЕРТКА, СОЗДАННАЯ JS) === */
   .slide {
     display: flex;
     flex-direction: column;
     gap: 12px;
     flex: 0 0 100%;
+    /* Добавляем отступы здесь, чтобы карточки внутри растягивались */
+    padding: 0 20px;
   }
 
+  /* === МАЛЕНЬКИЕ КАРТОЧКИ (САМИ КАРТОЧКИ) === */
   .feature-block-small {
+    /* ИСПРАВЛЕНИЕ: Карточка должна занимать 100% ширины слайда */
     width: 100%;
-    max-width: 334px;
+    max-width: none; /* Убираем ограничение, чтобы она растягивалась */
+
     height: 284px;
     border-radius: 16px;
     box-sizing: border-box;
@@ -215,7 +218,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0 auto;
+    margin: 0; /* Убираем auto-центрирование, которое конфликтовало с Flexbox */
   }
 
   .feature-block-small__icon {
@@ -235,6 +238,7 @@
     font-weight: 400;
   }
 
+  /* === ИНДИКАТОР === */
   .slider-indicator {
     display: flex;
     width: 162px;

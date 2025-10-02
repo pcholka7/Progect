@@ -1,62 +1,107 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector('.features-blocks-small');
-  const cards = Array.from(container.children); // Получаем карточки
+    const mobileBreakpoint = 768;
+    const isMobile = window.matchMedia(`(max-width: ${mobileBreakpoint}px)`);
 
-  // Очищаем контейнер
-  container.innerHTML = '';
+    const bigContainer = document.querySelector('.features-blocks');
+    const smallContainer = document.querySelector('.features-blocks-small');
+    const indicator = document.querySelector('.slider-indicator');
 
-  // Создаем слайды по 2 карточки
-  const slides = [];
-  for (let i = 0; i < cards.length; i += 2) {
-    const slide = document.createElement('div');
-    slide.className = 'slide';
+    if (!bigContainer || !smallContainer || !indicator) return;
 
-    // Добавляем 1-ю карточку
-    slide.appendChild(cards[i]);
+    const dots = Array.from(indicator.querySelectorAll('.slider-indicator__dot'));
+    let currentSlide = 0;
+    // Создаем место для хранения исходных карточек, чтобы они не потерялись
+    let originalSmallCards = Array.from(smallContainer.children);
 
-    // Добавляем 2-ю карточку, если она есть
-    if (cards[i + 1]) {
-      slide.appendChild(cards[i + 1]);
+    // Функция, которая переключает видимость секций и прокручивает маленький слайдер
+    function updateLayout() {
+        if (isMobile.matches) {
+            // --- Логика переключения секций ---
+
+            // Слайд 1 (Точка 1): Большие блоки
+            if (currentSlide === 0) {
+                bigContainer.style.display = 'flex';
+                smallContainer.style.display = 'none';
+            }
+            // Слайды 2 и 3 (Точки 2 и 3): Маленькие блоки
+            else {
+                bigContainer.style.display = 'none';
+                smallContainer.style.display = 'flex';
+
+                // --- Логика прокрутки маленьких блоков ---
+                const smallSlideIndex = currentSlide - 1;
+                smallContainer.style.transform = `translateX(-${smallSlideIndex * 100}%)`;
+                smallContainer.style.transition = 'transform 0.4s ease';
+            }
+
+            // --- Обновление индикатора ---
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+
+        } else {
+            // Сброс стилей для десктопа
+            bigContainer.removeAttribute('style');
+            smallContainer.removeAttribute('style');
+            smallContainer.style.transform = 'none';
+        }
     }
 
-    slides.push(slide);
-  }
+    // --- ИСПРАВЛЕННАЯ Логика создания слайдов для маленьких блоков ---
+    function transformSmallBlocks() {
+        // Логика сброса для десктопа
+        if (!isMobile.matches) {
+            if (smallContainer.classList.contains('slider-initialized')) {
+                // Восстанавливаем оригинальные карточки
+                smallContainer.innerHTML = '';
+                originalSmallCards.forEach(card => smallContainer.appendChild(card));
+                smallContainer.classList.remove('slider-initialized');
+            }
+            return;
+        }
 
-  // Добавляем слайды обратно в контейнер
-  slides.forEach(slide => container.appendChild(slide));
+        // Если уже инициализировано (и мы на мобильном), выходим
+        if (smallContainer.classList.contains('slider-initialized')) return;
 
-  // Стили для слайдов
-  container.style.display = 'flex';
-  container.style.overflow = 'hidden';
+        // Используем сохраненные оригинальные карточки
+        let cards = originalSmallCards;
 
-  slides.forEach(slide => {
-    slide.style.flex = '0 0 100%'; // слайд занимает 100% ширины
-    slide.style.display = 'flex';
-    slide.style.flexDirection = 'column'; // карточки вертикально
-    slide.style.gap = '12px';
-  });
+        // Проверка: если карточек не 4, мы не можем создать 3 слайда
+        if (cards.length !== 4) return;
 
-  const indicator = document.querySelector('.slider-indicator');
-  const dots = Array.from(indicator.querySelectorAll('.slider-indicator__dot'));
+        // Создаем обертки .slide
+        smallContainer.innerHTML = '';
 
-  let currentSlide = 0;
+        for (let i = 0; i < cards.length; i += 2) {
+            const slide = document.createElement('div');
+            slide.className = 'slide';
 
-  function updateSlider() {
-    container.style.transform = `translateX(-${currentSlide * 100}%)`;
-    container.style.transition = 'transform 0.4s ease';
+            slide.appendChild(cards[i]);
 
+            if (cards[i + 1]) {
+                slide.appendChild(cards[i + 1]);
+            }
+            smallContainer.appendChild(slide);
+        }
+        smallContainer.classList.add('slider-initialized');
+    }
+
+    // Переключение по точкам
     dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentSlide);
+        dot.onclick = () => {
+            currentSlide = idx;
+            updateLayout();
+        };
     });
-  }
 
-  // Обработчики для точек индикатора
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      currentSlide = idx;
-      updateSlider();
-    });
-  });
+    // Запуск при загрузке и изменении размера
+    function init() {
+        // Важно: на мобильном мы создаем слайдер
+        transformSmallBlocks();
+        // И сразу обновляем расположение
+        updateLayout();
+    }
 
-  updateSlider();
+    init();
+    isMobile.addEventListener('change', init);
 });

@@ -105,3 +105,14 @@
     color: #0E0E0E;
     margin: 0;
 }
+@media (max-width: 767px) {
+    .faq-cards-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .faq-card {
+        max-width: 335px;
+    }
+}

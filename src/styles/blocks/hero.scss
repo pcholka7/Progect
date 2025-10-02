@@ -1,6 +1,5 @@
 .hero-section {
   position: relative;
-  height: 841px;
   width: 100%;
   background-image: url("/images/fon.png");
 }
@@ -73,7 +72,6 @@
 @media (max-width: 767px) {
   .hero-section {
     position: relative;
-    min-height: 100vh;
     padding-top: 86px; /* 56px шапка + 30px */
   }
 
@@ -99,40 +97,26 @@
   }
 
 .hero-section__left h1 {
-  position: absolute;
-  width: 335px;
-  height: auto;
-  left: 20px;
-  top: 86px;
   font-family: 'TT Norms', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 35px;
-  text-transform: uppercase;
   color: #272727;
-  margin: 0;
 }
 
 .hero-section__title-highlight {
   font-weight: 500;
-  color:#000;
   font-size: inherit;
   line-height: inherit;
 }
 
 
 .hero-section__subtitle {
-  position: absolute;
-  width: 352px;
   font-family: 'TT Norms', sans-serif;
-  font-style: normal;
-  font-weight: 400;       /* Regular */
   font-size: 20px;
   line-height: 24px;
   display: flex;
   align-items: center;
-
   color: #272727;
   margin: 0;
 }

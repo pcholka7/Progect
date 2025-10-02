@@ -30,12 +30,12 @@
 
 .left-image {
     left: 0;
-    bottom: -150px; /* Опущено левое изображение */
+    bottom: -150px;
 }
 
 .right-image {
     right: 0;
-    bottom: -50px; /* Опущено правое изображение */
+    bottom: -50px;
 }
 
 .request-content {
@@ -135,7 +135,7 @@
 }
 
 .invalid-input {
-    border: 2px solid red !important;
+    border: 2px solid red;
 }
 
 .invalid-input + .error-message {

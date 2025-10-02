@@ -1,4 +1,4 @@
-/* Reviews section */
+
 .reviews-section {
     padding-top: 50px;
     display: flex;
@@ -7,7 +7,6 @@
     width: 100%;
 }
 
-/* Reviews viewport: ОГРАНИЧИВАЕТ И ЦЕНТРИРУЕТ ВИДИМУЮ ОБЛАСТЬ */
 .reviews-viewport {
     width: 1760px;
     margin: 0 auto;
@@ -19,7 +18,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    width: 1760px;
+    // width: 1760px;
 
     margin: 0 auto 21px auto;
     padding: 0;
@@ -36,7 +35,7 @@
     }
 }
 
-/* Navigation for arrows */
+
 .reviews-navigation {
     display: flex;
     align-items: center;
@@ -64,11 +63,11 @@
     }
 }
 
-/* Slider-specific styles for the reviews wrapper */
+
 .reviews-wrapper {
     display: flex;
     justify-content: flex-start;
-    gap: 20px; /* Расстояние между карточками 20px */
+    gap: 20px;
     scroll-behavior: smooth;
 
     transition: transform 0.4s ease-in-out;
@@ -82,7 +81,7 @@
     scrollbar-width: none;
 }
 
-/* Styles for a single review card */
+
 .review-card {
     width: 573px;
     height: 309px;
@@ -167,5 +166,79 @@
         color: #707070;
         margin-top: 20px;
         text-align: left;
+    }
+}
+@media (max-width: 767px) {
+    .reviews-viewport {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .reviews-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        overflow-x: hidden;
+        align-items: center;
+    }
+
+    .review-card {
+        width: 335px;
+        height: 273px;
+        padding: 15px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #E1E1E1;
+        position: relative;
+        height: auto;
+    }
+
+    .review-photo {
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .review-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .review-name {
+        font-size: 18px;
+    }
+
+    .review-position {
+        font-size: 16px;
+    }
+
+    .review-date {
+        font-size: 14px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .review-text {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .reviews-navigation {
+        display: none;
     }
 }
