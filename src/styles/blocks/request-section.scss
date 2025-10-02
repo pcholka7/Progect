@@ -141,3 +141,40 @@
 .invalid-input + .error-message {
     display: block;
 }
+@media (max-width: 767px) {
+  .request-form-container h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .request-form {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .form-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .form-column input {
+    width: 335px;
+    height: 50px;
+  }
+
+  .form-column textarea {
+    width: 335px;
+    height: 128px;
+  }
+
+  .button-and-privacy button {
+    width: 335px;
+    height: 50px;
+  }
+}
+
