@@ -46,24 +46,70 @@
     margin: 40px 0 0;
 }
 @media (max-width: 767px) {
+  /* переменные для удобной математики */
+  :root {
+    --stats-col-gap: 24px;   /* зазор между двумя верхними колонками */
+    --stats-row-gap: 20px;   /* зазор между рядами (верхний ряд ↔ третий блок) */
+    --stats-line:   #C08769; /* цвет линий */
+  }
+  .stats-number {
+    font-size: 20px;
+  }
+  .stats-text {
+    font-size: 18px;
+  }
   .stats-container {
-    flex-wrap: wrap;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* два столбца сверху */
+    column-gap: var(--stats-col-gap);
+    row-gap: var(--stats-row-gap);
+    justify-items: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 0 20px;
+    position: relative; /* для псевдо-элементов */
   }
 
-  .stats-column {
-    flex: 1 1 45%;
-    max-width: 45%;
-  }
+  /* раскладка: первые два остаются в первой строке… */
+  .stats-column:nth-child(1) { grid-column: 1; }
+  .stats-column:nth-child(2) { grid-column: 2; }
 
-  .stats-column:last-child {
-    flex: 1 1 100%;
-    max-width: 100%;
-    display: flex;
+  /* …третий уходит на вторую строку на всю ширину */
+  .stats-column:nth-child(3) {
+    grid-column: 1 / -1;
     justify-content: center;
   }
+  /* убираем твои десктопные разделители */
+  .stats-column:not(:last-child)::after { display: none; }
 
-  .stats-column:not(:last-child)::after {
-    display: none;
+  /* === ВЕРТИКАЛЬНАЯ линия между первыми двумя колонками ===
+     рисуем на ПЕРВОЙ колонке и ставим в центр межколоночного зазора */
+  .stats-column:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;                   /* тянется по высоте первого ряда */
+    right: calc(var(--stats-col-gap) / -2);
+    width: 1px;
+    background-color: var(--stats-line);
+  }
+
+  /* === ГОРИЗОНТАЛЬНАЯ линия под верхним рядом ===
+     рисуем на ВТОРОЙ колонке и растягиваем на ДВЕ колонки, включая зазор */
+  .stats-column:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    left: calc(-100% - var(--stats-col-gap)); /* от левого края 1-й колонки... */
+    width: calc(200% + var(--stats-col-gap)); /* ...до правого края 2-й */
+    height: 1px;
+    background-color: var(--stats-line);
+    /* ставим в ПРОСВЕТ между рядами: немного отступим вниз от низа 1-го ряда */
+    bottom: calc(-1 * var(--stats-row-gap) - 8px);
+  }
+
+  /* чтобы линии не уезжали при разной высоте колонок — фиксируем
+     одинаковый внутренний отступ (по вкусу можно варьировать) */
+  .stats-column {
+    padding: 12px 0;
   }
 }

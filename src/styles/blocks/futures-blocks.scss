@@ -10,12 +10,12 @@
   --font-size-subtitle: 24px;
 }
 
-.features-section {
-  text-align: center;
-  margin: 100px auto 0;
-  max-width: 1200px;
-  padding: 0 20px;
-}
+// .features-section {
+//   text-align: center;
+//   margin: 100px auto 0;
+//   max-width: 1200px;
+//   padding: 0 20px;
+// }
 
 /* Стили для БОЛЬШИХ блоков (ВОССТАНОВЛЕНЫ) */
 .features-blocks {
@@ -76,7 +76,7 @@
 
 .feature-block--left .feature-block__content {
   align-items: flex-start;
-  padding-left: 40px;
+  // padding-left: 40px;
   text-align: left;
 }
 
@@ -86,13 +86,11 @@
   text-align: left;
 }
 
-/* Стили для МАЛЕНЬКИХ блоков (настроены на 4 в ряд) */
+
 .features-blocks-small {
   display: grid;
-  /* Задаем 4 колонки, чтобы блоки выстроились в ряд */
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  /* Устанавливаем ширину, достаточную для 4-х блоков и центрируем */
   max-width: 1700px;
   margin: 20px auto 0;
 }
@@ -146,7 +144,8 @@
 }
 
 @media (max-width: 767px) {
-  /* === БОЛЬШИЕ КАРТОЧКИ === */
+
+  /* --- большие карточки --- */
   .features-blocks {
     display: flex;
     flex-direction: column;
@@ -154,91 +153,77 @@
     padding: 0 20px;
     margin-top: 30px;
   }
-
   .feature-block {
     width: 100%;
     max-width: none;
     height: 180px;
     border-radius: 16px;
     padding: 0;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
   }
+  .feature-block__content { padding-left: 20px; }
+  .feature-block__icon { width: 36px; height: 36px; margin-bottom: 8px; }
+  .feature-block__title { font-size: 20px; margin-bottom: 4px; }
+  .feature-block__subtitle { font-size: 14px; line-height: 1.4; }
 
-  .feature-block__content {
-    padding-left: 20px;
-  }
-
-  .feature-block__icon {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 8px;
-  }
-
-  .feature-block__title {
-    font-size: 20px;
-    margin-bottom: 4px;
-  }
-
-  .feature-block__subtitle {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  /* === СЛАЙДЕР С МАЛЕНЬКИМИ КАРТОЧКАМИ (КОНТЕЙНЕР) === */
+  /* --- viewport маленьких карточек --- */
   .features-blocks-small {
-    display: flex;
+    display: block;      /* viewport */
     overflow: hidden;
     width: 100%;
     position: relative;
     margin-top: 12px;
+
+    /* выключаем десктопную сетку */
+    grid-template-columns: none;
+    gap: 0;
+    max-width: none;
   }
 
-  /* === СЛАЙД (ОБЕРТКА, СОЗДАННАЯ JS) === */
+  /* --- ДОБАВЛЕНО: трек со слайдами (его двигаем) --- */
+  .features-track {
+    display: flex;       /* горизонтальный ряд слайдов */
+    width: 100%;
+    will-change: transform;
+    transition: transform .4s ease;
+  }
+
+  /* --- слайд (обёртка для 2 карточек) --- */
   .slide {
+    flex: 0 0 100%;      /* каждый слайд = ширина viewport */
     display: flex;
     flex-direction: column;
     gap: 12px;
-    flex: 0 0 100%;
-    /* Добавляем отступы здесь, чтобы карточки внутри растягивались */
-    padding: 0 20px;
+    padding: 0;          /* паддинги у самой карточки */
+    align-items: stretch;
   }
 
-  /* === МАЛЕНЬКИЕ КАРТОЧКИ (САМИ КАРТОЧКИ) === */
+  /* --- маленькая карточка: фикс. высота и асимметричные паддинги --- */
   .feature-block-small {
-    /* ИСПРАВЛЕНИЕ: Карточка должна занимать 100% ширины слайда */
     width: 100%;
-    max-width: none; /* Убираем ограничение, чтобы она растягивалась */
-
     height: 284px;
-    border-radius: 16px;
     box-sizing: border-box;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border-radius: 16px;
+    padding: 20px 21px 20px 20px; /* слева 20, справа 21 */
+    margin: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
     text-align: center;
-    margin: 0; /* Убираем auto-центрирование, которое конфликтовало с Flexbox */
   }
 
-  .feature-block-small__icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 12px;
+  .feature-block-small__content {
+    padding: 0; /* чтобы не удваивать внутренние отступы */
+    height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
   }
 
-  .feature-block-small__title {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+  .feature-block-small__icon { width: 60px; height: 60px; margin-bottom: 12px; }
+  .feature-block-small__title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+  .feature-block-small__subtitle { font-size: 14px; font-weight: 400; }
 
-  .feature-block-small__subtitle {
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-  /* === ИНДИКАТОР === */
+  /* --- индикатор --- */
   .slider-indicator {
     display: flex;
     width: 162px;
@@ -247,7 +232,6 @@
     align-items: center;
     margin: 12px auto 0;
   }
-
   .slider-indicator__dot {
     width: 50px;
     height: 3px;
@@ -255,11 +239,5 @@
     background-color: #D4D4D4;
     transition: background-color .25s;
   }
-
-  .slider-indicator__dot.active {
-    background-color: #C08769;
-  }
+  .slider-indicator__dot.active { background-color: #C08769; }
 }
-
-
-
