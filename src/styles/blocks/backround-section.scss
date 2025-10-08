@@ -13,7 +13,6 @@
 .background-image {
     position: absolute;
     top: 0;
-    // left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -113,16 +112,129 @@
     background-color: #C08769;
     color: #FFFFFF;
 }
+/* индикатор скрыт на десктопе */
+.tariff-indicator { display: none; }
+
 @media (max-width: 767px) {
-  .tariff-blocks-wrapper {
+  .background-section {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    height: 724px;
+    min-height: 724px;
+    background: #F3EAE2;
+    margin-top: 50px;      /* внешний сверху */
+    margin-bottom: 50px;   /* внешний снизу */
   }
 
-  .tariff-block {
+  .background-section .tariff-title {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 20px 21px 20px 20px; /* T R B L */
+    margin: 0;
+  }
+
+  /* размеры текстов в карточке */
+  .tariff-block__title {
+    font-size: 22px;
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 500;
+  }
+  .tariff-block__features li { font-size: 16px; }
+  .tariff-block__description { font-size: 16px; }
+
+  /* VIEWPORT (используем .tariff-blocks-wrapper) */
+  .background-section .tariff-blocks-wrapper {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;        /* 20px от заголовка до «окошка» */
+    margin-bottom: 30px;     /* зазор внутри секции до низа фона */
+    padding: 0 21px 0 20px;  /* 20 слева / 21 справа */
+    box-sizing: border-box;
+  }
+
+  /* TRACK (двигается JS-ом) */
+  .background-section .tariff-blocks-wrapper .tariff-track {
+    display: flex;
+    width: 100%;
+    will-change: transform;
+    transition: transform .4s ease;
+  }
+
+  /* SLIDE = 100% ширины viewport */
+  .background-section .tariff-blocks-wrapper .tariff-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;  /* центрируем карточку на всех слайдах */
+    align-items: stretch;
+  }
+
+  /* CARD: одинаковые паддинги 20/21 на всех страницах */
+  .background-section .tariff-blocks-wrapper .tariff-slide > .tariff-block {
+    position: static;
+    inset: auto;
     width: 335px;
     height: 545px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: 20px 21px 20px 20px;  /* L=20, R=21 — для 1/2/3-го слайда одинаково */
+    margin: 0;                     /* центр даёт родитель (слайд) */
+    opacity: 1;
+    transform: none;
+  }
+
+  .background-section .tariff-button {
+    width: 100%;
+    max-width: 358px;
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 8px;
+    margin-top: auto;
+  }
+
+  /* Индикатор */
+  .tariff-indicator {
+    display: flex;
+    width: 162px;
+    height: 3px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px auto 0;
+  }
+  .tariff-indicator .slider-indicator__dot {
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    transition: background-color .25s;
+    cursor: pointer;
+  }
+  .tariff-indicator .slider-indicator__dot.active {
+    background-color: #C08769;
+  }
+
+  /* ===== ДОБАВЛЕНО: "железное" центрирование для 2-й и 3-й страниц ===== */
+  .background-section .tariff-blocks-wrapper .tariff-slide {
+    min-width: 100%;
+    flex-basis: 100%;
+    display: grid;            /* гарантированное центрирование */
+    place-items: center;      /* по горизонтали и вертикали */
+  }
+
+  .background-section .tariff-blocks-wrapper .tariff-slide > .tariff-block {
+    margin-left: auto;
+    margin-right: auto;       /* страховка от сторонних правил */
+  }
+
+  .background-section .tariff-blocks-wrapper .tariff-slide:nth-child(2),
+  .background-section .tariff-blocks-wrapper .tariff-slide:nth-child(3) {
+    display: grid;
+    place-items: center;
   }
 }
 

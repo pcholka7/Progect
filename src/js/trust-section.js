@@ -8,8 +8,6 @@ function initializeReviewsSlider() {
         console.error("Элементы слайдера не найдены. Проверьте классы.");
         return;
     }
-
-    // 💥 ИЗМЕНЕНО: Возвращено к точному расчету: 573px (новая ширина карточки) + 20px (gap) = 593px
     const CARD_WIDTH_WITH_GAP = 593;
     const CARDS_PER_VIEW = 3;
     const TOTAL_CARDS = cards.length;
@@ -21,15 +19,11 @@ function initializeReviewsSlider() {
         const offset = -currentSlideIndex * CARD_WIDTH_WITH_GAP;
 
         wrapper.style.transform = `translateX(${offset}px)`;
-
-        // Управление кнопками
         prevButton.disabled = currentSlideIndex === 0;
         nextButton.disabled = currentSlideIndex >= MAX_INDEX;
 
         const prevPath = prevButton.querySelector('svg path');
         const nextPath = nextButton.querySelector('svg path');
-
-        // Визуальное обновление стрелок
         if (prevButton.disabled) {
             prevPath.setAttribute('fill', '#B0B0B0');
         } else {
