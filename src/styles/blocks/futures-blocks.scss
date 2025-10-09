@@ -76,7 +76,6 @@
 
 .feature-block--left .feature-block__content {
   align-items: flex-start;
-  // padding-left: 40px;
   text-align: left;
 }
 
@@ -96,7 +95,6 @@
 }
 
 .feature-block-small {
-  /* Устанавливаем ширину 100%, чтобы блок занял всю свою 1fr колонку */
   width: 100%;
   height: 356px;
   border-radius: 20px;
@@ -145,7 +143,6 @@
 
 @media (max-width: 767px) {
 
-  /* --- большие карточки --- */
   .features-blocks {
     display: flex;
     flex-direction: column;
@@ -166,45 +163,41 @@
   .feature-block__title { font-size: 20px; margin-bottom: 4px; }
   .feature-block__subtitle { font-size: 14px; line-height: 1.4; }
 
-  /* --- viewport маленьких карточек --- */
+
   .features-blocks-small {
-    display: block;      /* viewport */
+    display: block;
     overflow: hidden;
     width: 100%;
     position: relative;
     margin-top: 12px;
-
-    /* выключаем десктопную сетку */
     grid-template-columns: none;
     gap: 0;
     max-width: none;
   }
 
-  /* --- ДОБАВЛЕНО: трек со слайдами (его двигаем) --- */
+
   .features-track {
-    display: flex;       /* горизонтальный ряд слайдов */
+    display: flex;
     width: 100%;
     will-change: transform;
     transition: transform .4s ease;
   }
 
-  /* --- слайд (обёртка для 2 карточек) --- */
   .slide {
-    flex: 0 0 100%;      /* каждый слайд = ширина viewport */
+    flex: 0 0 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 0;          /* паддинги у самой карточки */
+    padding: 0;
     align-items: stretch;
   }
 
-  /* --- маленькая карточка: фикс. высота и асимметричные паддинги --- */
   .feature-block-small {
     width: 100%;
     height: 284px;
     box-sizing: border-box;
     border-radius: 16px;
-    padding: 20px 21px 20px 20px; /* слева 20, справа 21 */
+    padding: 20px 21px 20px 20px;
     margin: 0;
     display: flex; flex-direction: column;
     justify-content: center; align-items: center;
@@ -212,7 +205,7 @@
   }
 
   .feature-block-small__content {
-    padding: 0; /* чтобы не удваивать внутренние отступы */
+    padding: 0;
     height: 100%;
     display: flex; flex-direction: column;
     justify-content: center; align-items: center;
@@ -223,7 +216,7 @@
   .feature-block-small__title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
   .feature-block-small__subtitle { font-size: 14px; font-weight: 400; }
 
-  /* --- индикатор --- */
+
   .slider-indicator {
     display: flex;
     width: 162px;

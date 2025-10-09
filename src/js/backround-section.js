@@ -1,14 +1,13 @@
-/* eslint-env browser */
 document.addEventListener('DOMContentLoaded', () => {
   const mq = window.matchMedia('(max-width: 767px)');
-  const viewport  = document.querySelector('.tariff-blocks-wrapper'); // viewport
-  const indicator = document.querySelector('.tariff-indicator');      // точки
+  const viewport  = document.querySelector('.tariff-blocks-wrapper');
+  const indicator = document.querySelector('.tariff-indicator');
   if (!viewport || !indicator) return;
 
   let current = 0;
   let dots = [];
 
-  // helpers
+
   const getTrack  = () => viewport.querySelector('.tariff-track');
   const getSlides = () => Array.from(viewport.querySelectorAll('.tariff-slide'));
 
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       track.appendChild(slide);
     });
     slides = getSlides();
-    // страница = ширина viewport (на случай переопределений)
+
     slides.forEach(slide => { slide.style.flex = '0 0 100%'; });
     return slides;
   }
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = getSlides();
     const slide  = slides[i];
     if (!slide || !track) return;
-    const targetLeft = slide.offsetLeft;             // ключ: едем к началу слайда
+    const targetLeft = slide.offsetLeft;
     track.style.transition = 'transform .4s ease';
     track.style.transform  = `translateX(-${targetLeft}px)`;
     current = i;
@@ -92,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       viewport.style.display = 'block';
       indicator.style.display = 'flex';
       goTo(0);
-      attachSwipe();   // ← включаем свайпы
+      attachSwipe();
     } else {
       detachSwipe();
       restoreDesktop();
@@ -102,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ====== SWIPE ======
   let startX = 0, startY = 0, dragging = false, baseOffset = 0;
 
   function getCurrentOffsetPx() {

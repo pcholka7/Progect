@@ -7,9 +7,7 @@
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
     font-size: 42px;
-    line-height: 100%;
     text-transform: uppercase;
-    color: #272727;
     margin: 0 0 60px 0;
     display: flex;
     justify-content: center;
@@ -114,3 +112,9 @@
     }
 }
 
+.comparison-title {
+    font-size: 28px;
+}
+.comparison-title .separator-text {
+    font-size: 28px;
+}
