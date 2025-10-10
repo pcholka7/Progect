@@ -54,3 +54,29 @@
     width: 100%;
     height: auto;
 }
+
+@media (max-width: 767px) {
+  .how-it-works-section {
+    padding: 20px 21px;
+  }
+
+  .how-it-works-title,
+  .how-it-works-subtitle {
+    display: inline;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .how-it-works-title {
+    font-weight: 700;
+    font-size: 28px;
+    padding-top: 50px;
+    padding: 50px 0 20px;
+  }
+
+  .how-it-works-subtitle {
+    font-size: 28px;
+  }
+}
+
