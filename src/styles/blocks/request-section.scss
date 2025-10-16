@@ -142,39 +142,109 @@
     display: block;
 }
 @media (max-width: 767px) {
-  .request-form-container h1 {
+  /* ограничение главного контейнера фона + отступы 50px сверху/снизу */
+  .request-section {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  /* оставить только правое изображение */
+  .left-image {
+    display: none;
+  }
+  .right-image {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
+  /* центрируем контент и добавляем боковые отступы 20px */
+  .request-form-container {
+    width: 100%;
+    // margin-top: 0;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  /* заголовок по центру + отступ 30px сверху и снизу */
+  .request-wrapper .request-form-container h1 {
     font-size: 28px;
     line-height: 1.2;
     white-space: normal;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
+  /* инпуты идут вертикально друг за другом, между ними 15px */
   .request-form {
     flex-direction: column;
     gap: 15px;
-    align-items: center;
+    align-items: stretch;
+    width: 100%;
   }
 
+  /* «расплющиваем» колонки, чтобы все поля стали единым вертикальным списком */
   .form-column {
+    display: contents;
+  }
+
+  .form-column input,
+  .form-column textarea,
+  .button-and-privacy button {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    box-sizing: border-box;
   }
 
   .form-column input {
-    width: 335px;
     height: 50px;
   }
 
   .form-column textarea {
-    width: 335px;
     height: 128px;
   }
 
-  .button-and-privacy button {
-    width: 335px;
-    height: 50px;
+  .button-and-privacy {
+    align-items: stretch;
+    gap: 10px;
   }
+
+  /* порядок полей: Имя → Телефон → Ошибка телефона → Почта → Ошибка почты → Комментарий → Кнопка */
+  #name-input { order: 1; }
+  #phone-input { order: 2; }
+  #phone-error-message { order: 3; }
+  #email-input { order: 4; }
+  #email-error-message { order: 5; }
+  #comment-textarea { order: 6; }
+  .button-and-privacy { order: 7; }
+
+  .error-message {
+    width: 100%;
+    text-align: left;
+    margin: 5px 0 0;
+  }
+
+.form-column input:focus,
+.form-column input:focus-visible,
+.form-column textarea:focus,
+.form-column textarea:focus-visible {
+  border-color: #C08769;
+  outline: 2px solid #C08769;
+  outline-offset: 0;
 }
 
+/* плавное изменение цвета рамки */
+.form-column input,
+.form-column textarea {
+  transition: border-color 0.2s ease;
+  font-size: 16px;
+}
+.invalid-input:focus,
+.invalid-input:focus-visible {
+  border-color: red;
+  outline-color: red;
+}
+}

@@ -82,6 +82,7 @@
     height: 100%;
     z-index: 2;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
