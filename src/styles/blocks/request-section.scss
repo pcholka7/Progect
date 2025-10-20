@@ -2,15 +2,18 @@
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .request-section {
     position: relative;
-    height: 518px;
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
     overflow: hidden;
+    min-height: 518px;
+    height: auto;
+    padding-bottom: 30px;
 }
 
 .request-background-images {
@@ -54,7 +57,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: -50px;
+    // margin-top: -50px;
+    padding-bottom: 30px;
 }
 
 .request-form-container h1 {
@@ -125,6 +129,7 @@
     text-align: left;
     margin: 0;
 }
+
 .error-message {
     color: red;
     font-family: 'TT Norms', sans-serif;
@@ -141,32 +146,30 @@
 .invalid-input + .error-message {
     display: block;
 }
+
 @media (max-width: 767px) {
-  /* ограничение главного контейнера фона + отступы 50px сверху/снизу */
   .request-section {
     height: auto;
-    padding: 50px 0;
+    padding: 50px 0 30px;
   }
 
-  /* оставить только правое изображение */
   .left-image {
     display: none;
   }
+
   .right-image {
     right: 0;
     bottom: 0;
     height: 100%;
   }
 
-  /* центрируем контент и добавляем боковые отступы 20px */
   .request-form-container {
     width: 100%;
-    // margin-top: 0;
-    padding: 0 20px;
+    padding: 0 20px 30px;
     text-align: center;
+    margin-top: 0;
   }
 
-  /* заголовок по центру + отступ 30px сверху и снизу */
   .request-wrapper .request-form-container h1 {
     font-size: 28px;
     line-height: 1.2;
@@ -175,11 +178,9 @@
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    padding-top: 30px;
     padding-bottom: 30px;
   }
 
-  /* инпуты идут вертикально друг за другом, между ними 15px */
   .request-form {
     flex-direction: column;
     gap: 15px;
@@ -187,7 +188,6 @@
     width: 100%;
   }
 
-  /* «расплющиваем» колонки, чтобы все поля стали единым вертикальным списком */
   .form-column {
     display: contents;
   }
@@ -212,7 +212,6 @@
     gap: 10px;
   }
 
-  /* порядок полей: Имя → Телефон → Ошибка телефона → Почта → Ошибка почты → Комментарий → Кнопка */
   #name-input { order: 1; }
   #phone-input { order: 2; }
   #phone-error-message { order: 3; }
@@ -227,24 +226,24 @@
     margin: 5px 0 0;
   }
 
-.form-column input:focus,
-.form-column input:focus-visible,
-.form-column textarea:focus,
-.form-column textarea:focus-visible {
-  border-color: #C08769;
-  outline: 2px solid #C08769;
-  outline-offset: 0;
-}
+  .form-column input:focus,
+  .form-column input:focus-visible,
+  .form-column textarea:focus,
+  .form-column textarea:focus-visible {
+    border-color: #C08769;
+    outline: 2px solid #C08769;
+    outline-offset: 0;
+  }
 
-/* плавное изменение цвета рамки */
-.form-column input,
-.form-column textarea {
-  transition: border-color 0.2s ease;
-  font-size: 16px;
-}
-.invalid-input:focus,
-.invalid-input:focus-visible {
-  border-color: red;
-  outline-color: red;
-}
+  .form-column input,
+  .form-column textarea {
+    transition: border-color 0.2s ease;
+    font-size: 16px;
+  }
+
+  .invalid-input:focus,
+  .invalid-input:focus-visible {
+    border-color: red;
+    outline-color: red;
+  }
 }
