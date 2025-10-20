@@ -78,7 +78,6 @@ body {
   gap: 32px;
 }
 
-.page-header__nav-item { position: relative; }
 
 .page-header__nav-link {
   text-decoration: none;
@@ -133,7 +132,7 @@ body {
   height: 36px;
   border-radius: 50%;
   text-decoration: none;
-  &:hover { transform: scale(1.1); background-color: #f8f9fa; }
+  &:hover { transform: scale(1.1); background-color: #1c3957; }
 }
 
 .page-header__social-icon {
@@ -204,9 +203,9 @@ body {
   pointer-events: auto;
   position: relative;
   max-height: 260px;               /* ограничение по высоте */
-  overflow: hidden;               /* прокрутка внутри меню при переполнении */
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+  overflow-y: auto;                 /* включает вертикальную прокрутку */
+  -webkit-overflow-scrolling: touch;/* плавная прокрутка на iOS */
+  overscroll-behavior: contain;     /* не передавать скролл за пределы меню */
 }
 
 .mobile-menu__close {
