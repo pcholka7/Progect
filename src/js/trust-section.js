@@ -9,11 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!viewport || !track) return;
 
   const slides = () => Array.from(track.querySelectorAll('.review-slide'));
-  const cards = () => Array.from(track.querySelectorAll('.review-card'));
+  const cards  = () => Array.from(track.querySelectorAll('.review-card'));
 
-  let mobPage = 0;
-  let dots = [];
-  let touchAttached = false;
+  let mobPage = 0, dots = [], touchAttached = false, deskPage = 0;
 
   function buildMobileSlides() {
     if (slides().length) return;
@@ -30,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     track.innerHTML = '';
     track.appendChild(frag);
     slides().forEach(s => { s.style.flex = '0 0 100%'; });
+    track.style.transform = 'translateX(0)';
   }
 
   function restoreDesktopFromMobile() {
@@ -55,10 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dots.push(dot);
     }
   }
-
-  function setActiveDot(i) {
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-  }
+  function setActiveDot(i) { dots.forEach((d, idx) => d.classList.toggle('active', idx === i)); }
 
   function goToMobile(i) {
     const list = slides();
@@ -122,17 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
     touchAttached = false;
   }
 
-  let deskPage = 0;
-
   function desktopMetrics() {
     const list = cards();
     if (!list.length) return null;
-    const GAP = 20;
-    const cardWidth = list[0].getBoundingClientRect().width;
+
+    const cs = getComputedStyle(track);
+    const gap = parseFloat(cs.columnGap || cs.gap || 20) || 20;
+
+    const cardWidth = list[0].getBoundingClientRect().width; // реальная (сжатая/растянутая)
     const perView = 3;
-    const stepPerCard = cardWidth + GAP;
+    const stepPerCard = cardWidth + gap;
     const maxPage = Math.max(0, Math.ceil(list.length / perView) - 1);
-    return { list, GAP, cardWidth, perView, stepPerCard, maxPage };
+    return { list, gap, cardWidth, perView, stepPerCard, maxPage };
   }
 
   function updateDesktopButtons(maxPage) {
@@ -174,9 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
       detachDesktopArrows();
       nav && nav.classList.add('is-hidden');
       buildMobileSlides();
-      rebuildDots(slides().length);
-      if (indicator) indicator.style.display = 'flex';
-      viewport.style.touchAction = 'pan-y';
+      indicator && (indicator.style.display = 'flex');
+      const n = slides().length;
+      rebuildDots(n);
       attachTouch();
       mobPage = 0;
       goToMobile(0);
@@ -195,7 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mq.matches) {
       goToMobile(mobPage);
     } else {
-      goToDesktopPage(deskPage);
+      track.style.transition = 'none';
+      requestAnimationFrame(() => {
+        goToDesktopPage(deskPage);
+        requestAnimationFrame(() => track.style.transition = 'transform .4s ease');
+      });
     }
   });
 

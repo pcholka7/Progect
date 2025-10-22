@@ -7,6 +7,12 @@
   padding-right: 0;
   padding-bottom: 50px;
   padding-left: 0;
+
+  @media (max-width: 767px) {
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+  }
 }
 
 .how-it-works-title {
@@ -16,10 +22,16 @@
   line-height: 100%;
   text-transform: uppercase;
   color: #272727;
-  margin-top: 0;
-  margin-right: 0;
-  margin-bottom: 20px;
-  margin-left: 0;
+  margin: 0 0 20px 0;
+
+  @media (max-width: 767px) {
+    display: inline;
+    margin: 0;
+    line-height: 110%;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 28px;
+  }
 }
 
 .how-it-works-subtitle {
@@ -29,22 +41,30 @@
   line-height: 100%;
   text-transform: uppercase;
   color: #272727;
-  margin-top: 0;
-  margin-right: 0;
-  margin-bottom: 30px;
-  margin-left: 0;
+  margin: 0 0 30px 0;
   text-align: center;
+
+  @media (max-width: 767px) {
+    display: inline;
+    margin: 0;
+    line-height: 110%;
+    text-transform: uppercase;
+    font-size: 28px;
+  }
 }
 
 .how-it-works-image-container {
   position: relative;
   max-width: 100%;
-  margin-top: 20px;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-left: 0;
+  margin: 20px 0 0 0;
   border-radius: 20px;
   overflow: hidden;
+
+  @media (max-width: 767px) {
+    margin: 30px 20px 50px 20px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
 }
 
 .how-it-works-image {
@@ -55,10 +75,20 @@
 
 .how-it-works-image--desktop {
   display: block;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .how-it-works-image--mobile {
   display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .how-it-works-button {
@@ -69,74 +99,21 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  padding-top: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0;
+  padding: 0;
+
+  @media (max-width: 767px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .how-it-works-button img {
   width: 68px;
   height: auto;
   display: block;
-}
 
-@media (max-width: 767px) {
-  .how-it-works-section {
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-  }
-
-  .how-it-works-title {
-    display: inline;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    line-height: 110%;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 28px;
-  }
-
-  .how-it-works-subtitle {
-    display: inline;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    line-height: 110%;
-    text-transform: uppercase;
-    font-size: 28px;
-  }
-
-  .how-it-works-image--desktop {
-    display: none;
-  }
-
-  .how-it-works-image--mobile {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .how-it-works-image-container {
-    margin-top: 30px;
-    margin-right: 20px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  .how-it-works-button {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .how-it-works-button img {
+  @media (max-width: 767px) {
     width: 68px;
     height: auto;
   }

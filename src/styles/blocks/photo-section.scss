@@ -1,100 +1,104 @@
 .comparison-section {
-    text-align: center;
-    padding: 100px 0;
-    max-width: 1920px;
-    margin: auto;
+  text-align: center;
+  padding: 100px 0;
+  max-width: 1920px;
+  margin: auto;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 0;
+  }
 }
 
 .comparison-title {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 700;
-    font-size: 42px;
-    text-transform: uppercase;
-    margin: 0 0 60px 0;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-}
+  font-family: 'TT Norms', sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  text-transform: uppercase;
+  margin: 0 0 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 
-.comparison-title .separator-text {
+  @media (max-width: 767px) {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .separator-text {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
     font-size: 30px;
     line-height: 100%;
     padding: 0 5px;
+
+    @media (max-width: 767px) {
+      font-size: 28px;
+    }
+  }
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 0 80px;
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 80px;
 
-.comparison-card {
-    position: relative;
-    height: 488px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: flex-start;
-    padding: 0;
-}
-
-.card-image {
-    position: absolute;
-    left: 533px;
-    width: 335px;
-    height: 488px;
-    object-fit: contain;
-    border-radius: 20px;
-    box-sizing: border-box;
-}
-
-.card-text {
-    padding: 40px 12px 45px 30px;
-    text-align: left;
-}
-
-.card-text h3 {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 33px;
-    color: #272727;
-    margin: 0;
-}
-
-.card-text p {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 26px;
-    color: #707070;
-    margin: 0 0 40px 0;
-}
-
-@media (max-width: 767px) {
-  .card-container {
-        grid-template-columns: 1fr;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
     row-gap: 20px;
     justify-items: center;
     padding: 0 20px;
   }
+}
 
-  .comparison-card {
+.comparison-card {
+  position: relative;
+  height: 488px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+
+
+  --imgW: clamp(260px, 28%, 360px);
+ 
+
+ 
+  padding: 40px calc(var(--imgW) + var(--gapR)) 45px 30px;
+
+  @media (max-width: 767px) {
     height: fit-content;
     border-radius: 12px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: relative;
     margin: 0 auto;
     background: #fff;
+    padding: 0; 
   }
+}
 
-  .card-image {
+
+.card-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: var(--imgW);
+  height: 100%;
+  object-fit: contain;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+
+  @media (max-width: 767px) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -102,45 +106,72 @@
     object-fit: cover;
     z-index: 0;
     display: block;
+    border-radius: 12px;
+  }
+}
+
+.card-text {
+  text-align: left;
+
+
+  h3 {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    color: #272727;
+    padding-left: 30px;
   }
 
-  .card-text {
+
+  h4 {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #272727;
+    margin: 0 0 10px 0; 
+    padding-left: 30px;
+  }
+
+
+  p {
+    font-family: 'TT Norms', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #707070;
+    margin: 0 0 20px 0;   
+    padding-left: 63px;    
+  }
+
+ 
+  p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 767px) {
     position: relative;
     z-index: 1;
     padding: 20px;
     font-size: 16px;
     font-family: 'TT Norms', sans-serif;
     font-weight: 500;
-    text-align: left;
+
+    h3 {
+      font-size: 20px;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      color: #000000;
+    }
+    h4 {
+      margin: 10px 0;
+      color: #220202;
+    }
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0;        
+      padding-left: 20px;
+      color: #050000;
+    }
   }
-
-  .card-text h3 {
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-  }
-
-  .card-text h4 {
-    margin: 10px 0;
-  }
-
-  .card-text p {
-    font-size: 16px;
-    line-height: 24px;
-    margin: 0;
-    padding-left: 20px;
-  }
-
-  .comparison-title {
-    font-size: 28px;
-    margin-bottom: 30px;
-  .comparison-title .separator-text { font-size: 28px; }
-}
-
-  .comparison-section {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 0;
-}
 }
