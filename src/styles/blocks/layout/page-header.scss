@@ -24,16 +24,19 @@ body {
   right: 0;
   width: 100%;
   z-index: 100;
+  box-sizing: border-box;
 }
 
 .page-header__content {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between; /* было flex-start */
   height: 80px;
   margin: 0 auto;
   padding: 10px 50px;
   max-width: 1920px;
+  gap: clamp(16px, 2vw, 32px);
+
   @media (max-width: 767px) {
     padding: 0 20px;
     justify-content: space-between;
@@ -42,15 +45,17 @@ body {
 }
 
 .page-header__logo {
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  min-width: 0;
   z-index: 101;
 }
 
 .page-header__logo-img {
-  width: 180px;
-  height: 59px;
+  width: clamp(140px, 9vw, 180px); /* было фикс 180px */
+  height: auto;                    /* вместо фикс высоты */
   object-fit: contain;
   display: block;
+
   @media (max-width: 767px) {
     width: 122px;
     height: 40px;
@@ -59,10 +64,13 @@ body {
 
 .page-header__nav {
   display: flex;
-  justify-content: flex-start;
-  margin: 0;
+  justify-content: center; /* было flex-start */
+  align-items: center;
+  margin: 0;               /* убран margin-left: 388px */
   padding: 0;
-  margin-left: 388px;
+  flex: 1 1 auto;          /* даём меню занимать и отдавать место */
+  min-width: 0;            /* критично для сужения */
+
   @media (max-width: 767px) {
     margin-left: 100px;
     &-list { gap: 20px; }
@@ -75,9 +83,9 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 32px;
+  gap: clamp(16px, 2.2vw, 32px); /* «резиновый» промежуток */
+  flex-wrap: wrap;               /* разрешаем переноситься при тесноте */
 }
-
 
 .page-header__nav-link {
   text-decoration: none;
@@ -89,7 +97,9 @@ body {
   transition: color 0.3s ease;
   position: relative;
   white-space: nowrap;
+
   &:hover { color: #C08769; }
+
   &::after {
     content: '';
     position: absolute;
@@ -100,6 +110,7 @@ body {
     background-color: #C08769;
     transition: width 0.3s ease;
   }
+
   &:hover::after { width: 100%; }
 }
 
@@ -107,9 +118,11 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-shrink: 0;
+  flex: 0 0 auto;  /* фиксированный по содержимому блок */
+  min-width: 0;
   z-index: 101;
-  margin-left: auto;
+  margin-left: 0;  /* было auto */
+
   @media (max-width: 767px) {
     display: flex;
     align-items: center;
@@ -132,6 +145,7 @@ body {
   height: 36px;
   border-radius: 50%;
   text-decoration: none;
+
   &:hover { transform: scale(1.1); background-color: #1c3957; }
 }
 
@@ -158,11 +172,13 @@ body {
   transition: all 0.3s ease;
   background-color: #C08769;
   color: #ffffff;
+
   &:hover { transform: translateY(-1px); }
 }
 
 .page-header__mobile-button {
   display: none;
+
   @media (max-width: 767px) { display: contents; }
 }
 
