@@ -141,18 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevPath) prevPath.setAttribute('fill', prevBtn.disabled ? '#B0B0B0' : '#333333');
     if (nextPath) nextPath.setAttribute('fill', nextBtn.disabled ? '#B0B0B0' : '#333333');
   }
+function goToDesktopPage(newPage) {
+  const m = desktopMetrics();
+  if (!m) return;
+  const { list, perView, maxPage } = m;
+  deskPage = Math.max(0, Math.min(newPage, maxPage));
+  const firstIndex = deskPage * perView;
+  const x = list[firstIndex]?.offsetLeft || 0;         // <— точное положение карточки
+  track.style.transition = 'transform .4s ease';
+  track.style.transform = `translateX(-${x}px)`;       // <— едем ровно к началу
+  updateDesktopButtons(maxPage);
+}
 
-  function goToDesktopPage(newPage) {
-    const m = desktopMetrics();
-    if (!m) return;
-    const { stepPerCard, perView, maxPage } = m;
-    deskPage = Math.max(0, Math.min(newPage, maxPage));
-    const firstIndex = deskPage * perView;
-    const offset = -(firstIndex * stepPerCard);
-    track.style.transition = 'transform .4s ease';
-    track.style.transform = `translateX(${offset}px)`;
-    updateDesktopButtons(maxPage);
-  }
 
   function onPrev() { goToDesktopPage(deskPage - 1); }
   function onNext() { goToDesktopPage(deskPage + 1); }
