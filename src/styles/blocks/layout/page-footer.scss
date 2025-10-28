@@ -118,16 +118,28 @@
   height: 59px;
 }
 
-
 .footer__bottom {
   border-top: 1px solid #ccc;
-  margin: 74px;
+  margin-top: 74px;
   padding: 31px 0 41px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  position: relative; /* для псевдо-элемента с фулл-блидом */
+}
+
+/* Фулл-блид линия на всю ширину экрана */
+.footer__bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  /* растягиваем к краям вьюпорта без 100vw, чтобы не ловить горизонтальный скролл */
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  border-top: 1px solid #ccc;
+  pointer-events: none;
 }
 
 .footer__privacy,

@@ -34,6 +34,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
     --fs-title: 24px;
     --lh-title: 1.2;
 
+    /* фикс-высота карточек на мобилке */
     --card-h: 284px;
     --gap-v: 14px;
   }
@@ -51,8 +52,8 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 .features-blocks {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;         /* добавили перенос карточек */
-  gap: 30px;               /* расстояние задаёт родитель */
+  flex-wrap: wrap;
+  gap: 30px;
   margin-top: 50px;
 
   @media (max-width: $bp-mobile) {
@@ -68,7 +69,6 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 
 /* ================== BIG CARD ================== */
 .feature-block {
-  /* убрали конфликтные внешние маргины */
   box-shadow: $shadow-desktop;
   border-radius: $radius-desktop;
   position: relative;
@@ -76,8 +76,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   padding: 57px 43px 91px;
   box-sizing: border-box;
 
-  /* делаем карточку «резиновой», но с верхней границей 865px */
-  flex: 1 1 520px;         /* базис для двух в ряд на широких экранах */
+  flex: 1 1 520px;
   max-width: 865px;
   min-width: 420px;
 
@@ -93,11 +92,12 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   @media (max-width: $bp-mobile) {
     width: 100%;
     border-radius: $radius-mobile;
-    padding: var(--pad-top) 19px var(--pad-bottom);
+    padding: var(--pad-top) $space-x var(--pad-bottom);
     box-shadow: $shadow-mobile;
 
     height: var(--card-h);
     min-height: var(--card-h);
+
     display: grid;
     grid-template-rows: max-content max-content 1fr;
     row-gap: var(--gap-v);
@@ -219,7 +219,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 /* ================== SMALL GRID WRAP ================== */
 .features-blocks-small {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* защита от переполнения */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
   max-width: 1700px;
   margin: 20px auto 0;
@@ -257,7 +257,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
       flex-direction: column;
       gap: $space-between;
       align-items: stretch;
-      padding-left: $space-x;
+      padding-left: $space-x;   /* 20px слева/справа */
       padding-right: $space-x;
       touch-action: pan-y;
       backface-visibility: hidden;
@@ -268,12 +268,10 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 
 /* ================== SMALL CARD ================== */
 .feature-block-small {
-  height: 356px;                    /* фикс-высота для равномерности */
-  width: 100%;                      /* занимает всю ячейку грида */
+  height: 356px;
+  width: 100%;
   box-sizing: border-box;
   padding: 40px 24px 54px;
-
-  /* ВАЖНО: никаких внешних маргинов у карточки — расстояние даёт gap! */
 
   display: grid;
   grid-template-rows: max-content max-content max-content;
@@ -291,12 +289,13 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   @media (max-width: $bp-mobile) {
     width: 100%;
     border-radius: $radius-mobile;
-    padding: var(--pad-top) 19px var(--pad-bottom);
+    padding: var(--pad-top) $space-x var(--pad-bottom);
     margin: 0;
     box-shadow: $shadow-mobile;
 
-    height: var(--card-h);
+    height: var(--card-h);       /* 284px */
     min-height: var(--card-h);
+
     display: grid;
     grid-template-rows: max-content max-content 1fr;
     row-gap: var(--gap-v);
@@ -348,7 +347,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 
 .feature-block-small__title {
   font-family: var(--font-family-tt-norms);
-  font-weight: 500;      /* Medium */
+  font-weight: 500;
   font-style: normal;
   font-size: 30px;
   line-height: 1;
@@ -356,12 +355,16 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 
   @media (max-width: $bp-mobile) {
     font-size: var(--fs-title);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;          /* фикс. высота за счёт линий */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
 .feature-block-small__subtitle {
   font-family: var(--font-family-tt-norms);
-  font-weight: 400;      /* Regular */
+  font-weight: 400;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
@@ -374,7 +377,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
     margin: 0;
 
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3;          /* и тут режем строки */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -439,7 +442,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   .feature-block__title,
   .feature-block-small__title {
     font-family: 'TT Norms', sans-serif;
-    font-weight: 500;     /* Medium */
+    font-weight: 500;
     font-style: normal;
     font-size: 30px;
     line-height: 1;
@@ -449,7 +452,7 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   .feature-block__subtitle,
   .feature-block-small__subtitle {
     font-family: 'TT Norms', sans-serif;
-    font-weight: 400;     /* Regular */
+    font-weight: 400;
     font-style: normal;
     font-size: 24px;
     line-height: 1.4;
@@ -463,4 +466,62 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
 .feature-block-small {
   border-radius: 20px;
 }
-/* ================== все работает ! ================== */
+
+/* ====== МОБИЛЬНАЯ УНИФИКАЦИЯ РАЗМЕРОВ ДЛЯ ОБОИХ ТИПОВ КАРТОЧЕК ====== */
+@media (max-width: $bp-mobile) {
+  /* 1) одинаковые размеры/вёрстка для big и small */
+  .feature-block,
+  .slide--big > .feature-block,
+  .feature-block-small {
+    height: var(--card-h);
+    min-height: var(--card-h);
+    padding: var(--pad-top) $space-x var(--pad-bottom);
+    border-radius: $radius-mobile;
+    box-shadow: $shadow-mobile;
+    display: grid;
+    grid-template-rows: max-content max-content 1fr;
+    row-gap: var(--gap-v);
+    justify-items: center;
+    align-items: start;
+    text-align: center;
+    overflow: hidden;
+    background-position: 50% 50%, 0 0;
+    background-size: cover, auto;
+  }
+
+  /* 2) типографика внутри big и small */
+  .feature-block__icon,
+  .feature-block-small__icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin: 0;
+    object-fit: contain;
+  }
+
+  .feature-block__title,
+  .feature-block-small__title {
+    font-size: var(--fs-title);
+    line-height: var(--lh-title);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .feature-block__subtitle,
+  .feature-block-small__subtitle {
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  /* 3) в одном слайде — строго две карточки (любого типа) */
+  .features-blocks-small .slide > :nth-of-type(n + 3) {
+    display: none;
+  }
+}
