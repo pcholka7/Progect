@@ -187,3 +187,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   init();
 });
+ // проделана работа над планшетом 
