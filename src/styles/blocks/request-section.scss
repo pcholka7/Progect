@@ -1,67 +1,93 @@
 .request-wrapper {
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .request-section {
-    position: relative;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    overflow: hidden;
-    min-height: 518px;
+  position: relative;
+  height: 518px;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
     height: auto;
-    padding-bottom: 30px;
+    padding: 50px 0;
+  }
 }
 
+/* --- Фоновые картинки: к краям, центр по вертикали --- */
 .request-background-images {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .background-image {
-    position: absolute;
+  position: absolute;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Лево — к левому краю */
+.left-image {
+  left: 0;
+  right: auto;
+  object-position: left center;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+/* Право — к правому краю */
+.right-image {
+  right: 0;
+  left: auto;
+  object-position: right center;
+
+  @media (max-width: 767px) {
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    transform: none;  /* без translateY на мобиле */
     height: 100%;
     width: auto;
-}
-
-.left-image {
-    left: 0;
-    bottom: -150px;
-}
-
-.right-image {
-    right: 0;
-    bottom: -50px;
+  }
 }
 
 .request-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+  position: relative;
+  z-index: 2; /* поверх фоновых картинок */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .request-form-container {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    // margin-top: -50px;
-    padding-bottom: 30px;
-}
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: -50px;
 
-.request-form-container h1 {
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  h1 {
     font-family: 'TT Norms', sans-serif;
     font-weight: 700;
     font-size: 42px;
@@ -69,23 +95,42 @@
     letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 30px;
+
+    @media (max-width: 767px) {
+      font-size: 28px;
+      line-height: 1.2;
+      white-space: normal;
+      margin: 0;
+      padding: 30px 0;
+    }
+  }
 }
 
 .request-form {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
     width: 100%;
+  }
 }
 
 .form-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 600px;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 600px;
 
-.form-column input,
-.form-column textarea {
+  @media (max-width: 767px) {
+    display: contents;
+  }
+
+  input,
+  textarea {
     font-family: 'TT Norms', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -97,21 +142,47 @@
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
 
-.form-column textarea {
+    @media (max-width: 767px) {
+      width: 100%;
+      box-sizing: border-box;
+      height: 50px;
+      transition: border-color 0.2s ease;
+      font-size: 16px;
+    }
+
+    &:focus,
+    &:focus-visible {
+      @media (max-width: 767px) {
+        border-color: #C08769;
+        outline: 2px solid #C08769;
+        outline-offset: 0;
+      }
+    }
+  }
+
+  textarea {
     height: 170px;
     resize: none;
+
+    @media (max-width: 767px) {
+      height: 128px;
+    }
+  }
 }
 
 .button-and-privacy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 
-.button-and-privacy button {
+  @media (max-width: 767px) {
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  button {
     height: 70px;
     width: 600px;
     padding: 15px 30px;
@@ -121,97 +192,52 @@
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
 }
 
 .privacy-text {
-    font-size: 12px;
-    color: #888;
-    text-align: left;
-    margin: 0;
+  font-size: 12px;
+  color: #888;
+  text-align: left;
+  margin: 0;
 }
 
 .error-message {
-    color: red;
-    font-family: 'TT Norms', sans-serif;
-    font-size: 14px;
-    margin-top: 5px;
+  color: red;
+  font-family: 'TT Norms', sans-serif;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+  display: none;
+
+  @media (max-width: 767px) {
+    width: 100%;
     text-align: left;
-    display: none;
+    margin: 5px 0 0;
+  }
 }
 
 .invalid-input {
-    border: 2px solid red;
+  border: 2px solid red;
+
+  &:focus,
+  &:focus-visible {
+    border-color: red;
+    outline-color: red;
+  }
 }
 
 .invalid-input + .error-message {
-    display: block;
+  display: block;
 }
 
+/* порядок полей на мобиле */
 @media (max-width: 767px) {
-  .request-section {
-    height: auto;
-    padding: 50px 0 30px;
-  }
-
-  .left-image {
-    display: none;
-  }
-
-  .right-image {
-    right: 0;
-    bottom: 0;
-    height: 100%;
-  }
-
-  .request-form-container {
-    width: 100%;
-    padding: 0 20px 30px;
-    text-align: center;
-    margin-top: 0;
-  }
-
-  .request-wrapper .request-form-container h1 {
-    font-size: 28px;
-    line-height: 1.2;
-    white-space: normal;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-bottom: 30px;
-  }
-
-  .request-form {
-    flex-direction: column;
-    gap: 15px;
-    align-items: stretch;
-    width: 100%;
-  }
-
-  .form-column {
-    display: contents;
-  }
-
-  .form-column input,
-  .form-column textarea,
-  .button-and-privacy button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .form-column input {
-    height: 50px;
-  }
-
-  .form-column textarea {
-    height: 128px;
-  }
-
-  .button-and-privacy {
-    align-items: stretch;
-    gap: 10px;
-  }
-
   #name-input { order: 1; }
   #phone-input { order: 2; }
   #phone-error-message { order: 3; }
@@ -219,31 +245,4 @@
   #email-error-message { order: 5; }
   #comment-textarea { order: 6; }
   .button-and-privacy { order: 7; }
-
-  .error-message {
-    width: 100%;
-    text-align: left;
-    margin: 5px 0 0;
-  }
-
-  .form-column input:focus,
-  .form-column input:focus-visible,
-  .form-column textarea:focus,
-  .form-column textarea:focus-visible {
-    border-color: #C08769;
-    outline: 2px solid #C08769;
-    outline-offset: 0;
-  }
-
-  .form-column input,
-  .form-column textarea {
-    transition: border-color 0.2s ease;
-    font-size: 16px;
-  }
-
-  .invalid-input:focus,
-  .invalid-input:focus-visible {
-    border-color: red;
-    outline-color: red;
-  }
 }
