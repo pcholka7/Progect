@@ -56,13 +56,13 @@
   max-width: 90%;
   box-sizing: border-box;
 
+  /* ====== МОБИЛЬНЫЙ СЛАЙДЕР (≤767px) ====== */
   @media (max-width: 767px) {
     position: relative;
     overflow: hidden;
     width: 100%;
     margin: 30px 0 0 0;
     padding: 0;
-    box-sizing: border-box;
 
     .tariff-track {
       display: flex;
@@ -74,7 +74,7 @@
     }
 
     .tariff-slide {
-      flex: 0 0 calc(100% - 20px);
+      flex: 0 0 100%;
       display: flex;
       justify-content: center;
       align-items: stretch;
@@ -90,6 +90,50 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+      }
+    }
+  }
+
+  /* ====== ПЛАНШЕТНЫЙ СЛАЙДЕР (768–1439px) ====== */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    position: relative;
+    overflow: hidden; /* прячем лишнее при прокрутке */
+    width: 100%;
+    margin: 30px 0 0 0;
+    padding: 0;
+
+    .tariff-track {
+      display: flex;
+      gap: 30px;                  /* как в «основном» коде */
+      will-change: transform;
+      transition: transform .4s ease;
+      padding: 0;
+    }
+
+    /* Каждая «страница» — это карточка, но видим одновременно две */
+    .tariff-slide {
+      /* две карточки в «окне» с учётом gap: 30px → делим пополам и вычитаем половину gap */
+      flex: 0 0 calc(50% - 15px);
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+
+      > .tariff-block {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        /* убираем фикс. ограничение ширины только в планшетном режиме,
+           чтобы не было «жёстких» размеров */
+        max-width: none;
+        flex: 1 1 auto;
       }
     }
   }
@@ -212,9 +256,11 @@
 .white-button { background-color: #FFFFFF; color: #C08769; }
 .brown-button { background-color: #C08769; color: #FFFFFF; }
 
+/* Индикатор: по умолчанию скрыт */
 .tariff-indicator {
   display: none;
 
+  /* Мобилка – как было */
   @media (max-width: 767px) {
     display: flex;
     width: 162px;
@@ -233,5 +279,36 @@
 
       &.active { background-color: #C08769; }
     }
+  }
+
+  /* Планшет – показываем, но без фиксированной ширины */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    .slider-indicator__dot {
+      width: 50px;      /* стиль как на мобилке */
+      height: 3px;
+      border-radius: 2px;
+      background-color: #FFFFFF;
+      transition: background-color .25s;
+      cursor: pointer;
+
+      &.active { background-color: #C08769; }
+    }
+  }
+}
+/* Планшет: две карточки в «окне» */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .tariff-blocks-wrapper .tariff-track { gap: 30px; }
+  .tariff-blocks-wrapper .tariff-slide {
+    /* переопределяем возможный inline flex: 100% */
+    flex: 0 0 calc(50% - 15px) !important;
+  }
+  .tariff-blocks-wrapper .tariff-slide > .tariff-block {
+    max-width: none; /* убираем 418px в планшетном режиме */
   }
 }

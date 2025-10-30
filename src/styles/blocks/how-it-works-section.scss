@@ -8,6 +8,10 @@
   padding-bottom: 50px;
   padding-left: 0;
 
+  @media (max-width: 1439px) {
+  margin: 0 80px;
+  }
+
   @media (max-width: 767px) {
     padding-right: 0;
     padding-bottom: 0;

@@ -1,153 +1,213 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const mq = window.matchMedia('(max-width: 767px)');
-  const track = document.querySelector('.reviews-wrapper');
-  const indicator = document.querySelector('.slider-indicator--reviews');
-  const prevBtn = document.querySelector('.prev-arrow');
-  const nextBtn = document.querySelector('.next-arrow');
-  if (!track) return;
+(() => {
+  // Полезные безопасные хелперы для «узких» сред линтера
+  const perfNow = (typeof window !== 'undefined' && window.performance && typeof window.performance.now === 'function')
+    ? () => window.performance.now()
+    : () => Date.now();
 
-  let current = 0;
-  let mode = 'desktop'; // текущее собранное состояние
+  document.querySelectorAll('.reviews-section').forEach(initReviewsSlider);
 
-  function unwrap() {
-    // развернуть все .review-slide обратно в .review-card
-    const slides = Array.from(track.querySelectorAll('.review-slide'));
-    slides.forEach(slide => {
-      while (slide.firstChild) track.insertBefore(slide.firstChild, slide);
-      slide.remove();
-    });
-  }
+  function initReviewsSlider(root) {
+    const viewport = root.querySelector('.reviews-viewport');
+    const wrapper  = root.querySelector('.reviews-wrapper');
+    if (!viewport || !wrapper) return;
 
-  function wrap(perPage, layout) {
-    // layout: 'desktop' | 'mobile'
-    const cards = Array.from(track.querySelectorAll('.review-card'));
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < cards.length; i += perPage) {
-      const slide = document.createElement('div');
-      slide.className = 'review-slide';
-      for (let j = i; j < Math.min(i + perPage, cards.length); j++) {
-        slide.appendChild(cards[j]);
+    const prevBtn = root.querySelector('.reviews-navigation .prev-arrow');
+    const nextBtn = root.querySelector('.reviews-navigation .next-arrow');
+    const dotsBox = root.querySelector('.slider-indicator--reviews')
+                  || root.parentElement?.querySelector('.slider-indicator--reviews')
+                  || document.querySelector('.slider-indicator--reviews');
+
+    const mql = window.matchMedia('(max-width: 767px)');
+    let page = 0, pagesTotal = 1, grouped = false, slides = [];
+
+    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+    const getCards = () => Array.from(wrapper.querySelectorAll('.review-card'));
+
+    const getGridCols = () => {
+      // Берём строго из window + дефолт, чтобы линтер не ругался и код не падал
+      const cs = (typeof window !== 'undefined' && typeof window.getComputedStyle === 'function')
+        ? window.getComputedStyle(wrapper)
+        : null;
+      const tpl = cs && cs.gridTemplateColumns ? cs.gridTemplateColumns : '1fr 1fr 1fr';
+      return tpl && tpl !== 'none' ? tpl.split(' ').filter(Boolean).length : 3;
+    };
+
+    const slideWidth = () => wrapper.clientWidth;
+
+    // Сбрасываем инлайн-скрытие, навешанное в десктопном режиме
+    const clearInlineDisplay = () => {
+      getCards().forEach(card => { card.style.display = ''; });
+    };
+
+    // Индикатор
+    const buildDots = () => {
+      if (!dotsBox || !mql.matches) return;
+      dotsBox.innerHTML = '';
+      for (let i = 0; i < pagesTotal; i++) {
+        const d = document.createElement('span');
+        d.className = 'slider-indicator__dot' + (i === page ? ' active' : '');
+        d.dataset.index = String(i);
+        dotsBox.appendChild(d);
       }
-      frag.appendChild(slide);
-    }
-    track.appendChild(frag);
+    };
+    const updateDotsActive = () => {
+      if (!dotsBox) return;
+      dotsBox.querySelectorAll('.slider-indicator__dot').forEach((d, i) => {
+        d.classList.toggle('active', i === page);
+      });
+    };
+    const updateNavState = () => {
+      if (prevBtn) prevBtn.disabled = page === 0;
+      if (nextBtn) nextBtn.disabled = page >= pagesTotal - 1;
+    };
 
-    // общий трек как лента страниц
-    track.style.display = 'flex';
-    track.style.gap = '0';
-    track.style.marginLeft = '0';
-    track.style.marginRight = '0';
-    track.style.width = '100%';
+    // Группировка по 2 карточки на мобиле
+    const groupForMobile = () => {
+      if (grouped) return;
 
-    // стили каждой страницы (inline, чтобы не ломать твой SCSS)
-    Array.from(track.children).forEach(slide => {
-      slide.style.flex = '0 0 100%';
-      if (layout === 'desktop') {
-        // 3 карточки в строку
-        slide.style.display = 'grid';
-        slide.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))';
-        slide.style.columnGap = '20px';
-        slide.style.rowGap = '0';
-        slide.style.alignItems = 'stretch';
+      clearInlineDisplay();
+
+      const cards = getCards();
+      if (!cards.length) return;
+
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < cards.length; i += 2) {
+        const slide = document.createElement('div');
+        slide.className = 'review-slide';
+        slide.appendChild(cards[i]);
+
+        if (cards[i + 1]) {
+          slide.appendChild(cards[i + 1]);
+        } else {
+          const ghost = document.createElement('div');
+          ghost.className = 'review-card review-card--ghost';
+          ghost.setAttribute('aria-hidden', 'true');
+          slide.appendChild(ghost);
+        }
+        frag.appendChild(slide);
+      }
+
+      wrapper.innerHTML = '';
+      wrapper.appendChild(frag);
+
+      grouped = true;
+      slides  = Array.from(wrapper.children);
+    };
+
+    // Возврат к десктопу
+    const ungroupForDesktop = () => {
+      if (!grouped) return;
+      const allSlides = Array.from(wrapper.querySelectorAll('.review-slide'));
+      const frag = document.createDocumentFragment();
+      allSlides.forEach(sl => {
+        while (sl.firstChild) frag.appendChild(sl.firstChild);
+        sl.remove();
+      });
+      wrapper.innerHTML = '';
+      wrapper.appendChild(frag);
+      grouped = false;
+      slides = [];
+      wrapper.querySelectorAll('.review-card--ghost').forEach(g => g.remove());
+      clearInlineDisplay();
+    };
+
+    // Рендер
+    const render = () => {
+      if (mql.matches) {
+        groupForMobile();
+        slides = Array.from(wrapper.children);
+        pagesTotal = Math.max(1, slides.length);
+        page = clamp(page, 0, pagesTotal - 1);
+
+        const offset = -page * slideWidth();
+        wrapper.style.transform = `translate3d(${offset}px,0,0)`;
+
+        buildDots();
+        updateDotsActive();
+        updateNavState();
       } else {
-        // 2 карточки вертикально
-        slide.style.display = 'flex';
-        slide.style.flexDirection = 'column';
-        slide.style.gap = '20px';
-        slide.style.alignItems = 'stretch';
+        ungroupForDesktop();
+        const cards = getCards();
+        const perView = getGridCols();
+        pagesTotal = Math.max(1, Math.ceil(cards.length / perView));
+        page = clamp(page, 0, pagesTotal - 1);
+
+        const start = page * perView;
+        const end   = start + perView - 1;
+        cards.forEach((card, i) => {
+          card.style.display = (i >= start && i <= end) ? '' : 'none';
+        });
+
+        wrapper.style.transform = 'translate3d(0,0,0)';
+        updateNavState();
+        updateDotsActive();
       }
+    };
+
+    const goTo = (next) => { page = clamp(next, 0, pagesTotal - 1); render(); };
+    const snapBack = () => { if (mql.matches) wrapper.style.transform = `translate3d(${-page * slideWidth()}px,0,0)`; };
+
+    // Свайпы
+    let dragging = false, startX = 0, currX = 0, startT = 0;
+    const THRESHOLD = 50;
+
+    const onPointerDown = (e) => {
+      if (!mql.matches) return;
+      dragging = true;
+      startX = ('touches' in e) ? e.touches[0].clientX : (e.clientX ?? 0);
+      currX  = startX;
+      startT = perfNow();
+      wrapper.style.transition = 'none';
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
+      window.addEventListener('pointerup',   onPointerUp,   { passive: true, once: true });
+      window.addEventListener('touchmove',   onPointerMove, { passive: true });
+      window.addEventListener('touchend',    onPointerUp,   { passive: true, once: true });
+    };
+    const onPointerMove = (e) => {
+      if (!dragging || !mql.matches) return;
+      const x = ('touches' in e) ? (e.touches[0]?.clientX ?? currX) : (e.clientX ?? currX);
+      const dx = x - startX;
+      currX = x;
+      const base = -page * slideWidth();
+      wrapper.style.transform = `translate3d(${base + dx}px,0,0)`;
+    };
+    const onPointerUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      const dx = currX - startX;
+      const dt = perfNow() - startT;
+      const fast = dt < 250 && Math.abs(dx) > 20;
+      wrapper.style.transition = ''; // вернуть плавность из CSS
+      if (Math.abs(dx) > THRESHOLD || fast) {
+        goTo(page + (dx < 0 ? 1 : -1));
+      } else {
+        snapBack();
+      }
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('touchmove', onPointerMove);
+    };
+
+    // Навигация
+    prevBtn && prevBtn.addEventListener('click', () => goTo(page - 1));
+    nextBtn && nextBtn.addEventListener('click', () => goTo(page + 1));
+    dotsBox && dotsBox.addEventListener('click', (e) => {
+      const dot = e.target.closest('.slider-indicator__dot');
+      if (!dot) return;
+      goTo(parseInt(dot.dataset.index, 10) || 0);
     });
+
+    viewport.addEventListener('pointerdown', onPointerDown, { passive: true });
+    viewport.addEventListener('touchstart',  onPointerDown, { passive: true });
+
+    // Перерисовка при изменении размеров и брейкпоинта
+    window.addEventListener('resize', render, { passive: true });
+    mql.addEventListener('change', render);
+
+    // ResizeObserver с защитой (линтер и старые браузеры)
+    const hasRO = typeof window !== 'undefined' && 'ResizeObserver' in window;
+    const ro = hasRO ? new window.ResizeObserver(() => { if (mql.matches) render(); }) : null;
+    if (ro) ro.observe(wrapper);
+
+    render();
   }
-
-  function clearInline() {
-    track.style.display = '';
-    track.style.gap = '';
-    track.style.marginLeft = '';
-    track.style.marginRight = '';
-    track.style.width = '';
-    track.style.transform = '';
-    Array.from(track.children).forEach(el => {
-      el.style.flex = '';
-      el.style.display = '';
-      el.style.flexDirection = '';
-      el.style.gap = '';
-      el.style.alignItems = '';
-      el.style.gridTemplateColumns = '';
-      el.style.columnGap = '';
-      el.style.rowGap = '';
-    });
-  }
-
-  function buildIndicator() {
-    if (!indicator) return;
-    indicator.innerHTML = '';
-    const slides = track.querySelectorAll('.review-slide');
-    slides.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'slider-indicator__dot' + (i === current ? ' active' : '');
-      dot.addEventListener('click', () => goTo(i));
-      indicator.appendChild(dot);
-    });
-    indicator.style.display = 'flex';
-  }
-
-  function goTo(page) {
-    const slides = track.querySelectorAll('.review-slide');
-    const max = Math.max(0, slides.length - 1);
-    current = Math.min(Math.max(page, 0), max);
-    track.style.transform = `translateX(${-current * 100}%)`;
-    // обновить индикатор (мобилка)
-    if (indicator) {
-      Array.from(indicator.children).forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-  }
-
-  // кнопки (десктоп)
-  function bindArrows() {
-    if (!prevBtn || !nextBtn) return;
-    prevBtn.onclick = () => goTo(current - 1);
-    nextBtn.onclick = () => goTo(current + 1);
-  }
-
-  function mountDesktop() {
-    if (mode === 'desktop') return;
-    unwrap();
-    clearInline();
-    wrap(3, 'desktop'); // <<< показываем по 3 карточки
-    if (indicator) indicator.innerHTML = ''; // индикатор прячется по CSS на десктопе
-    current = 0;
-    goTo(0);
-    bindArrows();
-    mode = 'desktop';
-  }
-
-  function mountMobile() {
-    if (mode === 'mobile') return;
-    unwrap();
-    clearInline();
-    wrap(2, 'mobile'); // <<< по 2 карточки вертикально
-    current = 0;
-    goTo(0);
-    buildIndicator();
-    mode = 'mobile';
-  }
-
-  // свайп только на мобилке
-  let sx = 0, dx = 0;
-  track.addEventListener('touchstart', e => {
-    if (mode !== 'mobile') return;
-    sx = e.touches[0].clientX; dx = 0;
-  }, { passive: true });
-  track.addEventListener('touchmove', e => {
-    if (mode !== 'mobile') return;
-    dx = e.touches[0].clientX - sx;
-  }, { passive: true });
-  track.addEventListener('touchend', () => {
-    if (mode !== 'mobile') return;
-    if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
-  }, { passive: true });
-
-  // init
-  mq.matches ? mountMobile() : mountDesktop();
-  mq.addEventListener('change', e => (e.matches ? mountMobile() : mountDesktop()));
-});
+})();

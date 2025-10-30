@@ -66,9 +66,9 @@
 
 
   --imgW: clamp(260px, 28%, 360px);
- 
 
- 
+
+
   padding: 40px calc(var(--imgW) + var(--gapR)) 45px 30px;
 
   @media (max-width: 767px) {
@@ -78,7 +78,7 @@
     flex-direction: column;
     margin: 0 auto;
     background: #fff;
-    padding: 0; 
+    padding: 0;
   }
 }
 
@@ -130,7 +130,7 @@
     font-size: 20px;
     line-height: 24px;
     color: #272727;
-    margin: 0 0 10px 0; 
+    margin: 0 0 10px 0;
     padding-left: 30px;
   }
 
@@ -141,11 +141,11 @@
     font-size: 22px;
     line-height: 26px;
     color: #707070;
-    margin: 0 0 20px 0;   
-    padding-left: 63px;    
+    margin: 0 0 20px 0;
+    padding-left: 63px;
   }
 
- 
+
   p:last-child { margin-bottom: 0; }
 
   @media (max-width: 767px) {
@@ -169,7 +169,7 @@
     p {
       font-size: 16px;
       line-height: 24px;
-      margin: 0;        
+      margin: 0;
       padding-left: 20px;
       color: #050000;
     }

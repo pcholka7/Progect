@@ -14,6 +14,11 @@
   align-items: flex-start;
   gap: 288px 80px;            /* вертикальный/горизонтальный зазоры между колонками */
   width: 100%;
+
+    @media (max-width: 1439px) {
+    gap: 0;
+  }
+
 }
 
 .footer__logo-col {
@@ -26,6 +31,12 @@
 .footer__logo {
   width: 277px;
   height: 91px;
+
+  @media (max-width: 1439px) {
+  width: 200px;
+  height: 70px;
+  margin: 0 40px 0 0px;
+}
 }
 
 .footer__tagline {
@@ -118,16 +129,27 @@
   height: 59px;
 }
 
-
 .footer__bottom {
   border-top: 1px solid #ccc;
-  margin: 74px;
+  margin-top: 74px;
   padding: 31px 0 41px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  position: relative; /* для псевдо-элемента с фулл-блидом */
+}
+
+/* Фулл-блид линия на всю ширину экрана */
+.footer__bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  /* растягиваем к краям вьюпорта без 100vw, чтобы не ловить горизонтальный скролл */
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  border-top: 1px solid #ccc;
+  pointer-events: none;
 }
 
 .footer__privacy,

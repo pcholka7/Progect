@@ -1,85 +1,23 @@
-/* ================== VARS ================== */
-$bp-mobile: 767px;
 
-$space-x: 20px;
-$space-top: 30px;
-$space-between: 15px;
-$space-bottom: 20px;
-
-$radius-desktop: 20px;
-$radius-mobile: 16px;
-
-$shadow-desktop: 0px 4px 16px rgba(0, 0, 0, 0.15);
-$shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
-
-/* ================== ROOT ================== */
-:root {
-  --color-white: #FFFFFF;
-  --primary-color: #F3EAE2;
-  --color-black: #000000;
-  --font-family-tt-norms: 'TT Norms', sans-serif;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-}
-
-/* ====== MOBILE TOKENS ====== */
-@media (max-width: $bp-mobile) {
-  :root {
-    --icon-size: 60px;
-    --gap-icon-title: 33px;
-    --gap-title-sub: 39px;
-    --pad-top: 32px;
-    --pad-bottom: 43px;
-    --fs-title: 24px;
-    --lh-title: 1.2;
-
-    --card-h: 284px;
-    --gap-v: 14px;
-  }
-}
-
-/* ================== SECTION PADS ================== */
-.features-section {
-  @media (max-width: $bp-mobile) {
-    padding-left: $space-x;
-    padding-right: $space-x;
-  }
-}
-
-/* ================== BIG BLOCKS WRAP ================== */
 .features-blocks {
+  max-width: 1920px;
+  padding: 0 80px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;         /* добавили перенос карточек */
-  gap: 30px;               /* расстояние задаёт родитель */
+  flex-wrap: wrap;
+  gap: 30px;
   margin-top: 50px;
-
-  @media (max-width: $bp-mobile) {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: $space-between;
-    padding: 0 $space-x;
-    margin-top: $space-top;
-    margin-bottom: $space-bottom;
-  }
 }
 
-/* ================== BIG CARD ================== */
+
 .feature-block {
-  /* убрали конфликтные внешние маргины */
-  box-shadow: $shadow-desktop;
-  border-radius: $radius-desktop;
   position: relative;
   overflow: hidden;
   padding: 57px 43px 91px;
   box-sizing: border-box;
+  box-shadow: 0px 4px 16px 0px #00000026;
+  flex: 1 1 520px;
 
-  /* делаем карточку «резиновой», но с верхней границей 865px */
-  flex: 1 1 520px;         /* базис для двух в ряд на широких экранах */
-  max-width: 865px;
-  min-width: 420px;
 
   display: flex;
   flex-direction: column;
@@ -89,53 +27,35 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   background-repeat: no-repeat, no-repeat;
   background-position: 60% 45%, 0 0;
   background-size: 420px auto, auto;
-
-  @media (max-width: $bp-mobile) {
-    width: 100%;
-    border-radius: $radius-mobile;
-    padding: var(--pad-top) 19px var(--pad-bottom);
-    box-shadow: $shadow-mobile;
-
-    height: var(--card-h);
-    min-height: var(--card-h);
-    display: grid;
-    grid-template-rows: max-content max-content 1fr;
-    row-gap: var(--gap-v);
-    justify-items: center;
-    align-items: start;
-    text-align: center;
-
-    overflow: hidden;
-    background-position: 50% 50%, 0 0;
-    background-size: cover, auto;
-  }
 }
 
-/* === backgrounds for big cards === */
-.feature-block--left {
-  background-image:
-    url("/images/Component1.png"),
-    linear-gradient(to right, var(--color-white) 0%, var(--primary-color) 100%);
-  background-size: contain, auto;
-  background-position: center right, 0 0;
 
-  @media (max-width: $bp-mobile) {
-    background-image:
-      url("/images/Component1.png"),
-      linear-gradient(var(--color-white), var(--color-white));
+.feature-block--left {
+   background-image:
+    url("/images/Component1.png"),
+    linear-gradient(90deg, #FFFFFF 0%, #F3EAE2 100%);
+      background-size: contain, auto;
+  background-position: center right, 0 0;
+  border-radius: 20px;
+      @media (max-width: 767px) {
+       display: flex;
+        align-items: center;
+        text-align: center;
   }
 }
 .feature-block--right {
-  background-image:
+    background-image:
     url("/images/Component1.png"),
-    linear-gradient(to left, var(--color-white) 0%, var(--primary-color) 100%);
+    linear-gradient(270deg, #FFFFFF 0%, #F3EAE2 100%);
   background-size: contain, auto;
   background-position: center right, 0 0;
-
-  @media (max-width: $bp-mobile) {
-    background-image:
-      url("/images/Component1.png"),
-      linear-gradient(var(--primary-color), var(--primary-color));
+  border-radius: 20px;
+      @media (max-width: 767px) {
+       display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
   }
 }
 
@@ -144,22 +64,17 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  @media (max-width: $bp-mobile) {
-    display: contents;
-  }
 }
 
 .feature-block__icon {
-  width: 50px;
-  height: 50px;
+  width: 84px;
+  height: 84px;
   margin-bottom: 33px;
 
-  @media (max-width: $bp-mobile) {
-    width: var(--icon-size);
-    height: var(--icon-size);
-    margin: 0;
-    object-fit: contain;
+  @media (max-width: 767px) {
+    width: 67px;
+    height: 67px;
+    align-items: center;
   }
 }
 
@@ -171,16 +86,11 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   color: var(--color-black);
   margin: 0 0 19px;
 
-  @media (max-width: $bp-mobile) {
-    font-size: var(--fs-title);
+  @media (max-width: 767px) {
     font-weight: 500;
-    line-height: var(--lh-title);
-    margin: 0;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 24px;
+    line-height: 28px;
+    color: #272727;
   }
 }
 
@@ -190,90 +100,39 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
-
-  @media (max-width: $bp-mobile) {
+    @media (max-width: 767px) {
+    font-weight: 400;
     font-size: 18px;
-    line-height: 1.4;
-    margin: 0;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
+    color: #272727;
   }
+
 }
 
-.feature-block--left .feature-block__content,
-.feature-block--right .feature-block__content {
-  align-items: flex-start;
-  text-align: left;
-
-  @media (max-width: $bp-mobile) {
-    align-items: center;
-    text-align: center;
-  }
-}
-
-/* ================== SMALL GRID WRAP ================== */
 .features-blocks-small {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* защита от переполнения */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
-  max-width: 1700px;
-  margin: 20px auto 0;
+  margin: 20px 0;
 
-  @media (max-width: $bp-mobile) {
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-    grid-template-columns: none;
-    gap: 0;
-    max-width: none;
-    padding-left: 0;
-    padding-right: 0;
-    margin-top: $space-top;
-    margin-bottom: $space-bottom;
-
-    .features-track {
-      display: flex;
-      width: 100%;
-      will-change: transform;
-      transition: transform .4s ease;
-      margin: 0;
-      padding: 0;
-      gap: 0;
-      touch-action: pan-y;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: $space-between;
-      align-items: stretch;
-      padding-left: $space-x;
-      padding-right: $space-x;
-      touch-action: pan-y;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-    }
+    @media (max-width: 1439px) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+    @media (max-width: 767px) {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
 }
 
-/* ================== SMALL CARD ================== */
+
 .feature-block-small {
-  height: 356px;                    /* фикс-высота для равномерности */
-  width: 100%;                      /* занимает всю ячейку грида */
+  height: 356px;
+  width: 100%;
   box-sizing: border-box;
   padding: 40px 24px 54px;
+  box-shadow: 0px 4px 16px 0px #00000026;
 
-  /* ВАЖНО: никаких внешних маргинов у карточки — расстояние даёт gap! */
 
   display: grid;
   grid-template-rows: max-content max-content max-content;
@@ -281,186 +140,95 @@ $shadow-mobile: 0px 4px 16px rgba(0, 0, 0, 0.15);
   align-content: space-between;
   text-align: center;
 
-  box-shadow: $shadow-desktop;
   border-radius: 20px;
 
   background-repeat: no-repeat, no-repeat;
   background-position: 60% 45%, 0 0;
   background-size: 420px auto, auto;
-
-  @media (max-width: $bp-mobile) {
-    width: 100%;
-    border-radius: $radius-mobile;
-    padding: var(--pad-top) 19px var(--pad-bottom);
-    margin: 0;
-    box-shadow: $shadow-mobile;
-
-    height: var(--card-h);
-    min-height: var(--card-h);
-    display: grid;
-    grid-template-rows: max-content max-content 1fr;
-    row-gap: var(--gap-v);
-    justify-items: center;
-    align-items: start;
-
-    text-align: center;
-    overflow: hidden;
-
-    background-position: 50% 50%, 0 0;
-    background-size: cover, auto;
-  }
 }
 
 .feature-block-small--white {
   background-image:
     url("/images/Component1.png"),
-    linear-gradient(var(--color-white), var(--color-white));
+    linear-gradient(#ffffff, #ffffff);
   background-size: contain, auto;
   background-position: center right, 0 0;
 }
 .feature-block-small--primary {
   background-image:
     url("/images/Component1.png"),
-    linear-gradient(var(--primary-color), var(--primary-color));
+    linear-gradient(#F3EAE2, #F3EAE2);
   background-size: contain, auto;
   background-position: center right, 0 0;
 }
 
-/* ================== SMALL CONTENT ================== */
+
 .feature-block-small__content {
   display: contents;
-
-  @media (max-width: $bp-mobile) {
-    display: contents;
-  }
 }
 
 .feature-block-small__icon {
   margin: 0 0 8px 0;
   object-fit: contain;
 
-  @media (max-width: $bp-mobile) {
-    width: var(--icon-size);
-    height: var(--icon-size);
-    margin: 0;
-  }
+
 }
 
 .feature-block-small__title {
   font-family: var(--font-family-tt-norms);
-  font-weight: 500;      /* Medium */
+  font-weight: 500;
   font-style: normal;
   font-size: 30px;
   line-height: 1;
   margin: 0 0 6px;
-
-  @media (max-width: $bp-mobile) {
-    font-size: var(--fs-title);
-  }
 }
 
 .feature-block-small__subtitle {
   font-family: var(--font-family-tt-norms);
-  font-weight: 400;      /* Regular */
+  font-weight: 400;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
 
-  @media (max-width: $bp-mobile) {
-    font-size: 18px;
-    line-height: 1.4;
-    margin: 0;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
 }
 
-/* ================== SLIDER INDICATOR ================== */
-.slider-indicator {
-  display: none;
-
-  @media (max-width: $bp-mobile) {
-    display: flex;
-    width: 162px;
-    height: 3px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto 0;
-
-    .slider-indicator__dot {
-      width: 50px;
-      height: 3px;
-      border-radius: 2px;
-      background-color: #D4D4D4;
-      transition: background-color .25s;
-
-      &.active { background-color: #C08769; }
-    }
-  }
+.features-slider {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-/* ================== SLIDE WITH 2 BIG CARDS ================== */
-.slide--big {
-  @media (max-width: $bp-mobile) {
-    display: flex;
+.features-slider__wrapper {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.features-slider__item {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .features-slider__item {
     flex-direction: column;
-    gap: $space-between;
-    padding-left: $space-x;
-    padding-right: $space-x;
-    box-sizing: border-box;
-
-    > .feature-block {
-      border-radius: $radius-mobile;
-
-      background-image:
-        url("/images/Component1.png"),
-        linear-gradient(var(--color-white), var(--color-white));
-      background-size: contain, auto;
-      background-position: center right, 0 0;
-
-      &:nth-child(2) {
-        background-image:
-          url("/images/Component1.png"),
-          linear-gradient(var(--primary-color), var(--primary-color));
-      }
-    }
   }
-}
 
-/* ================== DESKTOP TYPO ================== */
+  .slider-indicator {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+
+
 @media (min-width: 768px) {
-  .feature-block__title,
-  .feature-block-small__title {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 500;     /* Medium */
-    font-style: normal;
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: normal;
-  }
-
-  .feature-block__subtitle,
-  .feature-block-small__subtitle {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 400;     /* Regular */
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1.4;
-    letter-spacing: normal;
-    color: var(--color-black);
-    margin: 0;
+  .slider-indicator {
+    display: none;
   }
 }
-
-/* ================== MISC ================== */
-.feature-block-small {
-  border-radius: 20px;
 }
-/* ================== все работает ! ================== */
