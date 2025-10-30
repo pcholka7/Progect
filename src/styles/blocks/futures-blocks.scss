@@ -9,7 +9,7 @@
   margin-top: 50px;
 }
 
-/* ================== BIG CARD ================== */
+
 .feature-block {
   position: relative;
   overflow: hidden;
@@ -29,7 +29,7 @@
   background-size: 420px auto, auto;
 }
 
-/* === backgrounds for big cards === */
+
 .feature-block--left {
    background-image:
     url("/images/Component1.png"),
@@ -109,19 +109,11 @@
 
 }
 
-// .feature-block--left .feature-block__content,
-// .feature-block--right .feature-block__content {
-//   // align-items: flex-start;
-//   // text-align: left;
-
-// }
-
-/* ================== SMALL GRID WRAP ================== */
 .features-blocks-small {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
-  margin: 20px auto 0;
+  margin: 20px 0;
 
     @media (max-width: 1439px) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -130,10 +122,10 @@
     @media (max-width: 767px) {
   grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  padding: 0 80px;
+
 }
 
-/* ================== SMALL CARD ================== */
+
 .feature-block-small {
   height: 356px;
   width: 100%;
@@ -221,11 +213,11 @@
 
 @media (max-width: 767px) {
   .features-slider__item {
-    flex-direction: column; /* Стекание карточек вертикально на экранах до 768px */
+    flex-direction: column;
   }
 
   .slider-indicator {
-    display: flex; /* Показ индикаторов только на мобильных */
+    display: flex;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -233,22 +225,10 @@
     display: flex;
   }
 
-  .slider-indicator__dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-
-  .slider-indicator__dot.active {
-    background-color: #333;
-  }
-}
 
 @media (min-width: 768px) {
   .slider-indicator {
-    display: none; /* Скрытие индикаторов на экранах больше 768px */
+    display: none;
   }
+}
 }
