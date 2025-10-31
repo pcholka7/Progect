@@ -190,6 +190,7 @@
   }
 }
 
+.reviews-navigation .nav-arrow.is-pressed svg path { fill: #000000; }
 
 .review-card--ghost {
   @media (max-width: 767px) {
@@ -199,4 +200,27 @@
     min-height: 273px;
     padding: 20px;
   }
+}
+@media (min-width: 768px) and (max-width: 1439px) {
+  .reviews-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // две колонки
+    gap: 20px;                      // как на 1920
+    margin-left: 80px;
+    margin-right: 80px;
+    transform: translate3d(0,0,0);  // фикс на всякий случай (без смещений)
+  }
+
+  .review-card {
+    align-self: stretch; // высота строки тянется по самой высокой карточке
+    height: auto;        // карточки адаптивные по контенту
+    width: auto;         // не фиксируем ширину
+  }
+
+  /* индикатор точками/линиями остаётся скрытым на планшете */
+  .slider-indicator--reviews { display: none; }
+  .review-card .review-header .review-date {
+  display: none ;
+}
+
 }

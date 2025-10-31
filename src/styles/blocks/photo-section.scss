@@ -51,6 +51,10 @@
     justify-items: center;
     padding: 0 20px;
   }
+
+  @media (max-width: 1439px) {
+    align-items: stretch; 
+  }
 }
 
 .comparison-card {
@@ -63,13 +67,16 @@
   align-items: flex-start;
   overflow: hidden;
   box-sizing: border-box;
-
-
   --imgW: clamp(260px, 28%, 360px);
+  @media (max-width: 1439px) {
+    height: auto;        
+    min-height: 0;
+    --gapR: 24px;        
+    padding: 32px calc(var(--imgW) + var(--gapR)) 36px 24px;
+    border-radius: 16px;
+  }
 
 
-
-  padding: 40px calc(var(--imgW) + var(--gapR)) 45px 30px;
 
   @media (max-width: 767px) {
     height: fit-content;

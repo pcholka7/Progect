@@ -210,4 +210,14 @@
 
     render();
   }
+  document.querySelectorAll('.reviews-navigation .nav-arrow').forEach(btn => {
+  const on = () => btn.classList.add('is-pressed');
+  const off = () => btn.classList.remove('is-pressed');
+  btn.addEventListener('mousedown', on);
+  btn.addEventListener('touchstart', on, { passive: true });
+  ['mouseup','mouseleave','blur','touchend','touchcancel'].forEach(e =>
+    btn.addEventListener(e, off, { passive: true })
+  );
+});
+
 })();
