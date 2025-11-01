@@ -6,7 +6,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin-top: 50px;
+  margin: auto;
 }
 
 
@@ -112,7 +112,6 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
-  margin: 20px 0;
 
     @media (max-width: 1439px) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -151,6 +150,7 @@
   background-position: center right, 0 0;
 }
 .feature-block-small--primary {
+
   background-image:
     url("/images/Component1.png"),
     linear-gradient(#F3EAE2, #F3EAE2);
@@ -225,3 +225,4 @@
   }
 }
 }
+
