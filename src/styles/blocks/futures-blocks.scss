@@ -1,3 +1,4 @@
+
 .features-blocks {
   max-width: 1920px;
   padding: 0 80px;
@@ -8,6 +9,7 @@
   margin-top: 50px;
 }
 
+
 .feature-block {
   position: relative;
   overflow: hidden;
@@ -15,6 +17,7 @@
   box-sizing: border-box;
   box-shadow: 0px 4px 16px 0px #00000026;
   flex: 1 1 520px;
+
 
   display: flex;
   flex-direction: column;
@@ -26,35 +29,33 @@
   background-size: 420px auto, auto;
 }
 
+
 .feature-block--left {
-  background-image:
+   background-image:
     url("/images/Component1.png"),
     linear-gradient(90deg, #FFFFFF 0%, #F3EAE2 100%);
-  background-size: contain, auto;
+      background-size: contain, auto;
   background-position: center right, 0 0;
   border-radius: 20px;
-
-  @media (max-width: 767px) {
-    display: flex;
-    align-items: center;
-    text-align: center;
+      @media (max-width: 767px) {
+       display: flex;
+        align-items: center;
+        text-align: center;
   }
 }
-
 .feature-block--right {
-  background-image:
+    background-image:
     url("/images/Component1.png"),
     linear-gradient(270deg, #FFFFFF 0%, #F3EAE2 100%);
   background-size: contain, auto;
   background-position: center right, 0 0;
   border-radius: 20px;
-
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+      @media (max-width: 767px) {
+       display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
   }
 }
 
@@ -99,10 +100,10 @@
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
-
-  @media (max-width: 767px) {
+    @media (max-width: 767px) {
     font-weight: 400;
     font-size: 18px;
+
     color: #272727;
   }
 }
@@ -113,12 +114,12 @@
   gap: 30px;
   margin: 20px 0;
 
-  @media (max-width: 1439px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (max-width: 1439px) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (max-width: 767px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @media (max-width: 767px) {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
@@ -149,7 +150,6 @@
   background-size: contain, auto;
   background-position: center right, 0 0;
 }
-
 .feature-block-small--primary {
   background-image:
     url("/images/Component1.png"),
@@ -157,6 +157,7 @@
   background-size: contain, auto;
   background-position: center right, 0 0;
 }
+
 
 .feature-block-small__content {
   display: contents;
@@ -184,100 +185,43 @@
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
+
 }
 
-/* Индикатор по умолчанию скрываем на планшетах/десктопах */
+.features-slider {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.features-slider__wrapper {
+ overflow: hidden;
+}
+
+.features-slider__item {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .features-slider__item {
+    flex-direction: column;
+  }
+
+  .slider-indicator {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+
+
 @media (min-width: 768px) {
   .slider-indicator {
     display: none;
   }
 }
-
-/* ======================================================= */
-/*                    МОБИЛЬНЫЕ ДОБАВКИ                    */
-/*         Общий слайдер для ВСЕХ карточек (≤768px)        */
-/* ======================================================= */
-@media (max-width: 768px) {
-  /* Индикатор (как вы просили) */
-  .slider-indicator {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-
-    .slider-indicator__dot {
-      width: 50px;
-      height: 3px;
-      border-radius: 2px;
-      background-color: #D4D4D4;;
-      transition: background-color .25s;
-      cursor: pointer;
-
-      &.active { background-color: #C08769; }
-    }
-  }
-
-  /* Активный слайдер поверх базового flex-контейнера */
-  .features-blocks {
-    &.features-slider {
-      display: block ;      /* перекрываем исходный flex */
-      overflow: hidden;
-      isolation: isolate;
-
-      .features-track {
-        display: flex;
-        align-items: stretch;
-        will-change: transform;
-        transition: transform 400ms ease;
-        touch-action: pan-y;
-      }
-
-      /* Страница слайдера = 100% ширины, 2 карточки вертикально и ЦЕНТРИРОВАНО */
-      .features-slide {
-        flex: 0 0 100%;
-        display: grid;
-        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-        row-gap: 30px;                /* расстояние между карточками по вертикали */
-        padding-inline: 16px;         /* боковые поля внутри страницы слайдера */
-        padding-block: 1px;           /* страховка от схлопывания gap */
-        box-sizing: border-box;
-
-        /* ключ: центрируем содержимое слайда по горизонтали */
-        place-items: center;          /* = align-items:center + justify-items:center */
-      }
-
-      /* Единый размер и центрирование самих карточек */
-      .feature-block,
-      .feature-block-small {
-        width: 100%;
-        max-width: 520px;             /* карточка НЕ растягивается шире, стоит по центру */
-        height: 356px;
-        margin: 0 ;
-        overflow: hidden;
-        box-sizing: border-box;
-        min-height: 0;
-        justify-self: center;         /* гарантия центрирования в гриде */
-        align-self: stretch;          /* чтобы обе занимали равную высоту строки */
-      }
-
-      /* Прячем исходную сетку мелких карточек — их DOM в треке */
-      .features-blocks-small {
-        display: none ;
-      }
-    }
-  }
-
-  /* Во время перетаскивания — без анимации */
-  .features-slider--dragging .features-track {
-    transition: none ;
-    cursor: grabbing;
-  }
-
-  /* Уважение reduce-motion */
-  @media (prefers-reduced-motion: reduce) {
-    .features-blocks.features-slider .features-track {
-      transition: none ;
-    }
-  }
 }

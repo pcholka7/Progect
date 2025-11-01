@@ -6,19 +6,22 @@
 
 .request-section {
   position: relative;
-  height: 518px;
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 64px 352px 89px;
 
+  @media (max-width: 1023px) {
+    padding: 50px 0;
+  }
   @media (max-width: 767px) {
-    height: auto;
     padding: 50px 0;
   }
 }
 
-
+/* --- Фоновые картинки: строго слева/справа --- */
 .request-background-images {
   position: absolute;
   inset: 0;
@@ -28,13 +31,12 @@
 
 .background-image {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   height: 100%;
   width: auto;
   object-fit: contain;
-  top: 50%;
-  transform: translateY(-50%);
 }
-
 
 .left-image {
   left: 0;
@@ -46,13 +48,12 @@
   }
 }
 
-
 .right-image {
   right: 0;
   left: auto;
   object-position: right center;
 
-  @media (max-width: 1023px) {
+  @media (max-width: 1439px) {
     right: 0;
     left: auto;
     top: 0;
@@ -63,28 +64,26 @@
   }
 }
 
+/* --- Контент --- */
 .request-content {
   position: relative;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   width: 100%;
 }
 
 .request-form-container {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: -50px;
+  align-items: stretch;
+  text-align: left;
+  margin-top: 0;
 
   @media (max-width: 767px) {
-    width: 100%;
     padding: 0 20px;
-    text-align: center;
   }
 
   h1 {
@@ -92,99 +91,115 @@
     font-weight: 700;
     font-size: 42px;
     line-height: 1;
-    letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 30px;
 
-    @media (max-width: 1023px) {
+    @media (max-width: 1439) {
       font-size: 28px;
       line-height: 1.2;
-      white-space: normal;
       margin: 0;
       padding: 30px 0;
+      text-align: center;
     }
   }
 }
 
+/* --- Форма --- */
 .request-form {
-  display: flex;
-  gap: 20px;
-  width: 100%;
+  --cols-gap: 20px;
 
-  @media (max-width: 1023px) {
-    flex-direction: column;
+  @media (min-width: 1439px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--cols-gap);
+    row-gap: 20px;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  @media (max-width: 1439px) {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 15px;
     align-items: stretch;
     width: 100%;
   }
 }
 
+/* Колонки */
 .form-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: auto;
+  min-width: 0;
+}
 
-  @media (max-width: 1023px) {
-    display: contents;
+/* Поля */
+.form-column input,
+.form-column textarea {
+  font-family: 'TT Norms', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
+  text-align: left;
+  height: 70px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 767px) {
+    height: 50px;
+    transition: border-color 0.2s ease;
+    font-size: 16px;
   }
 
-  input,
-  textarea {
-    font-family: 'TT Norms', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 22px;
-    line-height: 1;
-    letter-spacing: 0;
-    text-align: left;
-    height: 70px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
-    @media (max-width: 767px) {
-      width: 100%;
-      box-sizing: border-box;
-      height: 50px;
-      transition: border-color 0.2s ease;
-      font-size: 16px;
-    }
-
-    &:focus,
-    &:focus-visible {
-      @media (max-width: 1023px) {
-        border-color: #C08769;
-        outline: 2px solid #C08769;
-        outline-offset: 0;
-      }
-    }
-  }
-
-  textarea {
-    height: 170px;
-    resize: none;
-
-    @media (max-width: 1023px) {
-      height: 128px;
+  &:focus,
+  &:focus-visible {
+    @media (max-width: 1439px) {
+      border-color: #C08769;
+      outline: 2px solid #C08769;
+      outline-offset: 0;
     }
   }
 }
 
+.form-column textarea {
+  height: 170px;
+  resize: none;
+
+  @media (max-width: 1439px) {
+    height: 128px;
+  }
+}
+
+/* --- Кнопка + политика --- */
+/* Размещение кнопки внутри правой колонки */
 .button-and-privacy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
+  width: 100%; /* растягивается на всю ширину колонки */
 
-  @media (max-width: 1023px) {
-    align-items: stretch;
-    gap: 10px;
+  /* Для правой колонки на десктопе */
+  @media (min-width: 1439px) {
+    grid-column: 2; /* вторая колонка */
+    justify-self: stretch;
+    align-self: flex-start;
+    width: 100%; /* растягиваем на полную ширину правой колонки */
+  }
+
+  /* Для мобильных и планшетов — растягиваем кнопку по ширине */
+  @media (max-width: 1439px) {
+    grid-column: auto;
+    width: 100%;
   }
 
   button {
-    height: 70px;
-    width: 600px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
@@ -192,10 +207,18 @@
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    box-sizing: border-box;
 
-    @media (max-width: 1023px) {
+    /* Для десктопа, чтобы кнопка заполнила всю ширину колонки */
+    @media (min-width: 1439px) {
       width: 100%;
-      box-sizing: border-box;
+      height: auto; /* без фиксированной высоты */
+    }
+
+    /* Для мобильных устройств */
+    @media (max-width: 1439px) {
+      width: 100%;
+      height: 70px; /* фиксированная высота */
     }
   }
 }
@@ -207,6 +230,7 @@
   margin: 0;
 }
 
+/* --- Валидация --- */
 .error-message {
   color: red;
   font-family: 'TT Norms', sans-serif;
@@ -215,9 +239,8 @@
   text-align: left;
   display: none;
 
-  @media (max-width: 1023px) {
+  @media (max-width: 1439px) {
     width: 100%;
-    text-align: left;
     margin: 5px 0 0;
   }
 }
@@ -236,8 +259,8 @@
   display: block;
 }
 
-/* порядок полей на мобиле */
-@media (max-width: 1023px) {
+/* --- Порядок на мобиле/планшете (если нужен) --- */
+@media (max-width: 1439px) {
   #name-input { order: 1; }
   #phone-input { order: 2; }
   #phone-error-message { order: 3; }
@@ -246,4 +269,3 @@
   #comment-textarea { order: 6; }
   .button-and-privacy { order: 7; }
 }
-
