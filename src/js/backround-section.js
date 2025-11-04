@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const indicator = document.querySelector('.tariff-indicator');
   if (!viewport || !indicator) return;
 
-  let mode = 'desktop';  // 'mobile' | 'tablet' | 'desktop'
-  let current = 0;       // индекс страницы: для mobile — индекс карточки; для tablet — индекс «левой» карточки окна
+  let mode = 'desktop';
+  let current = 0;
   let dots = [];
   let touchAttached = false;
 
@@ -220,9 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     rebuildDots(pagesCount());
     indicator.style.display = 'flex';
 
-    // После рендеринга DOM — перейти на первую страницу
-    requestAnimationFrame(() => goTo(0));
-
     attachSwipe();
   }
 
@@ -230,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     if (mode !== 'desktop') {
       applySlideBasis();
-      requestAnimationFrame(() => goTo(current));
     }
   });
 
@@ -239,3 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   init();
 });
+ // проделана работа над планшетом 
+ // все работает !

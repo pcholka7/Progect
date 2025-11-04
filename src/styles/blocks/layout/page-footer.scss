@@ -14,6 +14,11 @@
   align-items: flex-start;
   gap: 288px 80px;            /* вертикальный/горизонтальный зазоры между колонками */
   width: 100%;
+
+    @media (max-width: 1439px) {
+    gap: 0;
+  }
+
 }
 
 .footer__logo-col {
@@ -26,6 +31,12 @@
 .footer__logo {
   width: 277px;
   height: 91px;
+
+  @media (max-width: 1439px) {
+  width: 200px;
+  height: 70px;
+  margin: 0 40px 0 0px;
+}
 }
 
 .footer__tagline {
@@ -106,7 +117,7 @@
 }
 
 .footer__button {
-  background-color: #C09E83;
+  background-color: #C08769;
   color: #fff;
   border: none;
   padding: 15px 30px;
@@ -126,7 +137,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
   position: relative; /* для псевдо-элемента с фулл-блидом */
 }
 

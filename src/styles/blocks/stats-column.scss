@@ -6,7 +6,10 @@
   margin-top: 150px;
   gap: 280px;
 
-  /* MOBILE ≤767px */
+  @media (max-width: 1023px) {
+    gap: 180px;
+  }
+
   @media (max-width: 767px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -96,6 +99,9 @@
     &:nth-child(2) { grid-column: 2; }
     &:nth-child(3) { grid-column: 1 / -1; justify-content: center; }
   }
+  @media (max-width: 1439px) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .stats-number {
@@ -135,5 +141,43 @@
     --stats-vline-top: 12px;
     --stats-vline-height: 96px;
     --stats-hline-width: 258px;
+  }
+}
+@media (max-width: 1439px) {
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 60px;
+    padding: 0 40px;      /* боковые поля */
+    gap: 0;               /* просвет между колонками задаём паддингом колонок */
+  }
+  .stats-number{
+    font-size: 50px;
+  }
+  .stats-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;      /* равномерный просвет */
+    box-sizing: border-box;
+    border-right: 1px solid #C08769; /* вертикальные разделители */
+  }
+
+  .stats-column:last-child {
+    border-right: none;   /* у последней нет линии */
+  }
+
+  /* отключаем старые линии, если они рисовались псевдо-элементами */
+  .stats-column::after,
+  .stats-container::before,
+  .stats-container::after {
+    content: none !important;
+    display: none !important;
   }
 }

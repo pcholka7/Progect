@@ -1,4 +1,9 @@
 (() => {
+  // Полезные безопасные хелперы для «узких» сред линтера
+  const perfNow = (typeof window !== 'undefined' && window.performance && typeof window.performance.now === 'function')
+    ? () => window.performance.now()
+    : () => Date.now();
+
   document.querySelectorAll('.reviews-section').forEach(initReviewsSlider);
 
   function initReviewsSlider(root) {
@@ -17,10 +22,16 @@
 
     const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
     const getCards = () => Array.from(wrapper.querySelectorAll('.review-card'));
+
     const getGridCols = () => {
-      const tpl = getComputedStyle(wrapper).gridTemplateColumns;
+      // Берём строго из window + дефолт, чтобы линтер не ругался и код не падал
+      const cs = (typeof window !== 'undefined' && typeof window.getComputedStyle === 'function')
+        ? window.getComputedStyle(wrapper)
+        : null;
+      const tpl = cs && cs.gridTemplateColumns ? cs.gridTemplateColumns : '1fr 1fr 1fr';
       return tpl && tpl !== 'none' ? tpl.split(' ').filter(Boolean).length : 3;
     };
+
     const slideWidth = () => wrapper.clientWidth;
 
     // Сбрасываем инлайн-скрытие, навешанное в десктопном режиме
@@ -54,7 +65,6 @@
     const groupForMobile = () => {
       if (grouped) return;
 
-      // ключевой фикс: вернём всем карточкам нормальный display
       clearInlineDisplay();
 
       const cards = getCards();
@@ -97,9 +107,7 @@
       wrapper.appendChild(frag);
       grouped = false;
       slides = [];
-      // убрать «пустышки» на всякий
       wrapper.querySelectorAll('.review-card--ghost').forEach(g => g.remove());
-      // и сбросить возможные инлайн-скрытия перед новым пагинированием
       clearInlineDisplay();
     };
 
@@ -148,7 +156,7 @@
       dragging = true;
       startX = ('touches' in e) ? e.touches[0].clientX : (e.clientX ?? 0);
       currX  = startX;
-      startT = performance.now();
+      startT = perfNow();
       wrapper.style.transition = 'none';
       window.addEventListener('pointermove', onPointerMove, { passive: true });
       window.addEventListener('pointerup',   onPointerUp,   { passive: true, once: true });
@@ -167,7 +175,7 @@
       if (!dragging) return;
       dragging = false;
       const dx = currX - startX;
-      const dt = performance.now() - startT;
+      const dt = perfNow() - startT;
       const fast = dt < 250 && Math.abs(dx) > 20;
       wrapper.style.transition = ''; // вернуть плавность из CSS
       if (Math.abs(dx) > THRESHOLD || fast) {
@@ -195,10 +203,21 @@
     window.addEventListener('resize', render, { passive: true });
     mql.addEventListener('change', render);
 
-    // Дополнительно: реакция на точные изменения контейнера (на случай devtools/iframes)
-    const ro = new ResizeObserver(() => { if (mql.matches) render(); });
-    ro.observe(wrapper);
+    // ResizeObserver с защитой (линтер и старые браузеры)
+    const hasRO = typeof window !== 'undefined' && 'ResizeObserver' in window;
+    const ro = hasRO ? new window.ResizeObserver(() => { if (mql.matches) render(); }) : null;
+    if (ro) ro.observe(wrapper);
 
     render();
   }
-})(); 
+  document.querySelectorAll('.reviews-navigation .nav-arrow').forEach(btn => {
+  const on = () => btn.classList.add('is-pressed');
+  const off = () => btn.classList.remove('is-pressed');
+  btn.addEventListener('mousedown', on);
+  btn.addEventListener('touchstart', on, { passive: true });
+  ['mouseup','mouseleave','blur','touchend','touchcancel'].forEach(e =>
+    btn.addEventListener(e, off, { passive: true })
+  );
+});
+
+})();
