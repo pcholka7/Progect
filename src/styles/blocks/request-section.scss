@@ -2,6 +2,10 @@
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 767px) {
+    margin-bottom: 24px;
+  }
 }
 
 .request-section {
@@ -13,15 +17,17 @@
   box-sizing: border-box;
   padding: 64px 352px 89px;
 
+  @media (max-width: 1439px) {
+    padding: 64px 80px 89px 80px;
+  }
   @media (max-width: 1023px) {
-    padding: 50px 0;
+    padding: 50px 80px 0 80px;
   }
   @media (max-width: 767px) {
-    padding: 50px 0;
+    padding: 50px 0 60px;
   }
 }
 
-/* --- Фоновые картинки: строго слева/справа --- */
 .request-background-images {
   position: absolute;
   inset: 0;
@@ -43,7 +49,7 @@
   right: auto;
   object-position: left center;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1439px) {
     display: none;
   }
 }
@@ -64,13 +70,11 @@
   }
 }
 
-/* --- Контент --- */
 .request-content {
   position: relative;
   z-index: 2;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
@@ -81,6 +85,11 @@
   align-items: stretch;
   text-align: left;
   margin-top: 0;
+
+  @media (max-width: 1439px) {
+    align-items: center;
+    text-align: center;
+  }
 
   @media (max-width: 767px) {
     padding: 0 20px;
@@ -94,7 +103,7 @@
     text-transform: uppercase;
     margin-bottom: 30px;
 
-    @media (max-width: 1439) {
+    @media (max-width: 1439px) {
       font-size: 28px;
       line-height: 1.2;
       margin: 0;
@@ -104,17 +113,17 @@
   }
 }
 
-/* --- Форма --- */
 .request-form {
   --cols-gap: 20px;
 
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--cols-gap);
     row-gap: 20px;
     align-items: stretch;
     width: 100%;
+    margin: 0;
   }
 
   @media (max-width: 1439px) {
@@ -122,19 +131,21 @@
     grid-template-columns: 1fr;
     gap: 15px;
     align-items: stretch;
-    width: 100%;
+    width: min(680px, 100%);
+    margin: 0 auto;
+    justify-items: stretch;
   }
 }
 
-/* Колонки */
 .form-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
   min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
-/* Поля */
 .form-column input,
 .form-column textarea {
   font-family: 'TT Norms', sans-serif;
@@ -174,23 +185,19 @@
   }
 }
 
-/* --- Кнопка + политика --- */
-/* Размещение кнопки внутри правой колонки */
 .button-and-privacy {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%; /* растягивается на всю ширину колонки */
+  width: 100%;
 
-  /* Для правой колонки на десктопе */
-  @media (min-width: 1439px) {
-    grid-column: 2; /* вторая колонка */
+  @media (min-width: 1440px) {
+    grid-column: 2;
     justify-self: stretch;
     align-self: flex-start;
-    width: 100%; /* растягиваем на полную ширину правой колонки */
+    width: 100%;
   }
 
-  /* Для мобильных и планшетов — растягиваем кнопку по ширине */
   @media (max-width: 1439px) {
     grid-column: auto;
     width: 100%;
@@ -209,16 +216,14 @@
     cursor: pointer;
     box-sizing: border-box;
 
-    /* Для десктопа, чтобы кнопка заполнила всю ширину колонки */
-    @media (min-width: 1439px) {
+    @media (min-width: 1440px) {
       width: 100%;
-      height: auto; /* без фиксированной высоты */
+      height: auto;
     }
 
-    /* Для мобильных устройств */
     @media (max-width: 1439px) {
       width: 100%;
-      height: 70px; /* фиксированная высота */
+      height: 70px;
     }
   }
 }
@@ -228,9 +233,13 @@
   color: #888;
   text-align: left;
   margin: 0;
+
+  @media (max-width: 1439px) {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
 
-/* --- Валидация --- */
 .error-message {
   color: red;
   font-family: 'TT Norms', sans-serif;
@@ -259,7 +268,6 @@
   display: block;
 }
 
-/* --- Порядок на мобиле/планшете (если нужен) --- */
 @media (max-width: 1439px) {
   #name-input { order: 1; }
   #phone-input { order: 2; }

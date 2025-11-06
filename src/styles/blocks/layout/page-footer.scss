@@ -1,42 +1,29 @@
 .footer {
   background-color: #F3EAE2;
-  /* 59 сверху, 80 слева/справа, низ даём через .footer__bottom */
   padding: 59px 80px 0;
   margin-top: 90px;
 }
 
-/* прежнюю линию убираем — теперь она у .footer__bottom */
 .footer::before { content: none; }
 
 .footer__content {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 288px 80px;            /* вертикальный/горизонтальный зазоры между колонками */
+  gap: 288px 80px;
   width: 100%;
-
-    @media (max-width: 1439px) {
-    gap: 0;
-  }
-
 }
 
 .footer__logo-col {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0;                 /* убрали отрицательные отступы */
+  margin: 0;
 }
 
 .footer__logo {
   width: 277px;
   height: 91px;
-
-  @media (max-width: 1439px) {
-  width: 200px;
-  height: 70px;
-  margin: 0 40px 0 0px;
-}
 }
 
 .footer__tagline {
@@ -48,7 +35,7 @@
 
 .footer__nav-contact-wrapper {
   display: flex;
-  flex: 1 1 520px;           /* тянется и переносится при нехватке места */
+  flex: 1 1 520px;
   gap: 60px;
   min-width: 420px;
 }
@@ -137,17 +124,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: relative; /* для псевдо-элемента с фулл-блидом */
+  position: relative;
 }
 
-/* Фулл-блид линия на всю ширину экрана */
 .footer__bottom::before {
   content: "";
   position: absolute;
   top: 0;
-  /* растягиваем к краям вьюпорта без 100vw, чтобы не ловить горизонтальный скролл */
   left: calc(50% - 50vw);
-  right: calc(50% - 50vw);
   border-top: 1px solid #ccc;
   pointer-events: none;
 }
@@ -158,10 +142,87 @@
   color: #888;
 }
 
+/* ====== TABLET ≤1439px ====== */
+@media (max-width: 1439px) {
+  .footer {
+    padding: 40px 40px 0;
+    margin-top: 60px;
+  }
+
+  .footer__content {
+    display: block;
+    gap: 0;
+  }
+
+  .footer__logo {
+    width: 220px;
+    height: 72px;
+  }
+
+  .footer__nav-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 24px;
+    column-gap: 0px;
+    min-width: 0;
+    margin-top: 30px;
+  }
+
+  .footer__nav-col,
+  .footer__contact-col,
+  .footer__actions-col {
+    min-width: 0;
+  }
+
+  .footer__nav-col .footer__heading,
+  .footer__contact-col .footer__heading {
+    margin: 0 0 12px;
+    font-size: 18px;
+  }
+
+  .footer__list a,
+  .footer__contact-col p {
+    font-size: 18px;
+  }
+
+  .footer__actions-col {
+    grid-column: 1 / -1;
+    gap: 24px;
+    margin-top: 10px;
+  }
+
+  .footer__socials {
+    margin: 20px 0 0;
+    gap: 16px;
+  }
+
+  .footer__button {
+    width: 321px;
+    height: 59px;
+    margin: 20px 0 0;
+  }
+
+  .footer__bottom {
+    margin: 40px 0 0;
+    padding: 24px 0 28px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .footer__privacy,
+  .footer__copyright {
+    font-size: 14px;
+  }
+}
+
 /* ====== MOBILE ≤767px ====== */
 @media (max-width: 767px) {
   .footer {
-    padding: 30px 20px 0;     /* компактный base, слева 20 как общий контейнер */
+    padding: 20px 20px 0;
     margin-top: 0;
   }
 
@@ -188,7 +249,7 @@
   }
 
   .footer__nav-col .footer__heading { margin: 0 0 15px; }
-  .footer__heading { font-size: 16px; }
+  .footer__heading { font-size: 20px; }
   .footer__list a { font-size: 16px; }
   .footer__contact-col p { font-size: 16px; }
 
@@ -211,13 +272,11 @@
   }
 
   .footer__bottom {
-    margin: 30px 0 0;          /* мобильный отступ до линии */
-    padding: 30px 0 30px;      /* от линии до текста и до низа компактнее */
+    margin: 30px 0 0;
+    padding: 30px 0 30px;
     border-top: 1px solid #ccc;
-
     width: 100%;
     max-width: none;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;

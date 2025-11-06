@@ -11,15 +11,14 @@
   max-width: 1760px;
   margin: 0 auto;
   overflow: hidden;
+  position: relative;
+  background: #fff;
 
   @media (max-width: 767px) {
-    width: 100%;
-    // padding: 0 20px;
     box-sizing: border-box;
-    overflow: hidden;
     touch-action: pan-y;
-    margin-right: 0;
-    margin-left: 0;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -62,6 +61,7 @@
 
     svg path { fill: #B0B0B0; }
   }
+
   .next-arrow svg path { fill: #333333; }
 
   @media (max-width: 767px) { display: none; }
@@ -72,17 +72,20 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: flex-start;
   gap: 20px;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
   will-change: transform;
   margin-left: 80px;
   margin-right: 80px;
 
   @media (max-width: 767px) {
     display: flex;
-    gap: 0;            // между "слайдами" нет щелей
+    gap: 0;
     margin-left: 0;
     margin-right: 0;
     width: 100%;
+    will-change: transform;
+    backface-visibility: hidden;
+    isolation: isolate;
   }
 }
 
@@ -104,69 +107,164 @@
     border-bottom: 1px solid #E1E1E1;
 
     .review-photo {
-      width: 80px; height: 80px;
-      border-radius: 10px; margin-right: 15px;
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      margin-right: 15px;
       object-fit: cover;
     }
+
     .review-info { display: flex; flex-direction: column; }
-    .review-name { font-family: 'TT Norms', sans-serif; font-weight: 400; font-size: 24px; line-height: 1; }
-    .review-position { font-family: 'TT Norms', sans-serif; font-weight: 400; font-size: 20px; line-height: 1; color: #555; margin-top: 25px; }
-    .review-date { font-family: 'TT Norms'; font-weight: 300; font-size: 16px; line-height: 1; color: #999; position: absolute; right: 0; }
-    .review-stars { position: absolute; margin-top: 50px; right: 0; img { height: 20px; width: auto; } }
+
+    .review-name {
+      font-family: 'TT Norms', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .review-position {
+      font-family: 'TT Norms', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1;
+      color: #555;
+      margin-top: 25px;
+    }
+
+    .review-date {
+      font-family: 'TT Norms';
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1;
+      color: #999;
+      position: absolute;
+      right: 0;
+    }
+
+    .review-stars {
+      position: absolute;
+      margin-top: 50px;
+      right: 0;
+
+      img { height: 20px; width: auto; }
+    }
   }
 
   .review-text {
     font-family: 'TT Norms', sans-serif;
-    font-weight: 300; font-size: 20px; line-height: 1;
-    color: #707070; margin-top: 20px; text-align: left;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1;
+    color: #707070;
+    margin-top: 20px;
+    text-align: left;
   }
 
   @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 20px;                 // внутренние отступы карточки 20
+    padding: 20px;
     box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
     border: none;
-    height: auto;
-    min-height: 273px;             // фиксированная минимальная высота 273
+    // height: 273px;
+    min-height: 273px;
+    background: #fff;
+    background-clip: padding-box;
+    outline: 1px solid transparent;
 
     .review-header {
       display: grid;
       grid-template-columns: auto 1fr auto;
       grid-template-rows: auto auto;
-      column-gap: 12px; row-gap: 8px;
-      padding: 0; margin-bottom: 10px;
-      border-bottom: 1px solid #E1E1E1; min-height: 95px; padding-bottom: 0;
+      column-gap: 12px;
+      row-gap: 8px;
+      padding: 0;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #E1E1E1;
+      min-height: 95px;
+      padding-bottom: 0;
 
-      .review-photo { grid-column: 1 / 2; grid-row: 1 / 3; width: 70px; height: 70px; border-radius: 10px; margin: 0; object-fit: cover; }
-      .review-info { grid-column: 2 / 3; grid-row: 1 / 3; display: grid; grid-template-rows: auto auto; row-gap: 5px; }
+      .review-photo {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        margin: 0;
+        object-fit: cover;
+      }
+
+      .review-info {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+        display: grid;
+        grid-template-rows: auto auto;
+        row-gap: 5px;
+      }
+
       .review-name { grid-row: 1; font-size: 20px; }
       .review-position { grid-row: 2; font-size: 18px; margin-top: 0; align-self: center; }
-      .review-stars { position: static; grid-column: 3 / 4; grid-row: 2; align-self: center; img { height: 14px; width: auto; margin-bottom: 15px; } }
+      .review-stars {
+        position: static;
+        grid-column: 3 / 4;
+        grid-row: 2;
+        align-self: center;
+
+        img { height: 14px; width: auto; margin-bottom: 15px; }
+      }
+
       .review-date { display: none; }
     }
 
-    .review-text { font-size: 16px; margin-top: 10px; }
+    .review-text {
+      font-size: 16px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
   }
 }
 
-.slider-indicator--reviews {
+/* индикатор */
+.reviews-section .slider-indicator,
+.reviews-section .slider-indicator--reviews {
   display: none;
+}
 
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
+  .reviews-section .slider-indicator,
+  .reviews-section .slider-indicator--reviews {
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    z-index: 1;
     display: flex;
-    width: 162px;
-    height: 3px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 8px;
+    width: auto;
+    height: 3px;
     margin: 16px auto 0;
+    padding: 0 20px;
+  }
 
-    .slider-indicator__dot {
-      width: 50px; height: 3px; border-radius: 2px;
-      background: #D4D4D4; transition: background-color .25s;
-      &.active { background: #C08769; }
-    }
+  .reviews-section .slider-indicator__dot {
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background: #D4D4D4;
+    transition: background-color .25s, opacity .25s;
+    cursor: pointer;
+    opacity: .7;
+  }
+
+  .reviews-section .slider-indicator__dot.active {
+    background: #C08769;
+    opacity: 1;
   }
 }
 
@@ -174,20 +272,34 @@
   @media (max-width: 767px) { width: 100%; }
 }
 
-.review-slide {
-  @media (max-width: 767px) {
-    flex: 0 0 100%;          // ширина слайда = ширина контента во viewport
+/* Страница слайдера (мобайл): по 2 карточки, межстраничный гутер + симметричные внутренние отступы */
+@media (max-width: 767px) {
+  :root { --page-gap: 16px; } /* можно 12–24px */
+
+  .review-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    margin-right: var(--page-gap);     /* гутер между СЛАЙДАМИ */
+    box-sizing: border-box;
+
+    /* ↓↓↓ только это добавлено для ровной тени слева/справа ↓↓↓ */
+    padding-left: 12px;
+    padding-right: 12px;
+    /* ↑↑↑ */
+
     display: flex;
     flex-direction: column;
-    gap: 20px;               // расстояние между карточками 20
-    align-items: stretch;
-    overflow: hidden;        // ничего не заходит за пределы слайда
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
 
-    // ВАЖНО: в слайде показываем только 2 карточки; все, что после второй — скрываем.
-    > .review-card:nth-child(n + 3) {
-      display: none;
-    }
+    > .review-card { width: 100%; max-width: 100%; margin-top: 10px; }
+    > .review-card + .review-card { margin-top: 0; }
+    > .review-card:nth-child(n + 3) { display: none; }
   }
+
+  /* у последнего слайда гутер не нужен */
+  .review-slide:last-child { margin-right: 0; }
 }
 
 .reviews-navigation .nav-arrow.is-pressed svg path { fill: #000000; }
@@ -197,30 +309,32 @@
     visibility: hidden;
     border: none;
     box-shadow: none;
+    height: 273px;
     min-height: 273px;
     padding: 20px;
+    width: 100%;
   }
 }
+
+/* планшеты */
 @media (min-width: 768px) and (max-width: 1439px) {
   .reviews-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; // две колонки
-    gap: 20px;                      // как на 1920
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     margin-left: 80px;
     margin-right: 80px;
-    transform: translate3d(0,0,0);  // фикс на всякий случай (без смещений)
+    transform: translate3d(0,0,0);
   }
 
   .review-card {
-    align-self: stretch; // высота строки тянется по самой высокой карточке
-    height: auto;        // карточки адаптивные по контенту
-    width: auto;         // не фиксируем ширину
+    align-self: stretch;
+    height: auto;
+    width: auto;
   }
 
-  /* индикатор точками/линиями остаётся скрытым на планшете */
-  .slider-indicator--reviews { display: none; }
-  .review-card .review-header .review-date {
-  display: none ;
-}
+  .reviews-section .slider-indicator,
+  .reviews-section .slider-indicator--reviews { display: none; }
 
+  .review-card .review-header .review-date { display: none; }
 }

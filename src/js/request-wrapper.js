@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailErrorMessage = document.getElementById('email-error-message');
 
   const PHONE_PREFIX = '+7 (';
-  let lastValidDigits = null; // здесь храним последние 11 цифр корректного номера
+  let lastValidDigits = null;
 
-  // ——— утилиты ———
+
   const digitsOnly = (v) => v.replace(/\D/g, '');
   const mask = (digits) => {
     let d = digitsOnly(digits);
@@ -23,10 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return m;
   };
 
-  // Инициализация (не навязываю префикс, чтобы не мешать твоей логике/placeholder)
-  // phoneInput.value ||= PHONE_PREFIX; // если нужно — раскомментируй
-
-  // Маска при вводе + сохранение последнего корректного номера
   phoneInput.addEventListener('input', () => {
     const before = phoneInput.value;
     const masked = mask(before);
@@ -34,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const d = digitsOnly(masked);
     if (d.length === 11) {
-      lastValidDigits = d; // запомнили корректный номер
+      lastValidDigits = d;
       phoneInput.classList.remove('invalid-input');
       phoneErrorMessage.style.display = 'none';
     }
   });
 
-  // Защищаем префикс от стирания (по желанию можно удалить)
+
   phoneInput.addEventListener('keydown', (e) => {
     const start = phoneInput.selectionStart;
     const end = phoneInput.selectionEnd;
@@ -50,23 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ГЛАВНОЕ: клик/тап вне поля — вернуть последний полный номер, если текущий неполный
+
   const outsideHandler = (e) => {
-    if (e.target.closest && e.target.closest('#phone-input')) return; // клик по самому полю — игнор
+    if (e.target.closest && e.target.closest('#phone-input')) return;
     const currentLen = digitsOnly(phoneInput.value).length;
     if (currentLen < 11) {
       if (lastValidDigits) {
-        phoneInput.value = mask(lastValidDigits); // вернули последний корректный номер
-      } else {
-        // если корректного ещё не было — можно ничего не делать
-        // или показать префикс: phoneInput.value = PHONE_PREFIX;
+        phoneInput.value = mask(lastValidDigits);
       }
     }
   };
-  // pointerdown в capture, чтобы не блокировался stopPropagation-ом
+
   document.addEventListener('pointerdown', outsideHandler, true);
 
-  // Подстраховка: ушли с поля — если неполный и есть сохранённый — вернём его
+
   phoneInput.addEventListener('blur', () => {
     const len = digitsOnly(phoneInput.value).length;
     if (len < 11 && lastValidDigits) {
@@ -74,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Сабмит + валидация
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -95,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isValid) {
-      // отправка…
+
       form.reset();
-      lastValidDigits = null; // очищаем сохранённый номер после успешной отправки
-      // phoneInput.value = PHONE_PREFIX; // при желании — снова показать префикс
+      lastValidDigits = null;
+
       alert('Форма успешно отправлена!');
     }
   });
