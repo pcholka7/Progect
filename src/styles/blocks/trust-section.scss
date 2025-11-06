@@ -12,16 +12,13 @@
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+  background: #fff;
 
   @media (max-width: 767px) {
-    width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
     touch-action: pan-y;
-    margin-right: 0;
-    margin-left: 0;
-    padding-left: 20px;   /* отступы у краёв экрана */
-    padding-right: 20px;  /* отступы у краёв экрана */
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -75,17 +72,20 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: flex-start;
   gap: 20px;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
   will-change: transform;
   margin-left: 80px;
   margin-right: 80px;
 
   @media (max-width: 767px) {
     display: flex;
-    gap: 0;               /* без щелей между слайдами */
+    gap: 0;
     margin-left: 0;
     margin-right: 0;
     width: 100%;
+    will-change: transform;
+    backface-visibility: hidden;
+    isolation: isolate;
   }
 }
 
@@ -162,16 +162,19 @@
   }
 
   @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
     border: none;
-    height: auto;
+    // height: 273px;
     min-height: 273px;
-    background: #fff;               /* защита от «слипания» теней */
-    background-clip: padding-box;   /* тень не перетекает */
+    background: #fff;
+    background-clip: padding-box;
+    outline: 1px solid transparent;
 
     .review-header {
       display: grid;
@@ -217,11 +220,15 @@
       .review-date { display: none; }
     }
 
-    .review-text { font-size: 16px; margin-top: 10px; }
+    .review-text {
+      font-size: 16px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
   }
 }
 
-/* индикатор по умолчанию скрыт, показываем на мобиле */
+/* индикатор */
 .reviews-section .slider-indicator,
 .reviews-section .slider-indicator--reviews {
   display: none;
@@ -242,6 +249,7 @@
     width: auto;
     height: 3px;
     margin: 16px auto 0;
+    padding: 0 20px;
   }
 
   .reviews-section .slider-indicator__dot {
@@ -249,12 +257,14 @@
     height: 3px;
     border-radius: 2px;
     background: #D4D4D4;
-    transition: background-color .25s;
+    transition: background-color .25s, opacity .25s;
     cursor: pointer;
+    opacity: .7;
   }
 
   .reviews-section .slider-indicator__dot.active {
     background: #C08769;
+    opacity: 1;
   }
 }
 
@@ -262,22 +272,34 @@
   @media (max-width: 767px) { width: 100%; }
 }
 
-/* страница слайдера = 2 карточки вертикально */
-.review-slide {
-  @media (max-width: 767px) {
+/* Страница слайдера (мобайл): по 2 карточки, межстраничный гутер + симметричные внутренние отступы */
+@media (max-width: 767px) {
+  :root { --page-gap: 16px; } /* можно 12–24px */
+
+  .review-slide {
     flex: 0 0 100%;
+    min-width: 100%;
+    margin-right: var(--page-gap);     /* гутер между СЛАЙДАМИ */
+    box-sizing: border-box;
+
+    /* ↓↓↓ только это добавлено для ровной тени слева/справа ↓↓↓ */
+    padding-left: 12px;
+    padding-right: 12px;
+    /* ↑↑↑ */
+
     display: flex;
     flex-direction: column;
-    gap: 20px;                 /* основной отступ между карточками */
-    align-items: stretch;
+    gap: 20px;
+    align-items: center;
     overflow: hidden;
 
-    /* страховка от «слипания», если gap окажется переопределён */
-    > .review-card + .review-card { margin-top: 20px; }
-
-    /* не показываем третью и далее карточки внутри слайда */
+    > .review-card { width: 100%; max-width: 100%; margin-top: 10px; }
+    > .review-card + .review-card { margin-top: 0; }
     > .review-card:nth-child(n + 3) { display: none; }
   }
+
+  /* у последнего слайда гутер не нужен */
+  .review-slide:last-child { margin-right: 0; }
 }
 
 .reviews-navigation .nav-arrow.is-pressed svg path { fill: #000000; }
@@ -287,8 +309,10 @@
     visibility: hidden;
     border: none;
     box-shadow: none;
+    height: 273px;
     min-height: 273px;
     padding: 20px;
+    width: 100%;
   }
 }
 
@@ -314,4 +338,3 @@
 
   .review-card .review-header .review-date { display: none; }
 }
-  
