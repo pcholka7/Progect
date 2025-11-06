@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailErrorMessage = document.getElementById('email-error-message');
 
   const PHONE_PREFIX = '+7 (';
-  let lastValidDigits = null; 
+  let lastValidDigits = null;
 
 
   const digitsOnly = (v) => v.replace(/\D/g, '');
@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const d = digitsOnly(masked);
     if (d.length === 11) {
-      lastValidDigits = d; 
+      lastValidDigits = d;
       phoneInput.classList.remove('invalid-input');
       phoneErrorMessage.style.display = 'none';
     }
   });
 
- 
+
   phoneInput.addEventListener('keydown', (e) => {
     const start = phoneInput.selectionStart;
     const end = phoneInput.selectionEnd;
@@ -46,22 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
- 
+
   const outsideHandler = (e) => {
-    if (e.target.closest && e.target.closest('#phone-input')) return; 
+    if (e.target.closest && e.target.closest('#phone-input')) return;
     const currentLen = digitsOnly(phoneInput.value).length;
     if (currentLen < 11) {
       if (lastValidDigits) {
-        phoneInput.value = mask(lastValidDigits); 
-      } else {
-      
+        phoneInput.value = mask(lastValidDigits);
       }
     }
   };
-  
+
   document.addEventListener('pointerdown', outsideHandler, true);
 
- 
+
   phoneInput.addEventListener('blur', () => {
     const len = digitsOnly(phoneInput.value).length;
     if (len < 11 && lastValidDigits) {
@@ -89,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isValid) {
- 
+
       form.reset();
-      lastValidDigits = null; 
+      lastValidDigits = null;
 
       alert('Форма успешно отправлена!');
     }
