@@ -93,7 +93,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   padding: 30px;
   border: 1px solid #E1E1E1;
   flex-shrink: 0;
@@ -170,7 +170,6 @@
     border-radius: 20px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
     border: none;
-    // height: 273px;
     min-height: 273px;
     background: #fff;
     background-clip: padding-box;
@@ -228,7 +227,6 @@
   }
 }
 
-/* индикатор */
 .reviews-section .slider-indicator,
 .reviews-section .slider-indicator--reviews {
   display: none;
@@ -272,21 +270,14 @@
   @media (max-width: 767px) { width: 100%; }
 }
 
-/* Страница слайдера (мобайл): по 2 карточки, межстраничный гутер + симметричные внутренние отступы */
 @media (max-width: 767px) {
-  :root { --page-gap: 16px; } /* можно 12–24px */
+  :root { --page-gap: 16px; }
 
   .review-slide {
     flex: 0 0 100%;
     min-width: 100%;
-    margin-right: var(--page-gap);     /* гутер между СЛАЙДАМИ */
+    margin-right: var(--page-gap);
     box-sizing: border-box;
-
-    /* ↓↓↓ только это добавлено для ровной тени слева/справа ↓↓↓ */
-    padding-left: 12px;
-    padding-right: 12px;
-    /* ↑↑↑ */
-
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -298,7 +289,6 @@
     > .review-card:nth-child(n + 3) { display: none; }
   }
 
-  /* у последнего слайда гутер не нужен */
   .review-slide:last-child { margin-right: 0; }
 }
 
@@ -316,7 +306,6 @@
   }
 }
 
-/* планшеты */
 @media (min-width: 768px) and (max-width: 1439px) {
   .reviews-wrapper {
     display: grid;

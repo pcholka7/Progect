@@ -238,11 +238,11 @@
   .footer__logo { width: 180px; height: auto; }
 
   .footer__nav-contact-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-width: 0;
-  }
+  display: flex;
+  flex: 1 1 520px;
+  gap: 30px; 
+  min-width: 420px;
+}
 
   .footer__nav-col,
   .footer__contact-col,
