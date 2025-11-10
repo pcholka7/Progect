@@ -48,6 +48,27 @@
   }
 }
 
+
+.tariff-subfeatures {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    padding-left: 1.2em;
+    margin: 6px 0;
+
+    &::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 1.3;
+    }
+  }
+}
+
 .tariff-blocks-wrapper {
   display: flex;
   justify-content: center;
@@ -129,10 +150,8 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-
-        /* убираем фикс. ограничение ширины только в планшетном режиме,
-           чтобы не было «жёстких» размеров */
         max-width: none;
+        margin: 40px;
         flex: 1 1 auto;
       }
     }
@@ -141,7 +160,7 @@
 
 .tariff-block {
   flex: 1 1 418px;
-  max-width: 418px;
+  // max-width: 418px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -216,8 +235,8 @@
   }
 
   li:first-child {
-    font-weight: 700;
-    color: #272727;
+    // font-weight: 700;
+    // color: #272727;
     &::marker { color: currentColor; }
   }
 
