@@ -53,7 +53,8 @@
   }
 
   @media (max-width: 1440px) {
-    align-items: stretch; 
+    align-items: stretch;
+    padding: 0 80px;
   }
 }
 
@@ -69,9 +70,9 @@
   box-sizing: border-box;
   --imgW: clamp(260px, 28%, 360px);
   @media (max-width: 1439px) {
-    height: auto;        
+    height: auto;
     min-height: 0;
-    --gapR: 24px;        
+    --gapR: 24px;
     padding: 32px calc(var(--imgW) + var(--gapR)) 36px 24px;
     border-radius: 16px;
   }
