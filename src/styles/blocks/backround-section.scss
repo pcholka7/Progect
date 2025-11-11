@@ -151,7 +151,7 @@
         align-items: center;
         text-align: center;
         max-width: none;
-        margin: 40px;
+        margin-bottom: 40px;
         flex: 1 1 auto;
       }
     }
@@ -213,7 +213,7 @@
   list-style-type: disc;
   list-style-position: outside;
   padding: 0 54px 0 30px;
-  margin: 20px 0 56px 0;
+  margin: 20px 0 0 0;
   text-align: left;
 
   li {
@@ -268,7 +268,7 @@
     height: 56px;
     border-radius: 8px;
     padding: 0 20px;
-    margin-top: 90px;
+    // margin-top: 90px;
   }
 }
 

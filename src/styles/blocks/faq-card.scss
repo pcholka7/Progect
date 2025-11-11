@@ -161,3 +161,36 @@
     font-size: 16px;
   }
 }
+
+.faq-bullets {
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq-bullets li {
+  position: relative;
+  padding-left: 20px;
+  font-family: 'TT Norms', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #0E0E0E;
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+
+.faq-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1.5;
+  color: #0E0E0E;
+}
+
+.faq-answer-text ul {
+  margin: 12px 0 0;
+}
