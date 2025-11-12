@@ -1,10 +1,9 @@
-/* desktop */
 .stats-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 150px;
+  margin-top: 140px;
   gap: 280px;
 
   @media (max-width: 1023px) {
@@ -51,8 +50,7 @@
   margin: 40px 0 0;
 }
 
-/* tablet: 768–1439px */
-@media (min-width: 768px) and (max-width: 1439px) {
+@media (min-width: 767px) and (max-width: 1439px) {
   .stats-container {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -65,7 +63,7 @@
   }
 
   .stats-number {
-    font-size: 50px;
+    font-size: 35px;
   }
 
   .stats-column {
@@ -75,7 +73,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 40px;
+    padding: 0 20px;
     box-sizing: border-box;
     border-right: 1px solid #C08769;
   }
@@ -94,9 +92,13 @@
     content: none !important;
     display: none !important;
   }
+
+  .stats-text {
+    font-size: 24px;
+    margin: 20px 0 0;
+  }
 }
 
-/* mobile ≤767px */
 @media (max-width: 767px) {
   .stats-container {
     display: grid;
@@ -105,8 +107,7 @@
     row-gap: 24px;
     justify-items: center;
     align-items: start;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin-top: 50px;
     padding: 0 20px;
     position: relative;
     box-sizing: border-box;
@@ -165,4 +166,3 @@
     margin: 10px 0 0;
   }
 }
-/* mobile ≤767px */
