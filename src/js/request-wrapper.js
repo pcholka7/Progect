@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const start = phoneInput.selectionStart;
     const end = phoneInput.selectionEnd;
     if ((e.key === 'Backspace' && start <= 4 && end <= 4) ||
-        (e.key === 'Delete' && start < 4)) {
+      (e.key === 'Delete' && start < 4)) {
       e.preventDefault();
     }
   });
@@ -77,13 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phoneDigits = digitsOnly(phoneInput.value);
     if (nameInput.value.trim() === '') {
-      isValid = false; nameInput.classList.add('invalid-input');
+      isValid = false;
+      nameInput.classList.add('invalid-input');
     }
     if (phoneDigits.length < 11) {
-      isValid = false; phoneInput.classList.add('invalid-input'); phoneErrorMessage.style.display = 'block';
+      isValid = false;
+      phoneInput.classList.add('invalid-input');
+      phoneErrorMessage.style.display = 'block';
     }
     if (emailInput.value.trim() === '' || !emailInput.value.includes('@')) {
-      isValid = false; emailInput.classList.add('invalid-input'); emailErrorMessage.style.display = 'block';
+      isValid = false;
+      emailInput.classList.add('invalid-input');
+      emailErrorMessage.style.display = 'block';
     }
 
     if (isValid) {

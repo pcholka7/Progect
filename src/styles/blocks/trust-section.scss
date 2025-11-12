@@ -1,5 +1,4 @@
 .reviews-section {
-  // padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,6 @@
   .reviews-viewport {
     box-sizing: border-box;
     touch-action: pan-y;
-    /* переноcим края 20px внутрь слайда, а не в вьюпорт */
     padding-left: 0;
     padding-right: 0;
   }
@@ -97,7 +95,6 @@
   .reviews-wrapper {
     display: flex;
     gap: 0;
-    /* никаких внешних зазоров между страницами */
     margin-left: 0;
     margin-right: 0;
     width: 100%;
