@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="/src/styles/main.scss" />
   </head>
   <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+     style="position:absolute;width:0;height:0;overflow:hidden"
+     aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path fill="currentColor"
+            d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/>
+    </symbol>
+  </defs>
+</svg>
+
     <header class="page-header">
       <div class="page-header__content">
         <div class="page-header__logo">
@@ -333,9 +345,14 @@
                   <span class="review-position">Владелица салона красоты INPROJECT</span>
                   <!-- <span class="review-date">13.06.2024</span> -->
                 </div>
-                <div class="review-stars">
-                  <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд" />
-                </div>
+                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+            </div>
+
               </div>
               <p class="review-text">
                 У наших мастеров постоянно возникала путаница со сменами. Администратор вёл записи в журнале, мастера делали пометки в своих блокнотах, и в итоге все терялись в расписании. Сейчас этой проблемы нет. Мы перешли на BLISS CRM и получили один общий календарь для всей команды.
@@ -352,9 +369,13 @@
                   <span class="review-position">Владелица студии маникюра Finesse</span>
                   <!-- <span class="review-date">13.06.2024</span> -->
                 </div>
-                <div class="review-stars">
-                  <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд" />
-                </div>
+                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              </div>
               </div>
               <p class="review-text">
                 Мы используем BLISS CRM уже несколько месяцев, и могу сказать, что система действительно изменила нашу рабочую рутину. Раньше записи вели в разных местах: где-то в блокнотах, где-то в телефонах, что постоянно приводило к путанице и двойным бронированиям. Онлайн-запись и общий календарь буквально спасли нас от этого хаоса. Теперь у мастеров всегда порядок в расписании, каждый видит свой график и занятость коллег. Клиенты записываются сами, в удобное время, и почти перестали путать даты или забывать о визите.
@@ -369,9 +390,13 @@
                   <span class="review-name">Константин</span>
                   <span class="review-position">Владелец студии красоты Royal massage</span>
                   <!-- <span class="review-date">13.06.2024</span> -->
-                </div>
-                <div class="review-stars">
-                  <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд" />
+                   <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+              </div>
                 </div>
               </div>
               <p class="review-text">
@@ -382,29 +407,36 @@
               </p>
             </div>
 
-          <div class="review-card">
-                        <div class="review-header">
-                          <img class="review-photo" src="images/photootz4.png" alt="Фото человека" />
-                          <div class="review-info">
-                            <span class="review-name">Елена</span>
-                            <span class="review-position">Инструктор в студии танцев La La La</span>
-                            <!-- <span class="review-date">13.06.2024</span> -->
-                          </div>
-                          <div class="review-stars">
-                            <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд" />
-                          </div>
-                        </div>
-                        <p class="review-text">
-                          Меня зовут Елена, я инструктор в студии танцев La La La. Мы начали использовать BLISS CRM несколько месяцев назад, и система заметно изменила наш рабочий процесс. Раньше расписание хранилось кто где: ученики записывались в чатах, спрашивали время занятий лично, путали группы и дни. Это постоянно создавалo путаницу и лишние переписки. Онлайн-запись и общий календарь полностью решили эту проблему. Теперь у всех есть доступ к единому расписанию, и ученики сами выбирают удобное время без уточнений и напоминаний.
-                          Мне больше не приходится объяснять одно и то же по нескольку раз или отслеживать, кто перенёс занятие. CRM автоматически фиксирует изменения, а уведомления помогают ученикам не забывать о тренировках. Пропусков стало меньше, а группы заполняются ровнее. BLISS CRM оказалась простой, понятной и действительно удобной системой, которая освободила мне много времени и позволила сосредоточиться на обучении. Спасибо команде за такой инструмент.
-                      </div>
-    </section>
-    <!-- индикатор страниц  -->
-    <div class="slider-indicator slider-indicator--reviews">
-      <span class="slider-indicator__dot active"></span>
-      <span class="slider-indicator__dotrew1"></span>
-      <span class="slider-indicator__dotrew2"></span>
+<div class="review-card">
+  <div class="review-header">
+    <img class="review-photo" src="images/photootz4.png" alt="Фото человека" />
+
+    <div class="review-info">
+      <span class="review-name">Елена</span>
+      <span class="review-position">Инструктор в студии танцев La La La</span>
+      <!-- <span class="review-date">13.06.2024</span> -->
     </div>
+    <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
+      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
+      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
+      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
+      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
+    </div>
+  </div> 
+
+  <p class="review-text">
+    Меня зовут Елена, я инструктор в студии танцев La La La. Мы начали использовать BLISS CRM несколько месяцев назад, и система заметно изменила наш рабочий процесс. Раньше расписание хранилось кто где: ученики записывались в чатах, спрашивали время занятий лично, путали группы и дни. Это постоянно создавалo путаницу и лишние переписки. Онлайн-запись и общий календарь полностью решили эту проблему. Теперь у всех есть доступ к единому расписанию, и ученики сами выбирают удобное время без уточнений и напоминаний.
+    Мне больше не приходится объяснять одно и то же по нескольку раз или отслеживать, кто перенёс занятие. CRM автоматически фиксирует изменения, а уведомления помогают ученикам не забывать о тренировках. Пропусков стало меньше, а группы заполняются ровнее. BLISS CRM оказалась простой, понятной и действительно удобной системой, которая освободила мне много времени и позволила сосредоточиться на обучении. Спасибо команде за такой инструмент.
+  </p>
+</div> 
+        <!-- индикатор страниц  -->
+        <div class="slider-indicator slider-indicator--reviews">
+          <span class="slider-indicator__dot active"></span>
+          <span class="slider-indicator__dot"></span>
+          <span class="slider-indicator__dot"></span>
+    </div>
+  </div>
   </div>
 </section>
     <section class="faq-section">

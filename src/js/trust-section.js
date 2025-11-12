@@ -5,6 +5,29 @@
 
   document.querySelectorAll('.reviews-section').forEach(initReviewsSlider);
 
+  // Выравнивание высот карточек внутри каждого мобильного слайда
+  function equalizeMobileReviewHeights(root) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const wrapper = root.querySelector('.reviews-wrapper');
+    if (!wrapper) return;
+
+    // сброс высот перед измерением
+    wrapper.querySelectorAll('.review-card').forEach(c => c.style.height = '');
+
+    if (!isMobile) return; // только для мобилы
+
+    const slides = wrapper.querySelectorAll('.review-slide');
+    if (!slides.length) return;
+
+    slides.forEach(slide => {
+      const cards = slide.querySelectorAll('.review-card');
+      if (!cards.length) return;
+      let maxH = 0;
+      cards.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
+      cards.forEach(c => { c.style.height = maxH + 'px'; });
+    });
+  }
+
   function initReviewsSlider(root) {
     const viewport = root.querySelector('.reviews-viewport');
     const wrapper  = root.querySelector('.reviews-wrapper');
@@ -16,7 +39,9 @@
                   || root.parentElement?.querySelector('.slider-indicator--reviews')
                   || document.querySelector('.slider-indicator--reviews');
 
-    const mql = window.matchMedia('(max-width: 767px)');
+    // Брейкпоинт как в стилях
+    const mql = window.matchMedia('(max-width: 768px)');
+
     let page = 0, pagesTotal = 1, grouped = false, slides = [];
 
     const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
@@ -30,7 +55,7 @@
       return tpl && tpl !== 'none' ? tpl.split(' ').filter(Boolean).length : 3;
     };
 
-    /* ключ: ширина страницы == ширине вьюпорта (включая паддинги слайда) */
+    // ширина страницы = ширине вьюпорта
     const slideWidth = () => viewport.clientWidth;
 
     const clearInlineDisplay = () => { getCards().forEach(card => { card.style.display = ''; }); };
@@ -45,7 +70,8 @@
         dotsBox.appendChild(d);
       }
     };
-    const updateDotsActive = () => { if (!dotsBox) return;
+    const updateDotsActive = () => {
+      if (!dotsBox) return;
       dotsBox.querySelectorAll('.slider-indicator__dot').forEach((d, i) => d.classList.toggle('active', i === page));
     };
     const updateNavState = () => {
@@ -99,11 +125,16 @@
         pagesTotal = Math.max(1, slides.length);
         page = clamp(page, 0, pagesTotal - 1);
 
-        /* смещение считаем по ширине вьюпорта — соседи не видны */
+        // смещение по ширине вьюпорта
         const offset = -page * slideWidth();
         wrapper.style.transform = `translate3d(${offset}px,0,0)`;
 
-        buildDots(); updateDotsActive(); updateNavState();
+        buildDots();
+        updateDotsActive();
+        updateNavState();
+
+        // ВЫРАВНИВАНИЕ ВЫСОТ НА МОБИЛКЕ
+        equalizeMobileReviewHeights(root);
       } else {
         ungroupForDesktop();
         const cards = getCards();
@@ -116,7 +147,11 @@
         cards.forEach((card, i) => { card.style.display = (i >= start && i <= end) ? '' : 'none'; });
 
         wrapper.style.transform = 'translate3d(0,0,0)';
-        updateNavState(); updateDotsActive();
+        updateNavState();
+        updateDotsActive();
+
+        // сбросим высоты, на десктопе не нужны
+        equalizeMobileReviewHeights(root);
       }
     };
 
@@ -168,16 +203,22 @@
     viewport.addEventListener('pointerdown', onPointerDown, { passive: true });
     viewport.addEventListener('touchstart',  onPointerDown, { passive: true });
 
+    // Ререндер при ресайзе / смене брейкпоинта
     window.addEventListener('resize', render, { passive: true });
     mql.addEventListener('change', render);
 
+    // Пересчёт после изменения размеров контента
     const hasRO = typeof window !== 'undefined' && 'ResizeObserver' in window;
     const ro = hasRO ? new window.ResizeObserver(() => { if (mql.matches) render(); }) : null;
     if (ro) ro.observe(wrapper);
 
+    // Пересчёт после загрузки изображений/шрифтов
+    window.addEventListener('load', () => equalizeMobileReviewHeights(root), { once: true });
+
     render();
   }
 
+  // визуальный эффект на стрелках
   document.querySelectorAll('.reviews-navigation .nav-arrow').forEach(btn => {
     const on = () => btn.classList.add('is-pressed');
     const off = () => btn.classList.remove('is-pressed');
