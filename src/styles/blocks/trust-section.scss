@@ -1,6 +1,3 @@
-/* =========================
-   REVIEWS
-   ========================= */
 .reviews-section {
   display: flex;
   flex-direction: column;
@@ -8,7 +5,6 @@
   width: 100%;
 }
 
-/* viewport — контейнер с overflow и местом под индикатор */
 .reviews-viewport {
   width: 100%;
   max-width: 1760px;
@@ -18,18 +14,15 @@
   background: #fff;
 }
 
-/* ===== mobile base ===== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .reviews-viewport {
     box-sizing: border-box;
     touch-action: pan-y;
     padding-left: 0;
     padding-right: 0;
-    padding-bottom: 28px; /* место под точки */
   }
 }
 
-/* header */
 .reviews-header-container {
   display: flex;
   justify-content: space-between;
@@ -46,11 +39,12 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-  .reviews-header-container .trust-title { font-size: 28px; }
+@media (max-width: 1024px) {
+  .reviews-header-container .trust-title {
+    font-size: 28px;
+  }
 }
 
-/* arrows */
 .reviews-navigation {
   display: flex;
   align-items: center;
@@ -72,13 +66,29 @@
   outline: none;
 }
 
-.reviews-navigation .nav-arrow svg path { fill: #B0B0B0; }
-.reviews-navigation .next-arrow svg path { fill: #333333; }
-.reviews-navigation .nav-arrow.is-pressed svg path { fill: #000; }
+.reviews-navigation .nav-arrow svg path {
+  fill: #B0B0B0;
+  transition: fill .2s ease;
+}
 
-@media (max-width: 768px) { .reviews-navigation { display: none; } }
+.reviews-navigation .nav-arrow.is-active svg path {
+  fill: #333333;
+}
 
-/* wrapper */
+.reviews-navigation .nav-arrow.is-pressed svg path {
+  fill: #000000;
+}
+
+.reviews-navigation .nav-arrow:disabled svg path {
+  fill: #B0B0B0;
+}
+
+@media (max-width: 1024px) {
+  .reviews-navigation {
+    display: none;
+  }
+}
+
 .reviews-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -89,10 +99,10 @@
   margin-left: 80px;
   margin-right: 80px;
   margin-bottom: 40px;
-  align-items: stretch; /* тянем карточки по высоте строки */
+  align-items: stretch;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .reviews-wrapper {
     display: flex;
     gap: 0;
@@ -105,7 +115,8 @@
   }
 }
 
-/* card */
+/* КАРТОЧКА И НОВАЯ ШАПКА */
+
 .review-card {
   box-sizing: border-box;
   border-radius: 10px;
@@ -114,30 +125,22 @@
   padding: 30px;
   border: 1px solid #E1E1E1;
   flex-shrink: 0;
-
-  /* выравнивание по высоте: тянем карточку и позволяем контенту распределяться */
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* header внутри карточки — единая сетка на всех брейкпоинтах */
 .review-card .review-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* фото — инфо — звезды */
-  grid-template-rows: auto auto;        /* 1-я строка = имя */
-  column-gap: 12px;
-  row-gap: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   position: relative;
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #E1E1E1;
-  align-items: center;
 }
 
 .review-card .review-header .review-photo {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
   width: 80px;
   height: 80px;
   border-radius: 10px;
@@ -145,53 +148,51 @@
   object-fit: cover;
 }
 
-.review-card .review-header .review-info {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-  display: grid;
-  grid-template-rows: auto auto;
-  row-gap: 6px;
+.review-header-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.review-card .review-header .review-name {
-  grid-row: 1;
+.review-name-stars {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.review-name {
   font-family: 'TT Norms', sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1;
 }
 
-.review-card .review-header .review-position {
-  grid-row: 2;
+.review-position {
   font-family: 'TT Norms', sans-serif;
   font-weight: 400;
   font-size: 20px;
-  line-height: 1;
+  line-height: 1.2;
   color: #555;
-  margin-top: 0;
+  margin: 0;
 }
 
-.review-card .review-header .review-date { display: none; }
-
-/* звёзды — в линию с именем (1-я строка, 3-й столбец) */
-.review-card .review-header .review-stars {
-  grid-column: 3 / 4;
-  grid-row: 1;
-  align-self: center;
-  position: static;
+.review-stars {
   display: flex;
   gap: 8px;
   color: #FFC400;
 }
 
-.review-card .review-header .review-stars .star {
+.review-stars .star {
   width: 20px;
   height: 20px;
   display: block;
   fill: currentColor;
 }
 
-/* текст */
 .review-card .review-text {
   font-family: 'TT Norms', sans-serif;
   font-weight: 300;
@@ -200,13 +201,29 @@
   color: #707070;
   margin-top: 20px;
   text-align: left;
-
-  /* тянем текстовую часть, чтобы футер карточки «прилипал» вниз при одинаковой высоте */
   flex: 1 1 auto;
 }
 
-/* ===== Mobile ===== */
-@media (max-width: 768px) {
+@media (max-width: 1439px) {
+  .review-name {
+    font-size: 22px;
+  }
+
+  .review-position {
+    font-size: 18px;
+  }
+
+  .review-stars {
+    gap: 4px;
+  }
+
+  .review-card .review-text {
+    font-size: 18px;
+    line-height: 19px;
+  }
+}
+
+@media (max-width: 1024px) {
   .review-card {
     width: 100%;
     padding: 20px;
@@ -216,43 +233,54 @@
     min-height: 273px;
     background-clip: padding-box;
     outline: 1px solid transparent;
-
-    /* на мобиле — естественная высота */
     height: auto;
   }
 
   .review-card .review-header {
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-    column-gap: 12px;
-    row-gap: 8px;
-    padding: 0;
+    gap: 12px;
     margin-bottom: 10px;
+    padding-bottom: 0;
     border-bottom: 1px solid #E1E1E1;
     min-height: 95px;
-    padding-bottom: 0;
   }
 
-  .review-card .review-header .review-photo { width: 70px; height: 70px; }
-  .review-card .review-header .review-info { row-gap: 5px; }
-  .review-card .review-header .review-name { font-size: 20px; }
-  .review-card .review-header .review-position { font-size: 18px; align-self: center; }
-  .review-card .review-header .review-stars .star { width: 14px; height: 14px; }
+  .review-card .review-header .review-photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .review-name {
+    font-size: 20px;
+  }
+
+  .review-position {
+    font-size: 18px;
+  }
+
+  .review-stars .star {
+    width: 14px;
+    height: 14px;
+  }
 
   .review-card .review-text {
     font-size: 16px;
     margin-top: 10px;
     overflow: hidden;
+    line-height: 19px;
   }
 }
 
-/* индикатор: по умолчанию скрыт */
-.reviews-section .slider-indicator,
-.reviews-section .slider-indicator--reviews { display: none; }
+/* ИНДИКАТОР СЛАЙДЕРА (МОБИЛКА) */
 
-/* мобильный индикатор — внизу viewport (палочки) */
-@media (max-width: 768px) {
-  .reviews-viewport { position: relative; }
+.reviews-section .slider-indicator,
+.reviews-section .slider-indicator--reviews {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .reviews-viewport {
+    position: relative;
+  }
 
   .reviews-viewport .slider-indicator--reviews {
     display: flex;
@@ -279,11 +307,14 @@
     opacity: 1;
   }
 
-  .reviews-container-all { width: 100%; }
+  .reviews-container-all {
+    width: 100%;
+  }
 }
 
-/* mobile slides helpers */
-@media (max-width: 768px) {
+/* СЛАЙДЫ НА МОБИЛЕ */
+
+@media (max-width: 1024px) {
   .review-slide {
     flex: 0 0 100%;
     min-width: 100%;
@@ -301,13 +332,20 @@
   .review-slide > .review-card {
     width: 100%;
     max-width: 100%;
-    margin-top: 10px;
     margin-bottom: 20px;
   }
 
-  .review-slide > .review-card + .review-card { margin-top: 0; }
-  .review-slide > .review-card:nth-child(n + 3) { display: none; }
-  .review-slide:last-child { margin-right: 0; }
+  .review-slide > .review-card + .review-card {
+    margin-top: 0;
+  }
+
+  .review-slide > .review-card:nth-child(n + 3) {
+    display: none;
+  }
+
+  .review-slide:last-child {
+    margin-right: 0;
+  }
 
   .review-card--ghost {
     visibility: hidden;
@@ -320,8 +358,9 @@
   }
 }
 
-/* 768–1439: 2 колонки */
-@media (min-width: 768px) and (max-width: 1439px) {
+/* 1025–1439: 2 колонки */
+
+@media (min-width: 1025px) and (max-width: 1439px) {
   .reviews-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -332,7 +371,13 @@
     align-items: stretch;
   }
 
-  .review-card { align-self: stretch; width: auto; }
+  .review-card {
+    align-self: stretch;
+    width: auto;
+  }
+
   .reviews-section .slider-indicator,
-  .reviews-section .slider-indicator--reviews { display: none; }
+  .reviews-section .slider-indicator--reviews {
+    display: none;
+  }
 }

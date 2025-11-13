@@ -125,7 +125,7 @@
   </div>
 </header>
 
-<section class="hero-section">
+<section class="hero-section" id="try">
   <img class="hero-section__background" src="/images/fon.png" alt="Фоновый узор"/>
   <div class="hero-section__container">
     <div class="hero-section__left">
@@ -147,7 +147,7 @@
   </div>
 </section>
 
-<section class="features-section">
+<section id="advantages"class="features-section">
   <h2 class="features-title">ПОЧЕМУ С НАШЕЙ CRM <br><span>РАБОТАТЬ ПРОЩЕ</span></h2>
 </section>
 
@@ -238,14 +238,16 @@
   </div>
 </div>
 
-<section class="background-section">
+<section id="tariffs" class="background-section">
   <h2 class="tariff-title">Выберите подходящий тариф</h2>
 
   <div class="tariff-blocks-wrapper">
     <div class="tariff-block white">
       <h3 class="tariff-block__title">Бесплатный старт</h3>
-      <p class="tariff-block__description">Отличный вариант, чтобы попробовать систему без риска и увидеть, как она
-        упрощает работу салона. В пробный период включено:</p>
+      <p class="tariff-block__description">
+        Отличный вариант, чтобы попробовать систему без риска и увидеть, как она
+        упрощает работу салона. В пробный период включено:
+      </p>
       <ul class="tariff-block__features">
         <li>Доступ ко всей CRM на 14 дней</li>
         <li>Добавление мастеров, пользователей, клиентов и филиалов</li>
@@ -270,8 +272,10 @@
 
     <div class="tariff-block beige">
       <h3 class="tariff-block__title">Безлимитный</h3>
-      <p class="tariff-block__description">Полный тариф без ограничений по количеству мастеров. Подходит для студий,
-        барбершопов, салонов красоты и других бьюти-бизнесов.</p>
+      <p class="tariff-block__description">
+        Полный тариф без ограничений по количеству мастеров. Подходит для студий,
+        барбершопов, салонов красоты и других бьюти-бизнесов.
+      </p>
       <ul class="tariff-block__features">
         <li>Безлимитные мастера, пользователи, клиенты и филиалы</li>
         <li>Управление контентом сайта через админ-панель</li>
@@ -293,15 +297,14 @@
       </ul>
       <button class="tariff-button brown-button">Подключить</button>
     </div>
-    <!-- Индикатор для тарифного слайдера -->
-    <div class="tariff-indicator">
-      <span class="slider-indicator__dot active"></span>
-      <span class="slider-indicator__dot"></span>
-      <span class="slider-indicator__dot"></span>
-    </div>
+  </div>
+
+  <!-- индикатор: точки создаёт JS -->
+  <div class="tariff-indicator"></div>
 </section>
 
-<section class="reviews-section">
+
+<section id="reviews" class="reviews-section">
   <div class="reviews-container-all">
     <div class="reviews-header-container">
       <h2 class="trust-title">Нам доверяют</h2>
@@ -340,130 +343,179 @@
 
     <div class="reviews-viewport">
       <div class="reviews-wrapper">
+        <!-- КАРТОЧКА 1 -->
         <div class="review-card">
           <div class="review-header">
-            <img class="review-photo" src="images/photo1otz.png" alt="Фото человека"/>
-            <div class="review-info">
-              <span class="review-name">Анастасия</span>
-              <span class="review-position">Владелица салона красоты INPROJECT</span>
-              <!-- <span class="review-date">13.06.2024</span> -->
-            </div>
-            <div class="review-stars">
-              <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд"/>
+            <img
+              class="review-photo"
+              src="images/photo1otz.png"
+              alt="Фото человека"
+            />
+            <div class="review-header-main">
+              <div class="review-name-stars">
+                <span class="review-name">Анастасия</span>
+                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                </div>
+              </div>
+              <p class="review-position">
+                Владелица салона красоты INPROJECT
+              </p>
             </div>
           </div>
+
           <p class="review-text">
-            У наших мастеров постоянно возникала путаница со сменами. Администратор вёл записи в журнале, мастера делали
-            пометки в своих блокнотах, и в итоге все терялись в расписании. Сейчас этой проблемы нет. Мы перешли на
-            BLISS CRM и получили один общий календарь для всей команды.
-            Никто ничего не путает, все видят актуальный график в режиме реального времени.
-            Отдельно хочу поблагодарить разработчиков. Мы выбирали между несколькими программами, и именно эта оказалась
-            самой удобной. Мастера быстро к ней привыкли и говорят, что работать стало намного проще. Большое спасибо за
-            отличный инструмент.
+            У наших мастеров постоянно возникала путаница со сменами.
+            Администратор вёл записи в журнале, мастера делали пометки
+            в своих блокнотах, и в итоге все терялись в расписании.
+            Сейчас этой проблемы нет. Мы перешли на BLISS CRM и получили
+            один общий календарь для всей команды. Никто ничего не путает,
+            все видят актуальный график в режиме реального времени.
+            Отдельно хочу поблагодарить разработчиков. Мы выбирали между
+            несколькими программами, и именно эта оказалась самой удобной.
+            Мастера быстро к ней привыкли и говорят, что работать стало
+            намного проще. Большое спасибо за отличный инструмент.
           </p>
         </div>
-        <div class="reviews-viewport">
-          <div class="reviews-wrapper">
-            <div class="review-card">
-              <div class="review-header">
-                <img class="review-photo" src="images/photo1otz.png" alt="Фото человека" />
-                <div class="review-info">
-                  <span class="review-name">Анастасия</span>
-                  <span class="review-position">Владелица салона красоты INPROJECT</span>
-                  <!-- <span class="review-date">13.06.2024</span> -->
-                </div>
-                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
-              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-            </div>
 
-              </div>
-              <p class="review-text">
-                У наших мастеров постоянно возникала путаница со сменами. Администратор вёл записи в журнале, мастера делали пометки в своих блокнотах, и в итоге все терялись в расписании. Сейчас этой проблемы нет. Мы перешли на BLISS CRM и получили один общий календарь для всей команды.
-                Никто ничего не путает, все видят актуальный график в режиме реального времени.
-                Отдельно хочу поблагодарить разработчиков. Мы выбирали между несколькими программами, и именно эта оказалась самой удобной. Мастера быстро к ней привыкли и говорят, что работать стало намного проще. Большое спасибо за отличный инструмент.
-            </p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <img class="review-photo" src="images/photo2otz.png" alt="Фото человека" />
-                <div class="review-info">
-                  <span class="review-name">Валерия</span>
-                  <span class="review-position">Владелица студии маникюра Finesse</span>
-                  <!-- <span class="review-date">13.06.2024</span> -->
-                </div>
+        <!-- КАРТОЧКА 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img
+              class="review-photo"
+              src="images/photo2otz.png"
+              alt="Фото человека"
+            />
+            <div class="review-header-main">
+              <div class="review-name-stars">
+                <span class="review-name">Валерия</span>
                 <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
                   <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
                   <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
                   <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
                   <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
                   <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              </div>
-              </div>
-              <p class="review-text">
-                Мы используем BLISS CRM уже несколько месяцев, и могу сказать, что система действительно изменила нашу рабочую рутину. Раньше записи вели в разных местах: где-то в блокнотах, где-то в телефонах, что постоянно приводило к путанице и двойным бронированиям. Онлайн-запись и общий календарь буквально спасли нас от этого хаоса. Теперь у мастеров всегда порядок в расписании, каждый видит свой график и занятость коллег. Клиенты записываются сами, в удобное время, и почти перестали путать даты или забывать о визите.
-Администратор наконец перестал работать “в пожарном режиме”: не нужно перезванивать клиентам по десять раз, уточнять время и исправлять ошибки. Всё фиксируется автоматически, а изменения видны сразу. BLISS CRM оказалась простой, понятной и действительно удобной системой, которая ощутимо облегчила нам жизнь.
-              </p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <img class="review-photo" src="images/photo3otz.png" alt="Фото человека" />
-                <div class="review-info">
-                  <span class="review-name">Константин</span>
-                  <span class="review-position">Владелец студии красоты Royal massage</span>
-                  <!-- <span class="review-date">13.06.2024</span> -->
-                   <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
-                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-                <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
-              </div>
                 </div>
               </div>
-              <p class="review-text">
-                Больше всего я ценю именно автоматизацию, которую даёт BLISS CRM. Раньше напоминания клиентам, подтверждение записей и обработка заявок занимали у администратора огромную часть дня.
-                Приходилось вручную перезванивать, писать сообщения, следить, кто перенёс визит, кто не подтвердил и кто вовсе забыл прийти. Сейчас это всё происходит без моего участия.
-                Система сама отправляет напоминания, фиксирует заявки, перенесённые записи и изменения в расписании.
-                Мы сразу заметили эффект: увеличилось количество повторных визитов, клиенты стали приходить точнее, а количество “пропавших” записей сократилось почти вдвое. Появилось ощущение, что салон работает спокойнее и организованнее. BLISS CRM полностью оправдала наши ожидания и даже помогла наладить процессы, о которых мы раньше не задумывались
+              <p class="review-position">
+                Владелица студии маникюра Finesse
               </p>
             </div>
+          </div>
 
-<div class="review-card">
-  <div class="review-header">
-    <img class="review-photo" src="images/photootz4.png" alt="Фото человека" />
+          <p class="review-text">
+            Мы используем BLISS CRM уже несколько месяцев, и могу сказать,
+            что система действительно изменила нашу рабочую рутину. Раньше
+            записи вели в разных местах: где-то в блокнотах, где-то в
+            телефонах, что постоянно приводило к путанице и двойным
+            бронированиям. Онлайн-запись и общий календарь буквально спасли
+            нас от этого хаоса. Теперь у мастеров всегда порядок в расписании,
+            каждый видит свой график и занятость коллег. Клиенты
+            записываются сами, в удобное время, и почти перестали путать даты
+            или забывать о визите.
+            Администратор наконец перестал работать “в пожарном режиме”:
+            не нужно перезванивать клиентам по десять раз, уточнять время
+            и исправлять ошибки. Всё фиксируется автоматически, а изменения
+            видны сразу. BLISS CRM оказалась простой, понятной и действительно
+            удобной системой, которая ощутимо облегчила нам жизнь.
+          </p>
+        </div>
 
-    <div class="review-info">
-      <span class="review-name">Елена</span>
-      <span class="review-position">Инструктор в студии танцев La La La</span>
-      <!-- <span class="review-date">13.06.2024</span> -->
-    </div>
-    <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
-      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
-      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
-      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
-      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
-      <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
-    </div>
-  </div>
+        <!-- КАРТОЧКА 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img
+              class="review-photo"
+              src="images/photo3otz.png"
+              alt="Фото человека"
+            />
+            <div class="review-header-main">
+              <div class="review-name-stars">
+                <span class="review-name">Константин</span>
+                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                </div>
+              </div>
+              <p class="review-position">
+                Владелец студии красоты Royal massage
+              </p>
+            </div>
+          </div>
 
-  <p class="review-text">
-    Меня зовут Елена, я инструктор в студии танцев La La La. Мы начали использовать BLISS CRM несколько месяцев назад, и система заметно изменила наш рабочий процесс. Раньше расписание хранилось кто где: ученики записывались в чатах, спрашивали время занятий лично, путали группы и дни. Это постоянно создавалo путаницу и лишние переписки. Онлайн-запись и общий календарь полностью решили эту проблему. Теперь у всех есть доступ к единому расписанию, и ученики сами выбирают удобное время без уточнений и напоминаний.
-    Мне больше не приходится объяснять одно и то же по нескольку раз или отслеживать, кто перенёс занятие. CRM автоматически фиксирует изменения, а уведомления помогают ученикам не забывать о тренировках. Пропусков стало меньше, а группы заполняются ровнее. BLISS CRM оказалась простой, понятной и действительно удобной системой, которая освободила мне много времени и позволила сосредоточиться на обучении. Спасибо команде за такой инструмент.
-  </p>
-</div>
-        <!-- индикатор страниц  -->
-        <div class="slider-indicator slider-indicator--reviews">
-          <span class="slider-indicator__dot active"></span>
-          <span class="slider-indicator__dot"></span>
-          <span class="slider-indicator__dot"></span>
+          <p class="review-text">
+            Больше всего я ценю именно автоматизацию, которую даёт BLISS CRM.
+            Раньше напоминания клиентам, подтверждение записей и обработка
+            заявок занимали у администратора огромную часть дня.
+            Приходилось вручную перезванивать, писать сообщения, следить,
+            кто перенёс визит, кто не подтвердил и кто вовсе забыл прийти.
+            Сейчас это всё происходит без моего участия.
+            Система сама отправляет напоминания, фиксирует заявки,
+            перенесённые записи и изменения в расписании.
+            Мы сразу заметили эффект: увеличилось количество повторных визитов,
+            клиенты стали приходить точнее, а количество “пропавших” записей
+            сократилось почти вдвое. Появилось ощущение, что салон работает
+            спокойнее и организованнее. BLISS CRM полностью оправдала наши
+            ожидания и даже помогла наладить процессы, о которых мы раньше
+            не задумывались.
+          </p>
+        </div>
+
+        <!-- КАРТОЧКА 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img
+              class="review-photo"
+              src="images/photootz4.png"
+              alt="Фото человека"
+            />
+            <div class="review-header-main">
+              <div class="review-name-stars">
+                <span class="review-name">Елена</span>
+                <div class="review-stars" role="img" aria-label="Рейтинг: 5 из 5">
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                  <svg class="star" width="20" height="20"><use href="#icon-star"></use></svg>
+                </div>
+              </div>
+              <p class="review-position">
+                Инструктор в студии танцев La La La
+              </p>
+            </div>
+          </div>
+
+          <p class="review-text">
+            Меня зовут Елена, я инструктор в студии танцев La La La.
+            Мы начали использовать BLISS CRM несколько месяцев назад,
+            и система заметно изменила наш рабочий процесс. Раньше
+            расписание хранилось кто где: ученики записывались в чатах,
+            спрашивали время занятий лично, путали группы и дни.
+            Это постоянно создавало путаницу и лишние переписки.
+            Онлайн-запись и общий календарь полностью решили эту проблему.
+            Теперь у всех есть доступ к единому расписанию, и ученики
+            сами выбирают удобное время без уточнений и напоминаний.
+            Мне больше не приходится объяснять одно и то же по нескольку раз
+            или отслеживать, кто перенёс занятие. CRM автоматически фиксирует
+            изменения, а уведомления помогают ученикам не забывать
+            о тренировках. Пропусков стало меньше, а группы заполняются ровнее.
+            BLISS CRM оказалась простой, понятной и действительно удобной
+            системой, которая освободила мне много времени и позволила
+            сосредоточиться на обучении. Спасибо команде за такой инструмент.
+          </p>
+        </div>
+      </div>
+
+      <div class="slider-indicator slider-indicator--reviews"></div>
     </div>
-  </div>
   </div>
 </section>
 
@@ -698,7 +750,7 @@
 </section>
 
 
-<section class="how-it-works-section">
+<section id="demo" class="how-it-works-section"><section >
   <h2 class="how-it-works-title">Как работает система</h2>
   <p class="how-it-works-subtitle">
     Убедитесь сами, насколько просто и удобно<br/>управлять салоном
@@ -725,7 +777,7 @@
 </section>
 
 
-<div class="request-wrapper">
+<div class="request-wrapper" id="try">
   <section class="request-section">
     <div class="request-background-images">
       <img src="images/left.png" alt="Левый ноутбук" class="background-image left-image"/>

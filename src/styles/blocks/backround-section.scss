@@ -48,7 +48,6 @@
   }
 }
 
-
 .tariff-subfeatures {
   list-style: none;
   margin: 10px 0 0 0;
@@ -252,7 +251,13 @@
     text-align: left;
   }
 }
+    @media (max-width: 767px) {
+      .tariff-block__features
+      li{
+       margin: 0 0 10px 0;
+      }
 
+    }
 .tariff-button {
   width: 100%;
   border-radius: 5px;
@@ -284,6 +289,8 @@
   color: #FFFFFF;
 }
 
+/* Индикатор: точки рисуем из JS, тут только стили */
+
 .tariff-indicator {
   display: none;
 
@@ -291,22 +298,9 @@
     display: flex;
     width: 162px;
     height: 3px;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;
-    margin: 20px auto 0;
-
-    .slider-indicator__dot {
-      width: 50px;
-      height: 3px;
-      border-radius: 2px;
-      background-color: #FFFFFF;
-      transition: background-color .25s;
-      cursor: pointer;
-
-      &.active {
-        background-color: #C08769;
-      }
-    }
+    margin: 20px 0;
   }
 
   @media (min-width: 768px) and (max-width: 1439px) {
@@ -315,18 +309,18 @@
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+  }
 
-    .slider-indicator__dot {
-      width: 50px;
-      height: 3px;
-      border-radius: 2px;
-      background-color: #FFFFFF;
-      transition: background-color .25s;
-      cursor: pointer;
+  .slider-indicator__dot {
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    transition: background-color .25s;
+    cursor: pointer;
 
-      &.active {
-        background-color: #C08769;
-      }
+    &.active {
+      background-color: #C08769;
     }
   }
 }
@@ -335,9 +329,11 @@
   .tariff-blocks-wrapper .tariff-track {
     gap: 30px;
   }
+
   .tariff-blocks-wrapper .tariff-slide {
     flex: 0 0 calc(50% - 15px) !important;
   }
+
   .tariff-blocks-wrapper .tariff-slide > .tariff-block {
     max-width: none;
   }
