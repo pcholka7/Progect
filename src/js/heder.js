@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('resize', applyOffset);
   window.addEventListener('orientationchange', applyOffset);
 
-  // мобильное меню
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', function () {
       menuToggle.classList.toggle('is-active');

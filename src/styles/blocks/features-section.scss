@@ -17,13 +17,15 @@
   text-transform: uppercase;
   margin: 0;
   margin-bottom: 60px;
+
   span {
     font-size: 28px;
     font-weight: 400;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 28px;
+    margin-bottom: 30px;
 
     br {
       display: none;

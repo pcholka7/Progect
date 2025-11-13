@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bliss CRM</title>
-    <link rel="stylesheet" href="/src/styles/main.scss" />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bliss CRM</title>
+  <link rel="stylesheet" href="/src/styles/main.scss"/>
+</head>
+<body>
 
     <svg xmlns="http://www.w3.org/2000/svg"
      style="position:absolute;width:0;height:0;overflow:hidden"
@@ -19,138 +19,133 @@
   </defs>
 </svg>
 
-    <header class="page-header">
-      <div class="page-header__content">
-        <div class="page-header__logo">
-          <img src="../images/logo 2 1.png" alt="BLISS CRM" class="page-header__logo-img" />
-        </div>
+<header class="page-header" id="mainHeader">
+  <div class="page-header__content">
+    <div class="page-header__logo">
+      <img src="../images/logo.png" alt="BLISS CRM" class="page-header__logo-img"/>
+    </div>
 
-        <nav class="page-header__nav">
-          <ul class="page-header__nav-list">
-            <li class="page-header__nav-item">
-              <a href="#advantages" class="page-header__nav-link">Преимущества</a>
+    <nav class="page-header__nav">
+      <ul class="page-header__nav-list">
+        <li class="page-header__nav-item">
+          <a href="#advantages" class="page-header__nav-link">Преимущества</a>
+        </li>
+        <li class="page-header__nav-item">
+          <a href="#tariffs" class="page-header__nav-link">Тарифы</a>
+        </li>
+        <li class="page-header__nav-item">
+          <a href="#reviews" class="page-header__nav-link">Отзывы</a>
+        </li>
+        <li class="page-header__nav-item">
+          <a href="#demo" class="page-header__nav-link">Видео-демо</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="page-header__right-section">
+      <div class="page-header__social">
+        <a href="#" class="page-header__social-link">
+          <img
+            src="../images/whatsapp.png"
+            alt="WhatsApp"
+            class="page-header__social-icon"
+          />
+        </a>
+        <a href="#" class="page-header__social-link">
+          <img src="../images/vk_icon.png" alt="VK" class="page-header__social-icon"/>
+        </a>
+        <a href="#" class="page-header__social-link">
+          <img
+            src="../images/tg.png"
+            alt="Telegram"
+            class="page-header__social-icon"
+          />
+        </a>
+      </div>
+
+      <a href="#try" class="page-header__button"> Попробовать бесплатно </a>
+
+      <!-- Мобильное бургер-меню  -->
+      <button class="page-header__mobile-button" id="menu-toggle" aria-label="Открыть меню">
+        <img src="../images/burger.png" alt="VK" class="page-header__social-icon"/>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileModal">
+      <div class="mobile-menu__content">
+        <img src="../images/close-icon.png" alt="Close" class="mobile-menu__close" id="closeModal">
+        <nav>
+          <ul class="mobile-menu__nav-list">
+            <li class="mobile-menu__nav-item">
+              <a href="#advantages" class="mobile-menu__nav-link">Преимущества</a>
             </li>
-            <li class="page-header__nav-item">
-              <a href="#tariffs" class="page-header__nav-link">Тарифы</a>
+            <li class="mobile-menu__nav-item">
+              <a href="#tariffs" class="mobile-menu__nav-link">Тарифы</a>
             </li>
-            <li class="page-header__nav-item">
-              <a href="#reviews" class="page-header__nav-link">Отзывы</a>
+            <li class="mobile-menu__nav-item">
+              <a href="#reviews" class="mobile-menu__nav-link">Отзывы</a>
             </li>
-            <li class="page-header__nav-item">
-              <a href="#demo" class="page-header__nav-link">Видео-демо</a>
+            <li class="mobile-menu__nav-item">
+              <a href="#demo" class="mobile-menu__nav-link">Видео-демо</a>
             </li>
           </ul>
         </nav>
 
-        <div class="page-header__right-section">
-          <div class="page-header__social">
+        <div class="mobile-menu__footer">
+          <a href="#try" class="page-header__button mobile-menu__button">
+            Попробовать бесплатно
+          </a>
+
+          <div class="mobile-menu__social page-header__social">
             <a href="#" class="page-header__social-link">
               <img
-                src="../images/ri_whatsapp-fill.png"
+                src="../images/whatsapp.png"
                 alt="WhatsApp"
                 class="page-header__social-icon"
               />
             </a>
             <a href="#" class="page-header__social-link">
-              <img src="../images/basil_vk-solid.png" alt="VK" class="page-header__social-icon" />
+              <img
+                src="../images/vk_icon.png"
+                alt="VK"
+                class="page-header__social-icon"
+              />
             </a>
             <a href="#" class="page-header__social-link">
               <img
-                src="../images/basil_telegram-solid.png"
+                src="../images/tg.png"
                 alt="Telegram"
                 class="page-header__social-icon"
               />
             </a>
           </div>
-
-          <a href="#try" class="page-header__button"> Попробовать бесплатно </a>
-
-          <!-- Мобильное бургер-меню  -->
-          <button class="page-header__mobile-button" id="menu-toggle" aria-label="Открыть меню">
-            <img src="../images/mobile-menu.png" alt="VK" class="page-header__social-icon" />
-          </button>
-        </div>
-
-        <div class="mobile-menu" id="mobileModal">
-          <div class="mobile-menu__content">
-            <span class="mobile-menu__close" id="closeModal">&times;</span>
-            <nav>
-              <ul class="mobile-menu__nav-list">
-                <li class="mobile-menu__nav-item">
-                  <a href="#advantages" class="mobile-menu__nav-link">Преимущества</a>
-                </li>
-                <li class="mobile-menu__nav-item">
-                  <a href="#tariffs" class="mobile-menu__nav-link">Тарифы</a>
-                </li>
-                <li class="mobile-menu__nav-item">
-                  <a href="#reviews" class="mobile-menu__nav-link">Отзывы</a>
-                </li>
-                <li class="mobile-menu__nav-item">
-                  <a href="#demo" class="mobile-menu__nav-link">Видео-демо</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div class="mobile-menu__footer">
-              <a href="#try" class="page-header__button mobile-menu__button">
-                Попробовать бесплатно
-              </a>
-
-              <div class="mobile-menu__social page-header__social">
-                <a href="#" class="page-header__social-link">
-                  <img
-                    src="../images/ri_whatsapp-fill.png"
-                    alt="WhatsApp"
-                    class="page-header__social-icon"
-                  />
-                </a>
-                <a href="#" class="page-header__social-link">
-                  <img
-                    src="../images/basil_vk-solid.png"
-                    alt="VK"
-                    class="page-header__social-icon"
-                  />
-                </a>
-                <a href="#" class="page-header__social-link">
-                  <img
-                    src="../images/basil_telegram-solid.png"
-                    alt="Telegram"
-                    class="page-header__social-icon"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-      </div>
-
-    </header>
-
-    <section class="hero-section">
-      <img class="hero-section__background" src="/images/fon.png" alt="Фоновый узор" />
-      <div class="hero-section__container">
-        <div class="hero-section__left">
-          <h1>
-            УПРАВЛЯЙТЕ САЛОНОМ КРАСОТЫ <br />
-            ЛЕГКО С <span class="hero-section__title-highlight">BLISS CRM</span>
-          </h1>
-          <p class="hero-section__subtitle">
-            Экономьте до 20 часов в месяц на администрировании <br />
-            и увеличивайте прибыль до 30 %
-          </p>
-          <a href="#consultation" class="button button--primary hero-section__button">
-            Получить консультацию
-          </a>
-        </div>
-        <div class="hero-section__right">
-          <img src="/images/notepad.png" alt="CRM preview" class="hero-section__image" />
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</header>
+
+<section class="hero-section">
+  <img class="hero-section__background" src="/images/fon.png" alt="Фоновый узор"/>
+  <div class="hero-section__container">
+    <div class="hero-section__left">
+      <h1>
+        УПРАВЛЯЙТЕ САЛОНОМ КРАСОТЫ <br/>
+        ЛЕГКО С <span class="hero-section__title-highlight">BLISS CRM</span>
+      </h1>
+      <p class="hero-section__subtitle">
+        Экономьте до 20 часов в месяц на администрировании <br/>
+        и увеличивайте прибыль до 30 %
+      </p>
+      <a href="#consultation" class="button button--primary hero-section__button">
+        Получить консультацию
+      </a>
+    </div>
+    <div class="hero-section__right">
+      <img src="/images/notepad.png" alt="CRM preview" class="hero-section__image"/>
+    </div>
+  </div>
+</section>
 
 <section class="features-section">
   <h2 class="features-title">ПОЧЕМУ С НАШЕЙ CRM <br><span>РАБОТАТЬ ПРОЩЕ</span></h2>
@@ -165,7 +160,8 @@
         class="feature-block__icon"
       />
       <h3 class="feature-block__title">Онлайн-запись</h3>
-      <p class="feature-block__subtitle">Клиенты записываются сами в удобное время, а система сразу фиксирует бронь в календаре. Администратор больше не ловит десятки звонков подряд.</p>
+      <p class="feature-block__subtitle">Клиенты записываются сами в удобное время, а система сразу фиксирует бронь в
+        календаре. Администратор больше не ловит десятки звонков подряд.</p>
     </div>
   </div>
 
@@ -177,73 +173,79 @@
         class="feature-block__icon"
       />
       <h3 class="feature-block__title">Контроль сотрудников</h3>
-      <p class="feature-block__subtitle">Видно, кто работает, кто свободен, как распределяются записи и загрузка мастеров. Всё прозрачно, без хаоса и недопониманий.</p>
+      <p class="feature-block__subtitle">Видно, кто работает, кто свободен, как распределяются записи и загрузка
+        мастеров. Всё прозрачно, без хаоса и недопониманий.</p>
     </div>
   </div>
   <div class="features-blocks-small">
-  <div class="feature-block-small feature-block-small--white">
-    <div class="feature-block-small__content">
-      <img src="/images/uis_analytics.png" alt="Иконка аналитики" class="feature-block-small__icon" />
-      <h3 class="feature-block-small__title">Удобная аналитика</h3>
-      <p class="feature-block-small__subtitle">Показатели салона собираются автоматически: самые популярные услуги, загрузка мастеров, выручка и динамика. Все цифры под рукой и без ручных подсчётов.</p>
+    <div class="feature-block-small feature-block-small--white">
+      <div class="feature-block-small__content">
+        <img src="/images/uis_analytics.png" alt="Иконка аналитики" class="feature-block-small__icon"/>
+        <h3 class="feature-block-small__title">Удобная аналитика</h3>
+        <p class="feature-block-small__subtitle">Показатели салона собираются автоматически: самые популярные услуги,
+          загрузка мастеров, выручка и динамика. Все цифры под рукой и без ручных подсчётов.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="feature-block-small feature-block-small--primary">
-    <div class="feature-block-small__content">
-      <img src="/images/icongrafic.png" alt="Иконка увеличения прибыли" class="feature-block-small__icon" />
-      <h3 class="feature-block-small__title">Увеличение прибыли</h3>
-      <p class="feature-block-small__subtitle">Больше записей, меньше ошибок. CRM помогает заполнить свободные окна и улучшить обслуживание, а это сразу отражается на доходе.</p>
+    <div class="feature-block-small feature-block-small--primary">
+      <div class="feature-block-small__content">
+        <img src="/images/icongrafic.png" alt="Иконка увеличения прибыли" class="feature-block-small__icon"/>
+        <h3 class="feature-block-small__title">Увеличение прибыли</h3>
+        <p class="feature-block-small__subtitle">Больше записей, меньше ошибок. CRM помогает заполнить свободные окна и
+          улучшить обслуживание, а это сразу отражается на доходе.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="feature-block-small feature-block-small--white">
-    <div class="feature-block-small__content">
-      <img src="/images/icondesk.png" alt="Иконка автоматизации" class="feature-block-small__icon" />
-      <h3 class="feature-block-small__title">Автоматизация рутинных задач</h3>
-      <p class="feature-block-small__subtitle">Напоминания клиентам, переносы, заявки, расписание — система берёт на себя всё, что обычно тянет время и внимание. Команда работает спокойнее и быстрее.</p>
+    <div class="feature-block-small feature-block-small--white">
+      <div class="feature-block-small__content">
+        <img src="/images/icondesk.png" alt="Иконка автоматизации" class="feature-block-small__icon"/>
+        <h3 class="feature-block-small__title">Автоматизация рутинных задач</h3>
+        <p class="feature-block-small__subtitle">Напоминания клиентам, переносы, заявки, расписание — система берёт на
+          себя всё, что обычно тянет время и внимание. Команда работает спокойнее и быстрее.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="feature-block-small feature-block-small--primary">
-    <div class="feature-block-small__content">
-      <img src="/images/iconmusic.png" alt="Иконка поддержки" class="feature-block-small__icon" />
-      <h3 class="feature-block-small__title">Поддержка</h3>
-      <p class="feature-block-small__subtitle">Техподдержка доступна в CRM и в Telegram. Быстрые ответы, понятные инструкции и помощь в любой рабочей ситуации.</p>
+    <div class="feature-block-small feature-block-small--primary">
+      <div class="feature-block-small__content">
+        <img src="/images/iconmusic.png" alt="Иконка поддержки" class="feature-block-small__icon"/>
+        <h3 class="feature-block-small__title">Поддержка</h3>
+        <p class="feature-block-small__subtitle">Техподдержка доступна в CRM и в Telegram. Быстрые ответы, понятные
+          инструкции и помощь в любой рабочей ситуации.</p>
+      </div>
     </div>
   </div>
-</div>
-<div class="slider-indicator">
-  <span class="slider-indicator__dot active"></span>
-  <span class="slider-indicator__dotfuture1"></span>
-  <span class="slider-indicator__dotfuture2"></span>
-</div>
+  <div class="slider-indicator">
+    <span class="slider-indicator__dot active"></span>
+    <span class="slider-indicator__dotfuture1"></span>
+    <span class="slider-indicator__dotfuture2"></span>
+  </div>
 </section>
 
-    <div class="stats-container">
-      <div class="stats-column">
-        <div class="stats-number">500+</div>
-        <div class="stats-text">САЛОНОВ<br />ИСПОЛЬЗУЮТ</div>
-      </div>
+<div class="stats-container">
+  <div class="stats-column">
+    <div class="stats-number">500+</div>
+    <div class="stats-text">САЛОНОВ<br/>ИСПОЛЬЗУЮТ</div>
+  </div>
 
-      <div class="stats-column">
-        <div class="stats-number">20 Ч/МЕС</div>
-        <div class="stats-text">ЭКОНОМИЯ ВРЕМЕНИ</div>
-      </div>
+  <div class="stats-column">
+    <div class="stats-number">20 Ч/МЕС</div>
+    <div class="stats-text">ЭКОНОМИЯ ВРЕМЕНИ</div>
+  </div>
 
-      <div class="stats-column">
-        <div class="stats-number">+30%</div>
-        <div class="stats-text">РОСТ ВЫРУЧКИ</div>
-      </div>
-    </div>
+  <div class="stats-column">
+    <div class="stats-number">+30%</div>
+    <div class="stats-text">РОСТ ВЫРУЧКИ</div>
+  </div>
+</div>
 
- <section class="background-section">
+<section class="background-section">
   <h2 class="tariff-title">Выберите подходящий тариф</h2>
 
   <div class="tariff-blocks-wrapper">
     <div class="tariff-block white">
       <h3 class="tariff-block__title">Бесплатный старт</h3>
-      <p class="tariff-block__description">Отличный вариант, чтобы попробовать систему без риска и увидеть, как она упрощает работу салона. В пробный период включено:</p>
+      <p class="tariff-block__description">Отличный вариант, чтобы попробовать систему без риска и увидеть, как она
+        упрощает работу салона. В пробный период включено:</p>
       <ul class="tariff-block__features">
         <li>Доступ ко всей CRM на 14 дней</li>
         <li>Добавление мастеров, пользователей, клиентов и филиалов</li>
@@ -253,22 +255,23 @@
         <li>Бот техподдержки для пользователей CRM</li>
         <li>Страница заявок в CRM (заявки с сайта автоматически поступают администратору)</li>
         <li>Добавление услуг и группировка их по категориям</li>
-          <li>
-        Сайт в комплекте:
-        <ul class="tariff-subfeatures">
-          <li>Главная страница</li>
-          <li>Страницы категорий услуг</li>
-          <li>Страница всех услуг</li>
-          <li>Онлайн-запись</li>
-        </ul>
-      </li>
-    </ul>
+        <li>
+          Сайт в комплекте:
+          <ul class="tariff-subfeatures">
+            <li>Главная страница</li>
+            <li>Страницы категорий услуг</li>
+            <li>Страница всех услуг</li>
+            <li>Онлайн-запись</li>
+          </ul>
+        </li>
+      </ul>
       <button class="tariff-button white-button">Подключить</button>
     </div>
 
     <div class="tariff-block beige">
       <h3 class="tariff-block__title">Безлимитный</h3>
-      <p class="tariff-block__description">Полный тариф без ограничений по количеству мастеров. Подходит для студий, барбершопов, салонов красоты и других бьюти-бизнесов.</p>
+      <p class="tariff-block__description">Полный тариф без ограничений по количеству мастеров. Подходит для студий,
+        барбершопов, салонов красоты и других бьюти-бизнесов.</p>
       <ul class="tariff-block__features">
         <li>Безлимитные мастера, пользователи, клиенты и филиалы</li>
         <li>Управление контентом сайта через админ-панель</li>
@@ -277,64 +280,88 @@
         <li>Онлайн-запись через Telegram-бота</li>
         <li>Бот техподдержки для пользователей CRM</li>
         <li>Страница заявок для всех обращений с сайта</li>
-         <li>Добавление услуг и группировка их по категориям</li>
-          <li>
-        Сайт в комплекте:
-        <ul class="tariff-subfeatures">
-          <li>Главная страница</li>
-          <li>Страницы категорий услуг</li>
-          <li>Страница всех услуг</li>
-          <li>Онлайн-запись</li>
-        </ul>
-      </li>
-    </ul>
+        <li>Добавление услуг и группировка их по категориям</li>
+        <li>
+          Сайт в комплекте:
+          <ul class="tariff-subfeatures">
+            <li>Главная страница</li>
+            <li>Страницы категорий услуг</li>
+            <li>Страница всех услуг</li>
+            <li>Онлайн-запись</li>
+          </ul>
+        </li>
+      </ul>
       <button class="tariff-button brown-button">Подключить</button>
     </div>
-  <!-- Индикатор для тарифного слайдера -->
-  <div class="tariff-indicator">
-    <span class="slider-indicator__dot active"></span>
-    <span class="slider-indicator__dot"></span>
-    <span class="slider-indicator__dot"></span>
-  </div>
+    <!-- Индикатор для тарифного слайдера -->
+    <div class="tariff-indicator">
+      <span class="slider-indicator__dot active"></span>
+      <span class="slider-indicator__dot"></span>
+      <span class="slider-indicator__dot"></span>
+    </div>
 </section>
 
-    <section class="reviews-section">
-      <div class="reviews-container-all">
-        <div class="reviews-header-container">
-          <h2 class="trust-title">Нам доверяют</h2>
+<section class="reviews-section">
+  <div class="reviews-container-all">
+    <div class="reviews-header-container">
+      <h2 class="trust-title">Нам доверяют</h2>
 
-          <div class="reviews-navigation">
-            <button class="nav-arrow prev-arrow" aria-label="Предыдущий отзыв">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
-                  fill="#B0B0B0"
-                />
-              </svg>
-            </button>
-            <button class="nav-arrow next-arrow" aria-label="Следующий отзыв">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
-                  fill="#333333"
-                />
-              </svg>
-            </button>
+      <div class="reviews-navigation">
+        <button class="nav-arrow prev-arrow" aria-label="Предыдущий отзыв">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
+              fill="#B0B0B0"
+            />
+          </svg>
+        </button>
+        <button class="nav-arrow next-arrow" aria-label="Следующий отзыв">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
+              fill="#333333"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="reviews-viewport">
+      <div class="reviews-wrapper">
+        <div class="review-card">
+          <div class="review-header">
+            <img class="review-photo" src="images/photo1otz.png" alt="Фото человека"/>
+            <div class="review-info">
+              <span class="review-name">Анастасия</span>
+              <span class="review-position">Владелица салона красоты INPROJECT</span>
+              <!-- <span class="review-date">13.06.2024</span> -->
+            </div>
+            <div class="review-stars">
+              <img src="/images/stars.png" alt="Рейтинг 5 из 5 звёзд"/>
+            </div>
           </div>
+          <p class="review-text">
+            У наших мастеров постоянно возникала путаница со сменами. Администратор вёл записи в журнале, мастера делали
+            пометки в своих блокнотах, и в итоге все терялись в расписании. Сейчас этой проблемы нет. Мы перешли на
+            BLISS CRM и получили один общий календарь для всей команды.
+            Никто ничего не путает, все видят актуальный график в режиме реального времени.
+            Отдельно хочу поблагодарить разработчиков. Мы выбирали между несколькими программами, и именно эта оказалась
+            самой удобной. Мастера быстро к ней привыкли и говорят, что работать стало намного проще. Большое спасибо за
+            отличный инструмент.
+          </p>
         </div>
-
         <div class="reviews-viewport">
           <div class="reviews-wrapper">
             <div class="review-card">
@@ -423,13 +450,13 @@
       <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
       <svg class="star" width="20" height="20"><use href="#icon-star" fill="currentColor"></use></svg>
     </div>
-  </div> 
+  </div>
 
   <p class="review-text">
     Меня зовут Елена, я инструктор в студии танцев La La La. Мы начали использовать BLISS CRM несколько месяцев назад, и система заметно изменила наш рабочий процесс. Раньше расписание хранилось кто где: ученики записывались в чатах, спрашивали время занятий лично, путали группы и дни. Это постоянно создавалo путаницу и лишние переписки. Онлайн-запись и общий календарь полностью решили эту проблему. Теперь у всех есть доступ к единому расписанию, и ученики сами выбирают удобное время без уточнений и напоминаний.
     Мне больше не приходится объяснять одно и то же по нескольку раз или отслеживать, кто перенёс занятие. CRM автоматически фиксирует изменения, а уведомления помогают ученикам не забывать о тренировках. Пропусков стало меньше, а группы заполняются ровнее. BLISS CRM оказалась простой, понятной и действительно удобной системой, которая освободила мне много времени и позволила сосредоточиться на обучении. Спасибо команде за такой инструмент.
   </p>
-</div> 
+</div>
         <!-- индикатор страниц  -->
         <div class="slider-indicator slider-indicator--reviews">
           <span class="slider-indicator__dot active"></span>
@@ -439,175 +466,178 @@
   </div>
   </div>
 </section>
-    <section class="faq-section">
-      <h2 class="faq-heading">FAQ</h2>
-      <div class="faq-cards-container">
-        <div class="faq-card">
-          <div class="faq-question-header">
-            <p class="faq-question-text">Как публикуется система для загрузки?</p>
-            <button class="faq-toggle-btn" aria-label="Toggle FAQ">
-              <svg
-                class="faq-icon-open"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070" />
-              </svg>
-              <svg
-                class="faq-icon-close"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                  fill="#707070"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="faq-answer-text">
-            <p>
-            Наша система не требует публикации в AppStore или Google Play. Приложение устанавливать не нужно.
-            BLISS CRM работает через браузер и имеет полностью адаптивную мобильную версию, поэтому вы легко используете её как на компьютере, так и на телефоне.
-            Доступ к CRM открывается сразу после подключения — никаких проверок, ожиданий и оформления аккаунтов разработчика.
 
-            </p>
-          </div>
-        </div>
-        <div class="faq-card">
-          <div class="faq-question-header">
-            <p class="faq-question-text">
-              Что делать, если у меня будут сложности в работ с вашей системой?
-            </p>
-            <button class="faq-toggle-btn" aria-label="Toggle FAQ">
-              <svg
-                class="faq-icon-open"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070" />
-              </svg>
-              <svg
-                class="faq-icon-close"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                  fill="#707070"
-                />
-              </svg>
-            </button>
-          </div>
-<div class="faq-answer-text">
-  <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
-
-  <ul class="faq-bullets">
-    <li>онлайн-запись через сайт и Telegram-бота</li>
-    <li>автоматические напоминания и возвращающие сообщения</li>
-    <li>аналитика по популярным услугам и загрузке мастеров</li>
-  </ul>
-
-  <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
-</div>
-
-        </div>
-        <div class="faq-card">
-          <div class="faq-question-header">
-            <p class="faq-question-text">Как продвигать?</p>
-            <button class="faq-toggle-btn" aria-label="Toggle FAQ">
-              <svg
-                class="faq-icon-open"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070" />
-              </svg>
-              <svg
-                class="faq-icon-close"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                  fill="#707070"
-                />
-              </svg>
-            </button>
-          </div>
-<div class="faq-answer-text">
-  <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
-
-  <ul class="faq-bullets">
-    <li>онлайн-запись через сайт и Telegram-бота</li>
-    <li>автоматические напоминания и возвращающие сообщения</li>
-    <li>аналитика по популярным услугам и загрузке мастеров</li>
-  </ul>
-
-  <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
-</div>
-        </div>
-        <div class="faq-card">
-          <div class="faq-question-header">
-            <p class="faq-question-text">Вы представляете маркетинговые услуги?</p>
-            <button class="faq-toggle-btn" aria-label="Toggle FAQ">
-              <svg
-                class="faq-icon-open"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070" />
-              </svg>
-              <svg
-                class="faq-icon-close"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                  fill="#707070"
-                />
-              </svg>
-            </button>
-          </div>
-        <div class="faq-answer-text">
-          <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
-
-          <ul class="faq-bullets">
-            <li>онлайн-запись через сайт и Telegram-бота</li>
-            <li>автоматические напоминания и возвращающие сообщения</li>
-            <li>аналитика по популярным услугам и загрузке мастеров</li>
-          </ul>
-
-          <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
-        </div>
-        </div>
+<section class="faq-section">
+  <h2 class="faq-heading">FAQ</h2>
+  <div class="faq-cards-container">
+    <div class="faq-card">
+      <div class="faq-question-header">
+        <p class="faq-question-text">Как публикуется система для загрузки?</p>
+        <button class="faq-toggle-btn" aria-label="Toggle FAQ">
+          <svg
+            class="faq-icon-open"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070"/>
+          </svg>
+          <svg
+            class="faq-icon-close"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+              fill="#707070"
+            />
+          </svg>
+        </button>
       </div>
-    </section>
+      <div class="faq-answer-text">
+        <p>
+          Наша система не требует публикации в AppStore или Google Play. Приложение устанавливать не нужно.
+          BLISS CRM работает через браузер и имеет полностью адаптивную мобильную версию, поэтому вы легко используете
+          её как на компьютере, так и на телефоне.
+          Доступ к CRM открывается сразу после подключения — никаких проверок, ожиданий и оформления аккаунтов
+          разработчика.
+
+        </p>
+      </div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question-header">
+        <p class="faq-question-text">
+          Что делать, если у меня будут сложности в работ с вашей системой?
+        </p>
+        <button class="faq-toggle-btn" aria-label="Toggle FAQ">
+          <svg
+            class="faq-icon-open"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070"/>
+          </svg>
+          <svg
+            class="faq-icon-close"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+              fill="#707070"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="faq-answer-text">
+        <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
+
+        <ul class="faq-bullets">
+          <li>онлайн-запись через сайт и Telegram-бота</li>
+          <li>автоматические напоминания и возвращающие сообщения</li>
+          <li>аналитика по популярным услугам и загрузке мастеров</li>
+        </ul>
+
+        <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
+      </div>
+
+    </div>
+    <div class="faq-card">
+      <div class="faq-question-header">
+        <p class="faq-question-text">Как продвигать?</p>
+        <button class="faq-toggle-btn" aria-label="Toggle FAQ">
+          <svg
+            class="faq-icon-open"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070"/>
+          </svg>
+          <svg
+            class="faq-icon-close"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+              fill="#707070"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="faq-answer-text">
+        <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
+
+        <ul class="faq-bullets">
+          <li>онлайн-запись через сайт и Telegram-бота</li>
+          <li>автоматические напоминания и возвращающие сообщения</li>
+          <li>аналитика по популярным услугам и загрузке мастеров</li>
+        </ul>
+
+        <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
+      </div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question-header">
+        <p class="faq-question-text">Вы представляете маркетинговые услуги?</p>
+        <button class="faq-toggle-btn" aria-label="Toggle FAQ">
+          <svg
+            class="faq-icon-open"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#707070"/>
+          </svg>
+          <svg
+            class="faq-icon-close"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+              fill="#707070"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="faq-answer-text">
+        <p>В системе есть готовые инструменты, которые помогают увеличивать поток клиентов:</p>
+
+        <ul class="faq-bullets">
+          <li>онлайн-запись через сайт и Telegram-бота</li>
+          <li>автоматические напоминания и возвращающие сообщения</li>
+          <li>аналитика по популярным услугам и загрузке мастеров</li>
+        </ul>
+
+        <p>Также мы подскажем лучшие практики продвижения салона через сайт и соцсети.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="comparison-section">
   <h2 class="comparison-title">ДО И ПОСЛЕ CRM</h2>
@@ -615,55 +645,63 @@
   <div class="card-container">
     <!-- Первая карточка -->
     <div class="comparison-card">
-      <img src="images/Group1975.png" alt="Фотография 1" class="card-image" />
+      <img src="images/Group1975.png" alt="Фотография 1" class="card-image"/>
       <div class="card-text">
         <h3>Плюсы</h3>
 
         <h4>1. Самая доступная стоимость — 550 руб в месяц</h4>
-        <p>Тариф без ограничений по количеству мастеров. Цена фиксированная, прозрачная и выгодная даже для небольших салонов и частных специалистов.</p>
+        <p>Тариф без ограничений по количеству мастеров. Цена фиксированная, прозрачная и выгодная даже для небольших
+          салонов и частных специалистов.</p>
 
         <h4>2. Бесплатный пробный период 14 дней</h4>
-        <p>Можно протестировать весь функционал без оплаты. За две недели легко понять, насколько CRM подходит команде и как она упрощает работу.</p>
+        <p>Можно протестировать весь функционал без оплаты. За две недели легко понять, насколько CRM подходит команде и
+          как она упрощает работу.</p>
 
         <h4>3. Порядок в расписании и отсутствие накладок</h4>
-        <p>Все записи хранятся в одном календаре. Мастера, администратор и владелец видят актуальный график, поэтому ошибки и путаница исчезают.</p>
+        <p>Все записи хранятся в одном календаре. Мастера, администратор и владелец видят актуальный график, поэтому
+          ошибки и путаница исчезают.</p>
 
         <h4>4. Автоматизация рутинных задач</h4>
-        <p>Напоминания, заявки, переносы, уведомления — CRM делает это сама. Администратор разгружается, а клиентов становится больше.</p>
+        <p>Напоминания, заявки, переносы, уведомления — CRM делает это сама. Администратор разгружается, а клиентов
+          становится больше.</p>
 
-        <h4>5.  Рост повторных записей</h4>
-        <p>Благодаря автоматическим напоминаниям клиенты реже забывают о визите и чаще возвращаются. Это повышает стабильность дохода салона.</p>
+        <h4>5. Рост повторных записей</h4>
+        <p>Благодаря автоматическим напоминаниям клиенты реже забывают о визите и чаще возвращаются. Это повышает
+          стабильность дохода салона.</p>
 
-        <h4>6.  Удобная аналитика в пару кликов</h4>
-        <p>Загрузка мастеров, популярность услуг, статистика записей — всё обновляется в реальном времени и помогает принимать решения на основе фактов.</p>
+        <h4>6. Удобная аналитика в пару кликов</h4>
+        <p>Загрузка мастеров, популярность услуг, статистика записей — всё обновляется в реальном времени и помогает
+          принимать решения на основе фактов.</p>
       </div>
     </div>
 
     <!-- Вторая карточка -->
     <div class="comparison-card">
-      <img src="images/Group1974.png" alt="Фотография 2" class="card-image" />
+      <img src="images/Group1974.png" alt="Фотография 2" class="card-image"/>
       <div class="card-text">
         <h3>Минусы</h3>
 
         <h4>1. Нужна первичная настройка</h4>
-        <p>Чтобы система работала корректно, необходимо заполнить услуги, мастеров, расписание и категории. Это разовое действие, но требует времени.</p>
+        <p>Чтобы система работала корректно, необходимо заполнить услуги, мастеров, расписание и категории. Это разовое
+          действие, но требует времени.</p>
 
         <h4>2. Адаптация сотрудников к цифровому формату</h4>
-        <p>Если мастера привыкли вести клиентов в блокнотах или мессенджерах, им понадобится немного времени, чтобы перейти на общий календарь.</p>
+        <p>Если мастера привыкли вести клиентов в блокнотах или мессенджерах, им понадобится немного времени, чтобы
+          перейти на общий календарь.</p>
 
         <h4>3. Прозрачность процессов</h4>
-        <p>CRM показывает загрузку мастеров и эффективность работы. Это помогает руководителю, но некоторых сотрудников сначала может напрягать открытость цифр.</p>
+        <p>CRM показывает загрузку мастеров и эффективность работы. Это помогает руководителю, но некоторых сотрудников
+          сначала может напрягать открытость цифр.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-
 <section class="how-it-works-section">
   <h2 class="how-it-works-title">Как работает система</h2>
   <p class="how-it-works-subtitle">
-    Убедитесь сами, насколько просто и удобно<br />управлять салоном
+    Убедитесь сами, насколько просто и удобно<br/>управлять салоном
   </p>
 
   <div class="how-it-works-image-container">
@@ -681,99 +719,114 @@
     />
 
     <button class="how-it-works-button" aria-label="Смотреть видео">
-      <img src="/images/k.png" alt="" />
+      <img src="/images/k.png" alt=""/>
     </button>
   </div>
 </section>
 
 
-    <div class="request-wrapper">
-      <section class="request-section">
-        <div class="request-background-images">
-          <img src="images/left.png" alt="Левый ноутбук" class="background-image left-image" />
-          <img src="images/right.png" alt="Правый ноутбук" class="background-image right-image" />
-        </div>
-        <div class="request-content">
-          <div class="request-form-container">
-            <h1>ОСТАВЬТЕ ЗАЯВКУ — МЫ СВЯЖЕМСЯ С ВАМИ</h1>
-            <form class="request-form" id="request-form">
-              <div class="form-column">
-                <input type="text" id="name-input" placeholder="Имя" />
-                <textarea id="comment-textarea" placeholder="Комментарий"></textarea>
-              </div>
-              <div class="form-column">
-                <input type="tel" id="phone-input" placeholder="Номер телефона" />
-                <p id="phone-error-message" class="error-message">Введите корректный номер</p>
-                <input type="email" id="email-input" placeholder="Почта" />
-                <p id="email-error-message" class="error-message">Введите корректную почту</p>
-                <div class="button-and-privacy">
-                  <button type="submit">Получить консультацию</button>
-                  <p class="privacy-text">Мы не передаем данные третьим лицам</p>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+<div class="request-wrapper">
+  <section class="request-section">
+    <div class="request-background-images">
+      <img src="images/left.png" alt="Левый ноутбук" class="background-image left-image"/>
+      <img src="images/right.png" alt="Правый ноутбук" class="background-image right-image"/>
     </div>
-
-    <footer class="footer">
-      <div class="footer__content">
-        <div class="footer__logo-col">
-          <img src="images/logo9.png" alt="Bliss CRM Logo" class="footer__logo" />
-        </div>
-        <div class="footer__nav-contact-wrapper">
-          <div class="footer__nav-col">
-            <h4 class="footer__heading">Преимущества</h4>
-            <ul class="footer__list">
-              <li><a href="#">Тарифы</a></li>
-              <li><a href="#">Отзывы</a></li>
-              <li><a href="#">Видео</a></li>
-            </ul>
+    <div class="request-content">
+      <div class="request-form-container">
+        <h1>ОСТАВЬТЕ ЗАЯВКУ — МЫ СВЯЖЕМСЯ С ВАМИ</h1>
+        <form class="request-form" id="request-form">
+          <div class="form-column">
+            <input type="text" id="name-input" placeholder="Имя"/>
+            <textarea id="comment-textarea" placeholder="Комментарий"></textarea>
           </div>
-          <div class="footer__contact-col">
-            <h4 class="footer__heading">Контакты</h4>
-            <p>+7 (495) 648-68-15</p>
-            <p>+7 (967) 036-84-84</p>
-            <p>client@blisscrm.ru</p>
+          <div class="form-column">
+            <input type="tel" id="phone-input" placeholder="Номер телефона"/>
+            <p id="phone-error-message" class="error-message">Введите корректный номер</p>
+            <input type="email" id="email-input" placeholder="Почта"/>
+            <p id="email-error-message" class="error-message">Введите корректную почту</p>
+            <div class="button-and-privacy">
+              <button type="submit">Получить консультацию</button>
+              <p class="privacy-text">Мы не передаем данные третьим лицам</p>
+            </div>
           </div>
-        </div>
-        <div class="footer__actions-col">
-          <div class="footer__socials">
-            <a href="#"><img src="../images/ri_whatsapp-fill.png" alt="WhatsApp" /></a>
-            <a href="#"><img src="../images/basil_vk-solid.png" alt="VK" /></a>
-            <a href="#"><img src="../images/basil_telegram-solid.png" alt="Telegram" /></a>
-          </div>
-          <button class="footer__button">Оставить заявку</button>
-        </div>
+        </form>
       </div>
+    </div>
+  </section>
+</div>
 
-      <div class="footer__bottom">
-        <p class="footer__privacy">Политика конфиденциальности</p>
-        <p class="footer__copyright">копирайт ©</p>
+<footer class="footer">
+  <div class="footer__content">
+    <div class="footer__logo-col">
+      <img src="images/logo9.png" alt="Bliss CRM Logo" class="footer__logo"/>
+    </div>
+    <div class="footer__nav-contact-wrapper">
+      <div class="footer__nav-col">
+        <h4 class="footer__heading">Преимущества</h4>
+        <ul class="footer__list">
+          <li><a href="#">Тарифы</a></li>
+          <li><a href="#">Отзывы</a></li>
+          <li><a href="#">Видео</a></li>
+        </ul>
       </div>
-    </footer>
-    <script type="module" src="/src/js/main.js"></script>
+      <div class="footer__contact-col">
+        <h4 class="footer__heading">Контакты</h4>
+        <p>+7 (495) 648-68-15</p>
+        <p>+7 (967) 036-84-84</p>
+        <p>client@blisscrm.ru</p>
+      </div>
+    </div>
+    <div class="footer__actions-col">
+      <div class="footer__socials">
+        <a href="#"><img src="../images/ri_whatsapp-fill.png" alt="WhatsApp"/></a>
+        <a href="#"><img src="../images/basil_vk-solid.png" alt="VK"/></a>
+        <a href="#"><img src="../images/basil_telegram-solid.png" alt="Telegram"/></a>
+      </div>
+      <button class="footer__button">Оставить заявку</button>
+    </div>
+  </div>
 
-    <script>
-      const modal = document.getElementById('mobileModal');
-      const openBtn = document.getElementById('menu-toggle');
-      const closeBtn = document.getElementById('closeModal');
+  <div class="footer__bottom">
+    <p class="footer__privacy">Политика конфиденциальности</p>
+    <p class="footer__copyright">копирайт ©</p>
+  </div>
+</footer>
+<script type="module" src="/src/js/main.js"></script>
 
-      openBtn.addEventListener('click', () => {
-        modal.style.display = 'flex';
-      });
+<script>
+  const modal = document.getElementById('mobileModal');
+  const openBtn = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('closeModal');
 
-      closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
 
-      // Закрытие по клику вне модалки
-      window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-    </script>
-  </body>
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('mainHeader');
+
+    function handleScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add('with-shadow');
+      } else {
+        header.classList.remove('with-shadow');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+  });
+</script>
+</body>
 </html>
