@@ -289,14 +289,11 @@
   color: #FFFFFF;
 }
 
-/* Индикатор: точки рисуем из JS, тут только стили */
-
 .tariff-indicator {
   display: none;
 
   @media (max-width: 767px) {
     display: flex;
-    width: 162px;
     height: 3px;
     gap: 10px;
     align-items: center;

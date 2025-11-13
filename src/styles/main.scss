@@ -9,6 +9,7 @@
 @import url('./blocks/backround-section.scss');
 @import url('./blocks/trust-section.scss');
 @import url('./blocks/faq-card.scss');
+@import url('./blocks/template-section.scss');
 
 @import url('./blocks/photo-section.scss');
 @import url('./blocks/how-it-works-section.scss');
@@ -22,4 +23,20 @@ body {
   padding: 0;
   background-color: $primary-color;
   font-family: 'TT_Norms', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:target {
+  scroll-margin-top: 90px;
+
+  @media (max-width: 1439px) {
+    scroll-margin-top: 140px;
+  }
+
+  @media (max-width: 767px) {
+    scroll-margin-top: 70px;
+  }
 }
