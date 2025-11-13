@@ -55,14 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     indicator.innerHTML = '';
-    indicator.removeAttribute('style');
+    indicator.style.display = 'none';
     dots = [];
   }
 
   function pagesCount() {
     const slides = getSlides();
-    if (mode === 'mobile') return slides.length;                     // по 1 карточке
-    if (mode === 'tablet') return Math.max(1, slides.length - 1);
+    if (mode === 'mobile') return slides.length;                 // по 1 карте
+    if (mode === 'tablet') {
+      const perView = 2;
+      return Math.max(1, Math.ceil(slides.length / perView));
+    }
     return 0;
   }
 
@@ -77,6 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function rebuildDots(n) {
     indicator.innerHTML = '';
     dots = [];
+    if (n <= 1) {
+      indicator.style.display = 'none';
+      return;
+    }
+    indicator.style.display = 'flex';
+
     for (let i = 0; i < n; i++) {
       const dot = document.createElement('span');
       dot.className = 'slider-indicator__dot' + (i === current ? ' active' : '');
@@ -88,20 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setActive(i) {
     dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-  }
-
-  function goTo(i) {
-    const slides = getSlides();
-    const track = getTrack();
-    if (!slides.length || !track) return;
-
-    current = clamp(i, 0, maxIndex());
-    const targetSlide = slides[current];       // выравниваем по левой карточке окна
-    const targetLeft = targetSlide.offsetLeft;
-
-    track.style.transition = 'transform .4s ease';
-    track.style.transform = `translateX(-${targetLeft}px)`;
-    setActive(current);
   }
 
   function applySlideBasis() {
@@ -123,11 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== Свайп =====
+  function goTo(i) {
+    const slides = getSlides();
+    const track = getTrack();
+    if (!slides.length || !track) return;
+
+    current = clamp(i, 0, maxIndex());
+
+    const perView = (mode === 'tablet') ? 2 : 1;
+    const startIndex = current * perView;
+    const targetSlide = slides[startIndex] || slides[slides.length - 1];
+    const targetLeft = targetSlide.offsetLeft;
+
+    track.style.transition = 'transform .4s ease';
+    track.style.transform = `translateX(-${targetLeft}px)`;
+    setActive(current);
+  }
+
+  // === свайпы ===
   let startX = 0, startY = 0, dragging = false, baseOffset = 0;
 
   function currentOffsetPx() {
-    const s = getSlides()[current];
+    const slides = getSlides();
+    const perView = (mode === 'tablet') ? 2 : 1;
+    const startIndex = current * perView;
+    const s = slides[startIndex];
     return s ? s.offsetLeft : 0;
   }
 
@@ -163,11 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const slides = getSlides();
-    const lastIndexForOffset = (mode === 'mobile')
-      ? slides.length - 1
-      : Math.max(0, slides.length - 2);
+    if (!slides.length) return;
 
-    const maxOffset = slides[lastIndexForOffset]?.offsetLeft ?? 0;
+    const perView = (mode === 'tablet') ? 2 : 1;
+    const lastPage = maxIndex();
+    const lastStartIndex = lastPage * perView;
+    const lastSlide = slides[lastStartIndex] || slides[slides.length - 1];
+    const maxOffset = lastSlide ? lastSlide.offsetLeft : 0;
+
     const preview = clamp(baseOffset - dx, 0, maxOffset);
     track.style.transform = `translateX(-${preview}px)`;
   }
@@ -189,9 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function attachSwipe() {
     if (touchAttached) return;
-    viewport.addEventListener('touchstart', onTouchStart, {passive: true});
-    viewport.addEventListener('touchmove', onTouchMove, {passive: true});
-    viewport.addEventListener('touchend', onTouchEnd, {passive: true});
+    viewport.addEventListener('touchstart', onTouchStart, { passive: true });
+    viewport.addEventListener('touchmove', onTouchMove, { passive: true });
+    viewport.addEventListener('touchend', onTouchEnd, { passive: true });
     touchAttached = true;
   }
 
@@ -203,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     touchAttached = false;
   }
 
-  // ===== Инициализация/переключение режимов =====
+  // === режимы ===
   function init() {
     const newMode = mqMobile.matches ? 'mobile' : (mqTablet.matches ? 'tablet' : 'desktop');
 
@@ -220,16 +238,16 @@ document.addEventListener('DOMContentLoaded', () => {
     buildSlides();
     applySlideBasis();
 
+    current = 0;
     rebuildDots(pagesCount());
-    indicator.style.display = 'flex';
-
+    goTo(current);
     attachSwipe();
   }
 
-  // Пересчёт позиции при ресайзе (offsetLeft меняется)
   window.addEventListener('resize', () => {
     if (mode !== 'desktop') {
       applySlideBasis();
+      goTo(current);
     }
   });
 
@@ -238,4 +256,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   init();
 });
-
