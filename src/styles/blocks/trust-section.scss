@@ -7,7 +7,7 @@
 
 .reviews-viewport {
   width: 100%;
-  max-width: 1760px;
+  max-width: 1920px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -28,6 +28,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 0;
+  margin-bottom: 30px;
+
+  @media (max-width: 1439px) {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 0;
+  }
 }
 
 .reviews-header-container .trust-title {
@@ -37,6 +46,7 @@
   font-weight: 700;
   font-size: 42px;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1024px) {
@@ -311,15 +321,24 @@
     width: 100%;
   }
 }
+.review-slide {
+  @media (max-width: 1439px) {
+    padding: 20px 60px;
+  }
 
-/* СЛАЙДЫ НА МОБИЛЕ */
+  @media (max-width: 1023px) {
+    padding: 20px 30px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px 40px;
+  }
+}
 
 @media (max-width: 1024px) {
   .review-slide {
     flex: 0 0 100%;
     min-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     margin-right: 0;
     box-sizing: border-box;
     display: flex;
@@ -332,7 +351,6 @@
   .review-slide > .review-card {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px;
   }
 
   .review-slide > .review-card + .review-card {

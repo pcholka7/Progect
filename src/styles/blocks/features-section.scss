@@ -4,6 +4,10 @@
   max-width: 1200px;
   padding: 0 20px;
 
+  @media (max-width: 1439px) {
+    margin: 70px auto 0;
+  }
+
   @media (max-width: 768px) {
     margin: 50px auto 0;
   }

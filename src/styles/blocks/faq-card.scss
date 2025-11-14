@@ -1,6 +1,14 @@
 .faq-section {
   padding: 0 80px;
 
+  @media (max-width: 1439px) {
+    padding: 0 60px;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
+
   @media (max-width: 767px) {
     padding: 0 20px;
     margin-top: 50px;
@@ -29,7 +37,7 @@
   gap: 13px;
   align-items: center;
   width: 100%;
-  max-width: 1760px;
+  max-width: 1920px;
   margin: 0 auto;
 
   @media (max-width: 767px) {

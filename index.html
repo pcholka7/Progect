@@ -56,9 +56,8 @@
           </a>
         </div>
 
-        <a href="#try" class="page-header__button"> Попробовать бесплатно </a>
+        <a href="#request" class="page-header__button"> Попробовать бесплатно </a>
 
-        <!-- Мобильное бургер-меню  -->
         <button class="page-header__mobile-button" id="menu-toggle" aria-label="Открыть меню">
           <img src="../images/burger.png" alt="VK" class="page-header__social-icon" />
         </button>
@@ -85,7 +84,7 @@
           </nav>
 
           <div class="mobile-menu__footer">
-            <a href="#try" class="page-header__button mobile-menu__button">
+            <a href="#request" class="page-header__button mobile-menu__button">
               Попробовать бесплатно
             </a>
 
@@ -118,7 +117,7 @@
           Экономьте до 20 часов в месяц на администрировании <br />
           и увеличивайте прибыль до 30 %
         </p>
-        <a href="#consultation" class="button button--primary hero-section__button">
+        <a href="#request" class="button button--primary hero-section__button">
           Получить консультацию
         </a>
       </div>
@@ -577,7 +576,7 @@
       <div class="faq-card">
         <div class="faq-question-header">
           <p class="faq-question-text">
-            Что делать, если у меня будут сложности в работ с вашей системой?
+            Что делать, если у меня будут сложности в работе с вашей системой?
           </p>
           <button class="faq-toggle-btn" aria-label="Toggle FAQ">
             <svg class="faq-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -701,6 +700,7 @@
         </div>
       </div>
 
+
       <!-- Вторая карточка -->
       <div class="comparison-card">
         <img src="images/Group1974.png" alt="Фотография 2" class="card-image" />
@@ -722,6 +722,7 @@
             сначала может напрягать открытость цифр.</p>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -748,7 +749,7 @@
     </section>
 
 
-    <div class="request-wrapper" id="try">
+    <div class="request-wrapper" id="request">
       <section class="request-section">
         <div class="request-background-images">
           <img src="images/left.png" alt="Левый ноутбук" class="background-image left-image" />
@@ -781,15 +782,16 @@
     <footer class="footer">
       <div class="footer__content">
         <div class="footer__logo-col">
-          <img src="images/logo9.png" alt="Bliss CRM Logo" class="footer__logo" />
+          <img src="images/logo.png" alt="Bliss CRM Logo" class="footer__logo" />
         </div>
         <div class="footer__nav-contact-wrapper">
           <div class="footer__nav-col">
-            <h4 class="footer__heading">Преимущества</h4>
+            <h4 class="footer__heading">Навигация</h4>
             <ul class="footer__list">
-              <li><a href="#">Тарифы</a></li>
-              <li><a href="#">Отзывы</a></li>
-              <li><a href="#">Видео</a></li>
+              <li><a href="#advantages">Преимущества</a></li>
+              <li><a href="#tariffs">Тарифы</a></li>
+              <li><a href="#reviews">Отзывы</a></li>
+              <li><a href="#demo">Видео</a></li>
             </ul>
           </div>
           <div class="footer__contact-col">
@@ -801,11 +803,11 @@
         </div>
         <div class="footer__actions-col">
           <div class="footer__socials">
-            <a href="#"><img src="../images/ri_whatsapp-fill.png" alt="WhatsApp" /></a>
-            <a href="#"><img src="../images/basil_vk-solid.png" alt="VK" /></a>
-            <a href="#"><img src="../images/basil_telegram-solid.png" alt="Telegram" /></a>
+            <a class="footer__social href="#"><img src="../images/whatsapp.png" alt="WhatsApp" /></a>
+            <a class="footer__social href="#"><img src="../images/vk_icon.png" alt="VK" /></a>
+            <a class="footer__social href="#"><img src="../images/tg.png" alt="Telegram" /></a>
           </div>
-          <button class="footer__button">Оставить заявку</button>
+          <a href="#request" class="footer__button">Оставить заявку</a>
         </div>
       </div>
 
@@ -824,52 +826,57 @@
         const header = document.getElementById('mainHeader');
 
         if (openBtn && modal && closeBtn) {
-          openBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-          });
-
-          closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-          });
+          openBtn.addEventListener('click', () => modal.style.display = 'flex');
+          closeBtn.addEventListener('click', () => modal.style.display = 'none');
 
           window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-              modal.style.display = 'none';
-            }
+            if (e.target === modal) modal.style.display = 'none';
           });
 
           const anchorLinks = modal.querySelectorAll('a[href^="#"]');
-          anchorLinks.forEach(link => {
-            link.addEventListener('click', () => {
-              modal.style.display = 'none';
-            });
-          });
+          anchorLinks.forEach(link => link.addEventListener('click', () => modal.style.display = 'none'));
         }
 
         if (header) {
           let lastScrollY = window.scrollY;
-
           function handleScroll() {
-            if (window.scrollY > 10) {
-              header.classList.add('with-shadow');
-            } else {
-              header.classList.remove('with-shadow');
-            }
+            if (window.scrollY > 10) header.classList.add('with-shadow');
+            else header.classList.remove('with-shadow');
 
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            if (window.scrollY > lastScrollY && window.scrollY > 100)
               header.classList.add('header--hidden');
-            } else {
+            else
               header.classList.remove('header--hidden');
-            }
 
             lastScrollY = window.scrollY;
           }
-
           window.addEventListener('scroll', handleScroll);
+        }
+
+        if (window.innerWidth >= 1440) {
+          const cardElements = document.querySelectorAll('.comparison-card');
+
+          cardElements.forEach(card => {
+            const textBlock = card.querySelector('.card-text');
+            if (!textBlock) return;
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'card-local-toggle';
+            btn.textContent = 'Развернуть';
+
+            textBlock.insertAdjacentElement('afterend', btn);
+
+            btn.addEventListener('click', () => {
+              card.classList.toggle('is-expanded');
+              btn.textContent = card.classList.contains('is-expanded')
+                ? 'Свернуть'
+                : 'Развернуть';
+            });
+          });
         }
       });
     </script>
-
 </body>
 
 </html>
