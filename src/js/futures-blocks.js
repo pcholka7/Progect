@@ -1,5 +1,5 @@
 (() => {
-  const BREAKPOINT = 768;
+  const BREAKPOINT = 767;
   let mounted = false;
   let teardown = null;
 

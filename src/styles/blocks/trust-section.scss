@@ -1,3 +1,5 @@
+/* ОБЩИЙ КОНТЕЙНЕР */
+
 .reviews-section {
   display: flex;
   flex-direction: column;
@@ -23,30 +25,39 @@
   }
 }
 
+/* ХЕДЕР: ЗАГОЛОВОК + КНОПКИ */
+
 .reviews-header-container {
+  position: relative;              /* чтобы можно было абсолютно позиционировать навигацию */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;         /* центрируем содержимое */
   align-items: center;
   padding: 0;
   margin-bottom: 30px;
+}
 
-  @media (max-width: 1439px) {
+@media (max-width: 1439px) {
+  .reviews-header-container {
     margin-bottom: 10px;
   }
+}
 
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
+  .reviews-header-container {
     margin-bottom: 0;
   }
 }
 
 .reviews-header-container .trust-title {
-  flex-grow: 1;
+  flex-grow: 0;                    /* больше не растягиваем */
   text-align: center;
   font-family: 'TT Norms', sans-serif;
   font-weight: 700;
   font-size: 42px;
   text-transform: uppercase;
   margin-bottom: 10px;
+  margin-left: auto;               /* центрируем через авто-отступы */
+  margin-right: auto;
 }
 
 @media (max-width: 1024px) {
@@ -55,12 +66,17 @@
   }
 }
 
+/* КНОПКИ НАВИГАЦИИ (СТРЕЛКИ) */
+
 .reviews-navigation {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 70px;
-  margin-right: 80px;
+  position: absolute;              /* вынимаем из потока, визуально справа */
+  top: 70px;                       /* как раньше margin-top: 70px */
+  right: 80px;                     /* как раньше margin-right: 80px */
+  margin-top: 0;
+  margin-right: 0;
 }
 
 .reviews-navigation .nav-arrow {
@@ -95,9 +111,11 @@
 
 @media (max-width: 1024px) {
   .reviews-navigation {
-    display: none;
+    display: none;                 /* на планшетах/мобилках стрелки скрыты */
   }
 }
+
+/* СПИСОК ОТЗЫВОВ */
 
 .reviews-wrapper {
   display: grid;
@@ -125,7 +143,7 @@
   }
 }
 
-/* КАРТОЧКА И НОВАЯ ШАПКА */
+/* КАРТОЧКА ОТЗЫВА */
 
 .review-card {
   box-sizing: border-box;
@@ -321,16 +339,23 @@
     width: 100%;
   }
 }
-.review-slide {
-  @media (max-width: 1439px) {
+
+/* СЛАЙДЫ ДЛЯ МОБИЛКИ */
+
+@media (max-width: 1439px) {
+  .review-slide {
     padding: 20px 60px;
   }
+}
 
-  @media (max-width: 1023px) {
+@media (max-width: 1023px) {
+  .review-slide {
     padding: 20px 30px;
   }
+}
 
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
+  .review-slide {
     padding: 20px 40px;
   }
 }

@@ -83,7 +83,8 @@
     padding: 0 50px;
   }
 
-  @media (max-width: 767px) {
+  /* ⬇⬇⬇ ИЗМЕНЕНО: одна карточка до 1024px */
+  @media (max-width: 1024px) {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -120,7 +121,8 @@
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1439px) {
+  /* ⬇⬇⬇ ИЗМЕНЕНО: две карточки с 1025 до 1439px */
+  @media (min-width: 1025px) and (max-width: 1439px) {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -256,13 +258,13 @@
     text-align: left;
   }
 }
-    @media (max-width: 767px) {
-      .tariff-block__features
-      li{
-       margin: 0 0 10px 0;
-      }
 
-    }
+@media (max-width: 767px) {
+  .tariff-block__features li {
+    margin: 0 0 10px 0;
+  }
+}
+
 .tariff-button {
   display: flex;
   align-items: center;
@@ -301,7 +303,8 @@
 .tariff-indicator {
   display: none;
 
-  @media (max-width: 767px) {
+  /* ⬇⬇⬇ ИЗМЕНЕНО: точки видны до 1024px */
+  @media (max-width: 1024px) {
     display: flex;
     height: 3px;
     gap: 10px;
@@ -309,7 +312,8 @@
     margin: 20px 0;
   }
 
-  @media (min-width: 768px) and (max-width: 1439px) {
+  /* ⬇⬇⬇ ИЗМЕНЕНО: tablet от 1025 */
+  @media (min-width: 1025px) and (max-width: 1439px) {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -331,7 +335,8 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1439px) {
+/* ⬇⬇⬇ ИЗМЕНЕНО: tablet 1025–1439 */
+@media (min-width: 1025px) and (max-width: 1439px) {
   .tariff-blocks-wrapper .tariff-track {
     gap: 30px;
   }

@@ -48,12 +48,18 @@
           <a href="#" class="page-header__social-link">
             <img src="../images/whatsapp.png" alt="WhatsApp" class="page-header__social-icon" />
           </a>
-          <a href="#" class="page-header__social-link">
-            <img src="../images/vk_icon.png" alt="VK" class="page-header__social-icon" />
-          </a>
-          <a href="#" class="page-header__social-link">
-            <img src="../images/tg.png" alt="Telegram" class="page-header__social-icon" />
-          </a>
+            <a href="https://vk.com/blisscrm"
+              class="page-header__social-link"
+              target="_blank" rel="noopener noreferrer">
+              <img src="../images/vk_icon.png" alt="VK" class="page-header__social-icon" />
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/blisscrm"
+              class="page-header__social-link"
+              target="_blank" rel="noopener noreferrer">
+              <img src="../images/tg.png" alt="Telegram" class="page-header__social-icon" />
+            </a>
         </div>
 
         <a href="#request" class="page-header__button"> Попробовать бесплатно </a>
@@ -92,10 +98,14 @@
               <a href="#" class="page-header__social-link">
                 <img src="../images/whatsapp.png" alt="WhatsApp" class="page-header__social-icon" />
               </a>
-              <a href="#" class="page-header__social-link">
+              <a href="https://vk.com/blisscrm"
+                class="page-header__social-link"
+                target="_blank" rel="noopener noreferrer">
                 <img src="../images/vk_icon.png" alt="VK" class="page-header__social-icon" />
               </a>
-              <a href="#" class="page-header__social-link">
+              <a href="https://t.me/blisscrm"
+                class="page-header__social-link"
+                target="_blank" rel="noopener noreferrer">
                 <img src="../images/tg.png" alt="Telegram" class="page-header__social-icon" />
               </a>
             </div>
@@ -779,6 +789,28 @@
       </section>
     </div>
 
+
+<div class="cookie-consent" id="cookie-consent">
+  <div class="cookie-consent__inner">
+    <div class="cookie-consent__text">
+      Данный веб-сайт использует cookie-файлы в целях предоставления вам лучшего
+      пользовательского опыта на нашем сайте. Продолжая использовать данный сайт,
+      вы соглашаетесь с использованием нами cookie-файлов. Для получения
+      дополнительной информации см. 
+      <a href="https://artfasad-msk.com/soglashenie-ob-ispolzovanii-cookes-faylov/"
+         target="_blank" rel="noopener noreferrer">
+        Cookie
+      </a>.
+    </div>
+
+    <button class="cookie-consent__btn" id="cookie-accept">
+      ПОДТВЕРЖДАЮ
+    </button>
+  </div>
+</div>
+
+
+
     <footer class="footer">
       <div class="footer__content">
         <div class="footer__logo-col">
@@ -804,8 +836,18 @@
         <div class="footer__actions-col">
           <div class="footer__socials">
             <a class="footer__social href="#"><img src="../images/whatsapp.png" alt="WhatsApp" /></a>
-            <a class="footer__social href="#"><img src="../images/vk_icon.png" alt="VK" /></a>
-            <a class="footer__social href="#"><img src="../images/tg.png" alt="Telegram" /></a>
+            <a href="https://vk.com/blisscrm"
+              class="page-header__social-link"
+              target="_blank" rel="noopener noreferrer">
+              <img src="../images/vk_icon.png" alt="VK" class="page-header__social-icon" />
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/blisscrm"
+              class="page-header__social-link"
+              target="_blank" rel="noopener noreferrer">
+              <img src="../images/tg.png" alt="Telegram" class="page-header__social-icon" />
+            </a>
           </div>
           <a href="#request" class="footer__button">Оставить заявку</a>
         </div>
@@ -853,7 +895,7 @@
           window.addEventListener('scroll', handleScroll);
         }
 
-        if (window.innerWidth >= 1440) {
+        if (window.innerWidth >= 1439) {
           const cardElements = document.querySelectorAll('.comparison-card');
 
           cardElements.forEach(card => {

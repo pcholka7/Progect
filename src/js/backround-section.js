@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mqMobile = window.matchMedia('(max-width: 767px)');
-  const mqTablet = window.matchMedia('(min-width: 768px) and (max-width: 1439px)');
+  // ⬇⬇⬇ ИЗМЕНЕНО
+  const mqMobile = window.matchMedia('(max-width: 1024px)');
+  const mqTablet = window.matchMedia('(min-width: 1025px) and (max-width: 1439px)');
 
   const viewport = document.querySelector('.tariff-blocks-wrapper');
   const indicator = document.querySelector('.tariff-indicator');
@@ -221,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
     touchAttached = false;
   }
 
-  // === режимы ===
   function init() {
     const newMode = mqMobile.matches ? 'mobile' : (mqTablet.matches ? 'tablet' : 'desktop');
 
