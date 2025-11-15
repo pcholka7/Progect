@@ -102,7 +102,6 @@
       });
     }
 
-    // свайп/drag
     let dragging = false, startX = 0, startY = 0, startT = 0, startTransform = 0, ptrId = null;
 
     function onDown(e) {

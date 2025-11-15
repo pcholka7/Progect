@@ -1,5 +1,3 @@
-/* ОБЩИЙ КОНТЕЙНЕР */
-
 .reviews-section {
   display: flex;
   flex-direction: column;
@@ -16,7 +14,7 @@
   background: #fff;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .reviews-viewport {
     box-sizing: border-box;
     touch-action: pan-y;
@@ -25,12 +23,10 @@
   }
 }
 
-/* ХЕДЕР: ЗАГОЛОВОК + КНОПКИ */
-
 .reviews-header-container {
-  position: relative;              /* чтобы можно было абсолютно позиционировать навигацию */
+  position: relative;
   display: flex;
-  justify-content: center;         /* центрируем содержимое */
+  justify-content: center;
   align-items: center;
   padding: 0;
   margin-bottom: 30px;
@@ -49,32 +45,30 @@
 }
 
 .reviews-header-container .trust-title {
-  flex-grow: 0;                    /* больше не растягиваем */
+  flex-grow: 0;
   text-align: center;
   font-family: 'TT Norms', sans-serif;
   font-weight: 700;
   font-size: 42px;
   text-transform: uppercase;
   margin-bottom: 10px;
-  margin-left: auto;               /* центрируем через авто-отступы */
+  margin-left: auto;
   margin-right: auto;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .reviews-header-container .trust-title {
     font-size: 28px;
   }
 }
 
-/* КНОПКИ НАВИГАЦИИ (СТРЕЛКИ) */
-
 .reviews-navigation {
   display: flex;
   align-items: center;
   gap: 15px;
-  position: absolute;              /* вынимаем из потока, визуально справа */
-  top: 70px;                       /* как раньше margin-top: 70px */
-  right: 80px;                     /* как раньше margin-right: 80px */
+  position: absolute;
+  top: 70px;
+  right: 80px;
   margin-top: 0;
   margin-right: 0;
 }
@@ -109,13 +103,11 @@
   fill: #B0B0B0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .reviews-navigation {
-    display: none;                 /* на планшетах/мобилках стрелки скрыты */
+    display: none;
   }
 }
-
-/* СПИСОК ОТЗЫВОВ */
 
 .reviews-wrapper {
   display: grid;
@@ -130,7 +122,7 @@
   align-items: stretch;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .reviews-wrapper {
     display: flex;
     gap: 0;
@@ -142,8 +134,6 @@
     align-items: stretch;
   }
 }
-
-/* КАРТОЧКА ОТЗЫВА */
 
 .review-card {
   box-sizing: border-box;
@@ -251,7 +241,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .review-card {
     width: 100%;
     padding: 20px;
@@ -298,14 +288,12 @@
   }
 }
 
-/* ИНДИКАТОР СЛАЙДЕРА (МОБИЛКА) */
-
 .reviews-section .slider-indicator,
 .reviews-section .slider-indicator--reviews {
   display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .reviews-viewport {
     position: relative;
   }
@@ -340,8 +328,6 @@
   }
 }
 
-/* СЛАЙДЫ ДЛЯ МОБИЛКИ */
-
 @media (max-width: 1439px) {
   .review-slide {
     padding: 20px 60px;
@@ -360,7 +346,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .review-slide {
     flex: 0 0 100%;
     min-width: 100%;
@@ -400,8 +386,6 @@
     width: 100%;
   }
 }
-
-/* 1025–1439: 2 колонки */
 
 @media (min-width: 1025px) and (max-width: 1439px) {
   .reviews-wrapper {

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ⬇⬇⬇ ИЗМЕНЕНО
-  const mqMobile = window.matchMedia('(max-width: 1024px)');
-  const mqTablet = window.matchMedia('(min-width: 1025px) and (max-width: 1439px)');
+  const mqMobile = window.matchMedia('(max-width: 1023px)');
+  const mqTablet = window.matchMedia('(min-width: 1023px) and (max-width: 1439px)');
 
   const viewport = document.querySelector('.tariff-blocks-wrapper');
   const indicator = document.querySelector('.tariff-indicator');
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function pagesCount() {
     const slides = getSlides();
-    if (mode === 'mobile') return slides.length;                 // по 1 карте
+    if (mode === 'mobile') return slides.length;
     if (mode === 'tablet') {
       const perView = 2;
       return Math.max(1, Math.ceil(slides.length / perView));
@@ -136,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setActive(current);
   }
 
-  // === свайпы ===
   let startX = 0, startY = 0, dragging = false, baseOffset = 0;
 
   function currentOffsetPx() {

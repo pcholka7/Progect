@@ -11,7 +11,7 @@
     .forEach(initReviewsSlider);
 
   function equalizeMobileReviewHeights(root) {
-    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+    const isMobile = window.matchMedia("(max-width: 1023px)").matches;
     const wrapper = root.querySelector(".reviews-wrapper");
     if (!wrapper) return;
 
@@ -53,7 +53,7 @@
       root.parentElement?.querySelector(".slider-indicator--reviews") ||
       document.querySelector(".slider-indicator--reviews");
 
-    const mql = window.matchMedia("(max-width: 1024px)");
+    const mql = window.matchMedia("(max-width: 1023px)");
 
     let page = 0;
     let pagesTotal = 1;
@@ -204,7 +204,6 @@
         const cards = getCards();
         const perView = getGridCols();
 
-        /* скользящее окно: 1–3, 2–4 и т.д. */
         pagesTotal = Math.max(1, cards.length - perView + 1);
         page = clamp(page, 0, pagesTotal - 1);
 

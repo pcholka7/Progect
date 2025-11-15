@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
     body.style.paddingTop = h + 'px';
   }
 
-  // первый расчёт и пересчёты
   applyOffset();
   window.addEventListener('load', applyOffset);
   window.addEventListener('resize', applyOffset);

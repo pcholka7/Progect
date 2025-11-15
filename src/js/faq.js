@@ -7,4 +7,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-        /* все работает 14.11 проверка*/

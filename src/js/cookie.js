@@ -7,7 +7,7 @@
       try {
         return localStorage.getItem(STORAGE_KEY) !== 'true';
       } catch (e) {
-        return true; // если localStorage недоступен
+        return true;
       }
     }
 
