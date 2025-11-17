@@ -1,151 +1,67 @@
-    .cookie-consent {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 9999;
-      display: none;
-      box-sizing: border-box;
-      padding: 16px 24px;
-      background: rgba(0, 0, 0, 0.9);
-      color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .cookie-consent__inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .cookie-consent__text {
-      flex: 1 1 260px;
-    }
-
-    .cookie-consent__text a {
-      color: #4da3ff;
-      text-decoration: underline;
-    }
-
-    .cookie-consent__actions {
-      flex-shrink: 0;
-      display: flex;
-      gap: 8px;
-    }
-
-    .cookie-consent__btn {
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      font-family: inherit;
-      transition: opacity 0.15s ease-in-out, transform 0.1s ease-in-out;
-    }
-
-    .cookie-consent__btn--primary {
-      background-color: #4caf50;
-      color: #fff;
-    }
-
-    .cookie-consent__btn--primary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .cookie-consent__btn--secondary {
-      background: transparent;
-      color: #ccc;
-      border: 1px solid #555;
-    }
-
-    .cookie-consent__btn--secondary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 600px) {
-      .cookie-consent__inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .cookie-consent__actions {
-        width: 100%;
-        justify-content: flex-end;
-      }
-    }
-    .cookie-consent {
+.cookie-modal {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 9999;
+  inset: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-  max-width: 340px;
-  box-sizing: border-box;
+.cookie-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
 
-  background: #f9f3e6;
-  color: #3b352a;
-  border-radius: 24px;
-  padding: 20px 24px 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.cookie-modal__content {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  font-family: 'TT Norms', system-ui, TTNorms, sans-serif;
+  z-index: 1001;
+}
+
+.cookie-modal__text {
+  margin: 0 0 20px;
   font-size: 14px;
   line-height: 1.5;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s ease-out;
+  color: #272727;
+  text-align: justify;   /* выравнивание текста по ширине */
+  hyphens: auto;         /* перенос слов (по возможности) */
 }
 
-.cookie-consent--visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.cookie-consent__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.cookie-consent__text a {
-  color: #1f5b34;
+.cookie-modal__link {
+  color: #272727;
   text-decoration: underline;
 }
 
-.cookie-consent__btn {
-  align-self: center;
-  cursor: pointer;
+.cookie-modal__link:hover {
+  text-decoration: none;
+}
+
+.cookie-modal__button {
+  display: inline-block;
+  min-width: 160px;
+  padding: 10px 20px;
+  border-radius: 6px;
   border: none;
-  padding: 10px 32px;
-  border-radius: 999px;
-  background-color: #0d5a34;
-  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s ease-out;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background-color: #C08769;
+  color: #ffffff;
 }
 
-.cookie-consent__btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  opacity: 0.95;
-}
-
-.cookie-consent__btn:active {
+.cookie-modal__button:active {
   transform: translateY(1px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Класс, который прячет модалку */
+.cookie-modal--hidden {
+  display: none;
 }
