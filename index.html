@@ -641,22 +641,23 @@
   </p>
 
   <div class="how-it-works-image-container">
-    <!-- десктопное изображение -->
+    <!-- десктопное изображение-превью -->
     <img
-      src="images/Rectangle373.png"
+      src="images/video1.png"
       alt="Как работает система — десктоп"
-      class="how-it-works-image how-it-works-image--desktop"
+      class="how-it-works-image how-it-works-image--desktop js-how-it-works-image"
     />
-    <!-- мобильное изображение -->
-    <img
-      src="images/howwork373.png"
-      alt="Как работает система — мобильное"
-      class="how-it-works-image how-it-works-image--mobile"
-    />
-
-    <button class="how-it-works-button" aria-label="Смотреть видео">
-      <img src="/images/k.png" alt="" />
-    </button>
+    <!-- видео, изначально скрыто -->
+    <video
+      id="how-it-works-video"
+      class="how-it-works-video"
+      style="display: none"
+      preload="metadata"
+      controls
+    >
+      <source src="../video/Bliss11_1.mp4" type="video/mp4" />
+      Ваш браузер не поддерживает видео.
+    </video>
   </div>
 </section>
 
