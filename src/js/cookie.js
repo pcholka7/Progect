@@ -1,38 +1,10 @@
-  (function () {
-    var banner = document.getElementById('cookie-consent');
-    var acceptBtn = document.getElementById('cookie-accept');
-    var STORAGE_KEY = 'cookie_consent_accepted';
+ document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('cookie-modal');
+    const acceptBtn = document.getElementById('cookie-accept-btn');
 
-    function shouldShowBanner() {
-      try {
-        return localStorage.getItem(STORAGE_KEY) !== 'true';
-      } catch (e) {
-        return true;
-      }
-    }
-
-    function showBanner() {
-      if (banner) {
-        banner.classList.add('cookie-consent--visible');
-      }
-    }
-
-    function hideBanner() {
-      if (banner) {
-        banner.classList.remove('cookie-consent--visible');
-      }
-    }
-
-    if (shouldShowBanner()) {
-      showBanner();
-    }
-
-    if (acceptBtn) {
-      acceptBtn.addEventListener('click', function () {
-        try {
-          localStorage.setItem(STORAGE_KEY, 'true');
-        } catch (e) {}
-        hideBanner();
-      });
-    }
-  })();
+    if (!modal || !acceptBtn) return;
+    acceptBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+  });

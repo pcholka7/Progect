@@ -784,25 +784,30 @@
     </div>
 
 
-    <div class="cookie-consent" id="cookie-consent">
-      <div class="cookie-consent__inner">
-        <div class="cookie-consent__text">
-          Данный веб-сайт использует cookie-файлы в целях предоставления вам лучшего
-          пользовательского опыта на нашем сайте. Продолжая использовать данный сайт,
-          вы соглашаетесь с использованием нами cookie-файлов. Для получения
-          дополнительной информации см.
-          <a href="https://artfasad-msk.com/soglashenie-ob-ispolzovanii-cookes-faylov/" target="_blank"
-            rel="noopener noreferrer">
-            Cookie
-          </a>.
-        </div>
+<div class="cookie-modal" id="cookie-modal" aria-hidden="false">
+  <div class="cookie-modal__backdrop"></div>
 
-        <button class="cookie-consent__btn" id="cookie-accept">
-          ПОДТВЕРЖДАЮ
-        </button>
-      </div>
-    </div>
+  <div class="cookie-modal__content" role="dialog" aria-modal="true">
+    <p class="cookie-modal__text">
+      Данный веб-сайт использует cookie-файлы в целях предоставления вам лучшего
+      пользовательского опыта на нашем сайте. Продолжая использовать данный сайт,
+      вы соглашаетесь с использованием нами cookie-файлов. Для получения
+      дополнительной информации см. 
+      <a 
+        href="https://artfasad-msk.com/soglashenie-ob-ispolzovanii-cookes-faylov/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="cookie-modal__link"
+      >
+        Cookie
+      </a>.
+    </p>
 
+    <button class="cookie-modal__button" id="cookie-accept-btn">
+      Подтверждаю
+    </button>
+  </div>
+</div>
 
 
     <footer class="footer">
